@@ -1,4 +1,4 @@
-name: Zola build to gh branch
+name: Zola on GitHub Pages
 
 on: 
  push:
@@ -15,6 +15,4 @@ jobs:
     - name: Build and deploy
       uses: shalzz/zola-deploy-action@v0.16.1
       env:
-        PAGES_BRANCH: gh-pages
-        CHECK_LINKS: true
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
