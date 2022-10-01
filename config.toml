@@ -1,0 +1,10 @@
+base_url = "https://u-236.github.io"
+title = "Portfolio"
+description = "Muhammad Aviv Burhanudin Portfolio using static site Zola"
+default_language = "en"
+render_emoji = true
+compile_sass = true
+build_search_index = true
+[markdown]
+highlight_code = true
+[extra]
