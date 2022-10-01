@@ -1,4 +1,4 @@
-name: Zola build
+name: Zola build to gh branch
 
 on: 
  push:
