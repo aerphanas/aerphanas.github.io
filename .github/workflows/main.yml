@@ -1,4 +1,4 @@
-name: Zola on GitHub Pages
+name: Zola build
 
 on: 
  push:
