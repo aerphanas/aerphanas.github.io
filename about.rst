@@ -1,17 +1,28 @@
 ---
 title: About
 ---
-Nullam imperdiet sodales orci vitae molestie. Nunc quam orci, pharetra a
-rhoncus vitae, eleifend id felis. Suspendisse potenti. Etiam vitae urna orci.
-Quisque pellentesque dignissim felis, egestas tempus urna luctus vitae. In hac
-habitasse platea dictumst. Morbi fringilla mattis odio, et mattis tellus
-accumsan vitae.
+hello, saya adalah Muhammad Aviv Burhanudin tapi di sini saya menggunakan nama aerphanas karna itu adalah nama github id saya,
+saya mendukung gerakan kode terbuka atau opens source, sebenarnya saya sudah menggunakan static site sejak dulu dan dulu
+saya menggunakan static site generator yang bernama jekyll, karna saya tidak lagi meggunakan ruby dan saat ini saya sedang
+tertarik dengan bahasa program haskell maka dari itu saya migrasi dari jekyll ke hakyll, di dunia open source ini saya 
+mimiliki beberapa proyek yaitu mulai dari alat untuk terminal sampai graphical user interface (gui), dan saya juga sudah lama
+menggunakan sistem operasi GNU/Linux, saat ini menggunakan Linux distribution yang bernama Alpine.
 
-1. Amamus Unicode 碁
-2. Interdum nex magna.
+di dalam blog ini saya akan membagikan beberapa tips dan cara menyelesaikan berbagai masalah di open source dan saya juga
+ingin membagikan beberapa pemikiran saya terhadap open source, di blog ini juga akan ditetapkan menggunakan bahasa indonesia
+sehingga beberapa orang yang kurang mengerti bahasa inggris akan mudah mengerti apa yang saya maksud
 
-Vivamus eget mauris sit amet nulla laoreet lobortis. Nulla in diam elementum
-risus convallis commodo. Cras vehicula varius dui vitae facilisis. Proin
-elementum libero eget leo aliquet quis euismod orci vestibulum. Duis rhoncus
-lorem consequat tellus vestibulum aliquam. Quisque orci orci, malesuada porta
-blandit et, interdum nec magna.
+desain web ini juga dibuat sedemikian rupa agar tidak menggangu pembaca dan dapat memudahkan untuk di load di beberapa browser
+yang sudah lama
+
+website ini bersifat publik jadi jika kamu ingin memposting kamu tinggak pergi ke github dan berkontribusi pada proyek ini
+bila ingin melihat beberapa proyek saya bisa pergi ke akun git saya :
+
+1. `aerphanas <https://github.com/aerphanas>`_ (github)
+2. `aerphanas <https://gitlab.com/aerphanas>`_ (gitlab)
+
+
+beberapa kontak saya :
+
+1. `Email <mailto:muhamadaviv14@gmail.com>`_
+
