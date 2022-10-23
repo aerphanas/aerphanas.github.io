@@ -18,11 +18,11 @@ yang sudah lama
 website ini bersifat publik jadi jika kamu ingin memposting kamu tinggak pergi ke github dan berkontribusi pada proyek ini
 bila ingin melihat beberapa proyek saya bisa pergi ke akun git saya :
 
-1. `aerphanas <https://github.com/aerphanas>`_ (github)
-2. `aerphanas <https://gitlab.com/aerphanas>`_ (gitlab)
+1. [aerphanas](https://github.com/aerphanas) (github)
+2. [aerphanas](https://gitlab.com/aerphanas) (gitlab)
 
 
 beberapa kontak saya :
 
-1. `Email <mailto:muhamadaviv14@gmail.com>`_
+1. [Email](mailto:muhamadaviv14@gmail.com>)
 
