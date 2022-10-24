@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>aerphanas blog</title>
+    <link href="aerphanas.github.io/atom.xml" rel="self" />
+    <link href="aerphanas.github.io" />
+    <id>aerphanas.github.io/atom.xml</id>
+    <author>
+        <name>aerphanas</name>
+        <email>muhamadaviv14@gmail.com</email>
+    </author>
+    <updated>2022-09-02T00:00:00Z</updated>
+    <entry>
+    <title>Lorem Ipsum 11</title>
+    <link href="aerphanas.github.io/posts/2022-09-02-Lorem%20Ipsum.html" />
+    <id>aerphanas.github.io/posts/2022-09-02-Lorem%20Ipsum.html</id>
+    <published>2022-09-02T00:00:00Z</published>
+    <updated>2022-09-02T00:00:00Z</updated>
+    <summary type="html"><![CDATA[aerphanas blog update]]></summary>
+</entry>
+<entry>
+    <title>Lorem Ipsum 10</title>
+    <link href="aerphanas.github.io/posts/2022-09-01-Lorem%20Ipsum.html" />
+    <id>aerphanas.github.io/posts/2022-09-01-Lorem%20Ipsum.html</id>
+    <published>2022-09-01T00:00:00Z</published>
+    <updated>2022-09-01T00:00:00Z</updated>
+    <summary type="html"><![CDATA[aerphanas blog update]]></summary>
+</entry>
+<entry>
+    <title>Lorem Ipsum 9</title>
+    <link href="aerphanas.github.io/posts/2022-08-31-Lorem%20Ipsum.html" />
+    <id>aerphanas.github.io/posts/2022-08-31-Lorem%20Ipsum.html</id>
+    <published>2022-08-31T00:00:00Z</published>
+    <updated>2022-08-31T00:00:00Z</updated>
+    <summary type="html"><![CDATA[aerphanas blog update]]></summary>
+</entry>
+<entry>
+    <title>Lorem Ipsum 8</title>
+    <link href="aerphanas.github.io/posts/2022-08-30-Lorem%20Ipsum.html" />
+    <id>aerphanas.github.io/posts/2022-08-30-Lorem%20Ipsum.html</id>
+    <published>2022-08-30T00:00:00Z</published>
+    <updated>2022-08-30T00:00:00Z</updated>
+    <summary type="html"><![CDATA[aerphanas blog update]]></summary>
+</entry>
+<entry>
+    <title>Lorem Ipsum 7</title>
+    <link href="aerphanas.github.io/posts/2022-08-29-Lorem%20Ipsum.html" />
+    <id>aerphanas.github.io/posts/2022-08-29-Lorem%20Ipsum.html</id>
+    <published>2022-08-29T00:00:00Z</published>
+    <updated>2022-08-29T00:00:00Z</updated>
+    <summary type="html"><![CDATA[aerphanas blog update]]></summary>
+</entry>
+<entry>
+    <title>Lorem Ipsum 6</title>
+    <link href="aerphanas.github.io/posts/2022-08-28-Lorem%20Ipsum.html" />
+    <id>aerphanas.github.io/posts/2022-08-28-Lorem%20Ipsum.html</id>
+    <published>2022-08-28T00:00:00Z</published>
+    <updated>2022-08-28T00:00:00Z</updated>
+    <summary type="html"><![CDATA[aerphanas blog update]]></summary>
+</entry>
+<entry>
+    <title>Lorem Ipsum 5</title>
+    <link href="aerphanas.github.io/posts/2022-08-27-Lorem%20Ipsum.html" />
+    <id>aerphanas.github.io/posts/2022-08-27-Lorem%20Ipsum.html</id>
+    <published>2022-08-27T00:00:00Z</published>
+    <updated>2022-08-27T00:00:00Z</updated>
+    <summary type="html"><![CDATA[aerphanas blog update]]></summary>
+</entry>
+<entry>
+    <title>Lorem Ipsum 4</title>
+    <link href="aerphanas.github.io/posts/2022-08-26-Lorem%20Ipsum.html" />
+    <id>aerphanas.github.io/posts/2022-08-26-Lorem%20Ipsum.html</id>
+    <published>2022-08-26T00:00:00Z</published>
+    <updated>2022-08-26T00:00:00Z</updated>
+    <summary type="html"><![CDATA[aerphanas blog update]]></summary>
+</entry>
+<entry>
+    <title>Lorem Ipsum 3</title>
+    <link href="aerphanas.github.io/posts/2022-08-25-Lorem%20Ipsum.html" />
+    <id>aerphanas.github.io/posts/2022-08-25-Lorem%20Ipsum.html</id>
+    <published>2022-08-25T00:00:00Z</published>
+    <updated>2022-08-25T00:00:00Z</updated>
+    <summary type="html"><![CDATA[aerphanas blog update]]></summary>
+</entry>
+<entry>
+    <title>Lorem Ipsum 2</title>
+    <link href="aerphanas.github.io/posts/2022-08-24-Lorem%20Ipsum.html" />
+    <id>aerphanas.github.io/posts/2022-08-24-Lorem%20Ipsum.html</id>
+    <published>2022-08-24T00:00:00Z</published>
+    <updated>2022-08-24T00:00:00Z</updated>
+    <summary type="html"><![CDATA[aerphanas blog update]]></summary>
+</entry>
+
+</feed>

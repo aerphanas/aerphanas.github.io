@@ -20,7 +20,7 @@ nav a {
   font-weight: bold;
   color: black;
   text-decoration: none;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 footer {
