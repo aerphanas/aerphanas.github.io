@@ -44,7 +44,7 @@ sebuah sistem operasi memiliki sebuah tabel partisi yang berguna untuk mengatur 
 | /usr/bin/     | program yang dapat dijalankan oleh pengguna                       |
 | /usr/include/ | tempat untuk menyimpan header untuk programming c atau c++        |
 | /usr/lib/     | tempat lain untuk library dalam programming                       |
-| /usr/local/   | Typically a place where local utilities go                        |
+| /usr/local/   | digunakan untuk menyimpan program yang bukan bagian dari sistem   |
 | /usr/man      | kumpulan manual file saat kita memanggil man                      |
 
 ## Daftar Pustaka
