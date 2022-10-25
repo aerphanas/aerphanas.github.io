@@ -51,6 +51,10 @@ article .header {
   text-decoration: none;
 }
 
+table, th, td {
+  border: 1px solid;
+}
+
 @media (max-width: 319px) {
   body {
     width: 90%;
