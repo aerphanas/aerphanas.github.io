@@ -10,7 +10,6 @@ author: aerphanas
   - [I-List](#i-list)
   - [Tabel Partisi](#tabel-partisi)
   - [Hirarki FileSystem](#hirarki-filesystem)
-- [Linux FileSystem](#linux-filesystem)
 - [Daftar Pustaka](#daftar-pustaka)
 
 ## Pendahuluan
