@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="id">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="../images/logo.png" type="image/icon type">
+        <title>Λerphanas Blog - Unix Filesytem</title>
+        <link rel="stylesheet" href="../css/default.css" />
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <a href="../">Λerphanas</a>
+            </div>
+            <nav>
+                <a href="../etc/about.html">Tentang</a>
+                <a href="../archive.html">Arsip</a>
+                <a href="../atom.xml">Atom</a>
+            </nav>
+        </header>
+
+        <main role="main">
+            <h1>Unix Filesytem</h1>
+            <article>
+    <section class="header">
+        diposting pada Aug 23, 2022
+        
+            oleh aerphanas
+        
+    </section>
+    <section>
+        <h2 id="daftar-isi">Daftar isi</h2>
+<ul>
+<li><a href="#pendahuluan">Pendahuluan</a></li>
+<li><a href="#unix-file-system">Unix FileSystem</a>
+<ul>
+<li><a href="#i-list">I-List</a></li>
+<li><a href="#tabel-partisi">Tabel Partisi</a></li>
+<li><a href="#hirarki-filesystem">Hirarki FileSystem</a></li>
+</ul></li>
+<li><a href="#linux-filesystem">Linux FileSystem</a></li>
+<li><a href="#daftar-pustaka">Daftar Pustaka</a></li>
+</ul>
+<h2 id="pendahuluan">Pendahuluan</h2>
+<p>Di Blog ini saya ingin membagikan informasi mengenai linux file system, sebelum saya menjelaskan linux filesystem saya akan menjelaskan terlebih dahulu soal unix filesystem, karna linux terinspirasi dari Minix yang di buat oleh <a href="https://www.cs.vu.nl/~ast/">Andrew S. Tanenbaum</a> yang bertujuan untuk pelajaran, Minix sendiri terinspirasi dari UNIX</p>
+<h2 id="unix-file-system">Unix File System</h2>
+<p>File sistem merupakan komponen utama dalam sebuah sistem operasi, maka dari itu sebelum dibuatnya sistem operasi yang pertama kali di pikirkan adalah file system, unix file system sendiri didesain oleh Kent Thompson untuk unix sistem operasi versi eksperimen pada 1969, di unix sendiri tipe file terbage menjadi 4 tipe, yaitu file, folder, file spesial dan tautan, tautan sendiri bisa berupa file atau folder</p>
+<h3 id="i-list">I-List</h3>
+<p>Sebuah sistem operasi Unix pasti terkoneksi dengan beberapa file system dan setiap file sistem itu mempunyai i-list, i-list sendiri adalah representasi dari area yang berada pada memori fisik, salah satu i-list menunjuk pada root file system, root file system sendiri berisi sistem operasi yang harus ada setiap waktu, sehingga menunjukan bahwa tujuan dari adanya i-list adalah untuk mapping atau pemetaan dari memori fisik ke sistem operasi yang berbentuk file dan folder, pemetaan ini bisa diubah ukuranya bisa dibesarkan atau dikecilkan tergantung jenis file system yang kita pakai, untuk UNIX sendiri memakai file system dengan nama FS.</p>
+<p>setiap awal dari i-list dinamakan i-node, fungsi i-node adalah untuk mencatat perubahan pada file sistem dan i-node juga berisi informasi dari memori fisik, didalam i-node terdiri dari 10 pointer langsung, pointer ini menunjuk langsung ke memori blok pada penyimpanan, satu i-node dapat merepresentasikan sebuah file yang besar</p>
+<h3 id="tabel-partisi">Tabel Partisi</h3>
+<p>sebuah sistem operasi memiliki sebuah tabel partisi yang berguna untuk mengatur file system, tabel partisi ini berada di <code>/etc/fstab</code> , di dalam fstab berisi informasi nama memori fisik, folder mount untuk dimana memori akan di mount atau pasang dan jenis mountnya bisa hanya baca (Read-Only) atau baca tulis (Read-Write).</p>
+<h3 id="hirarki-filesystem">Hirarki Filesystem</h3>
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 81%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Mount Point</th>
+<th>Deskripsi</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>/hp-ux</td>
+<td>berisi program kernel</td>
+</tr>
+<tr class="even">
+<td>/dev/</td>
+<td>memori/perangkat yang direprsentasikan sebagai file spesial</td>
+</tr>
+<tr class="odd">
+<td>/bin/</td>
+<td>berisi program untuk mengatur sistem contohnya cp, rm, mkdir, dll</td>
+</tr>
+<tr class="even">
+<td>/etc/</td>
+<td>configurasi sistem</td>
+</tr>
+<tr class="odd">
+<td>/lib/</td>
+<td>tempat untuk library dalam programming</td>
+</tr>
+<tr class="even">
+<td>/tmp/</td>
+<td>untuk menaruh tempat sementara dan akan terhapus saat booting</td>
+</tr>
+<tr class="odd">
+<td>/lost+found/</td>
+<td>tempat file yang terhapus tapi masih terbuka pada perogram lain</td>
+</tr>
+<tr class="even">
+<td>/usr/bin/</td>
+<td>program yang dapat dijalankan oleh pengguna</td>
+</tr>
+<tr class="odd">
+<td>/usr/include/</td>
+<td>tempat untuk menyimpan header untuk programming c atau c++</td>
+</tr>
+<tr class="even">
+<td>/usr/lib/</td>
+<td>tempat lain untuk library dalam programming</td>
+</tr>
+<tr class="odd">
+<td>/usr/local/</td>
+<td>Typically a place where local utilities go</td>
+</tr>
+<tr class="even">
+<td>/usr/man</td>
+<td>kumpulan manual file saat kita memanggil man</td>
+</tr>
+</tbody>
+</table>
+<h2 id="daftar-pustaka">Daftar Pustaka</h2>
+<ul>
+<li><a href="https://fsl.fmrib.ox.ac.uk/fslcourse/unix_intro/index.html">A Basic UNIX Tutorial</a></li>
+<li><a href="https://www.geeksforgeeks.org/unix-file-system/">Unix File System</a></li>
+<li><a href="https://unix.org/what_is_unix/history_timeline.html">UNIX Past</a></li>
+<li><a href="https://www.bell-labs.com/usr/dmr/www/hist.html">The Evolution of the Unix Time-sharing System</a></li>
+</ul>
+    </section>
+</article>
+
+        </main>
+
+        <footer>
+            dibuat dengan 
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+        </footer>
+    </body>
+</html>
