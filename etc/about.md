@@ -1,5 +1,6 @@
 ---
 title: Tentang
+desc: siapa itu aerphanas, tujuan kenapa blog ini dibuat berdesain menimalis tanpa menggunakan javascript, cara mengkontak pembuat web
 ---
 hello, saya adalah Muhammad Aviv Burhanudin tapi di sini saya menggunakan nama aerphanas karna itu adalah nama username github saya,
 saya mendukung gerakan kode terbuka atau opens source, sebenarnya saya sudah menggunakan static site sejak dulu dan dulu

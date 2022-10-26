@@ -63,6 +63,7 @@ main = hakyllWith config $ do
             let archiveCtx =
                     listField "posts" postCtx (return posts) `mappend`
                     constField "title" "Arsip"            `mappend`
+                    constField "desc" "Semua postingan yang ada di aerphanas bisa dilihat di sini"  `mappend`
                     defaultContext
 
             makeItem ""
