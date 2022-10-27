@@ -97,6 +97,7 @@ main = hakyllWith config $ do
 --------------------------------------------------------------------------------
 postCtx :: Context String
 postCtx =
-    constField "root" root   `mappend`
-    dateField  "date" "%b %d, %Y"                      `mappend`
+    constField "root"     root        `mappend`
+    dateField  "sitedate" "%Y-%m-%d"  `mappend`
+    dateField  "date"     "%b %d, %Y" `mappend`
     defaultContext
