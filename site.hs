@@ -2,9 +2,11 @@
 {-# LANGUAGE OverloadedStrings #-}
 import  Data.Monoid (mappend)
 import  Hakyll
-
-
 --------------------------------------------------------------------------------
+
+root :: String
+root = "https://aerphanas.github.io"
+
 myFeedConfiguration :: FeedConfiguration
 myFeedConfiguration = FeedConfiguration
     { feedTitle       = "aerphanas blog"
@@ -71,6 +73,17 @@ main = hakyllWith config $ do
                 >>= loadAndApplyTemplate "templates/default.html" archiveCtx
                 >>= relativizeUrls
 
+    create ["sitemap.xml"] $ do
+        route idRoute
+        compile $ do
+            posts <- recentFirst =<< loadAll "posts/*"
+            singlePages <- loadAll (fromList ["etc/about.md"])
+            let pages = posts <> singlePages
+                sitemapCtx =
+                    constField "root" root `mappend`
+                    listField "pages" postCtx (return pages)
+            makeItem ""
+                >>= loadAndApplyTemplate "templates/sitemap.xml" sitemapCtx
 
     create ["atom.xml"] $ do
         route idRoute
@@ -84,5 +97,6 @@ main = hakyllWith config $ do
 --------------------------------------------------------------------------------
 postCtx :: Context String
 postCtx =
-    dateField "date" "%b %d, %Y" `mappend`
+    constField "root" root   `mappend`
+    dateField  "date" "%b %d, %Y"                      `mappend`
     defaultContext
