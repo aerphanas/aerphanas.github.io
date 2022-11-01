@@ -8,8 +8,16 @@
         <name>aerphanas</name>
         <email>muhamadaviv14@gmail.com</email>
     </author>
-    <updated>2022-08-23T00:00:00Z</updated>
+    <updated>2022-10-29T00:00:00Z</updated>
     <entry>
+    <title>Linux Hi-Res Audio</title>
+    <link href="https://aerphanas.github.io/posts/2022-10-29-linux%20hires%20audio.html" />
+    <id>https://aerphanas.github.io/posts/2022-10-29-linux%20hires%20audio.html</id>
+    <published>2022-10-29T00:00:00Z</published>
+    <updated>2022-10-29T00:00:00Z</updated>
+    <summary type="html"><![CDATA[aerphanas blog update]]></summary>
+</entry>
+<entry>
     <title>Unix Filesytem</title>
     <link href="https://aerphanas.github.io/posts/2022-08-23-unix%20filesystem.html" />
     <id>https://aerphanas.github.io/posts/2022-08-23-unix%20filesystem.html</id>

@@ -98,8 +98,13 @@ table, th, td {
     text-align: center;
   }
   footer {
-    text-align: center;
+    text-align: right;
   }
+
+  .license {
+    float: left;
+  }
+
   .logo {
     text-align: center;
     margin: 1rem auto 3rem;
@@ -134,6 +139,11 @@ table, th, td {
   footer {
     text-align: right;
   }
+
+  .license {
+    float: left;
+  }
+
   .logo {
     margin: 0;
     text-align: left;
