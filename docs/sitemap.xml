@@ -14,6 +14,7 @@
   </url>
 
   <url>
+<<<<<<< HEAD
     <loc>https://aerphanas.github.io/posts/2022-10-29-linux%20hires%20audio.html</loc>
     <lastmod>2022-10-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -22,6 +23,9 @@
 
   <url>
     <loc>https://aerphanas.github.io/posts/2022-08-23-Unix%20Filesystem.html</loc>
+=======
+    <loc>https://aerphanas.github.io/posts/2022-08-23-unix%20filesystem.html</loc>
+>>>>>>> origin/master
     <lastmod>2022-08-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
