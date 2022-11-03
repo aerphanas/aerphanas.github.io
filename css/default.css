@@ -2,6 +2,10 @@ html {
   font-size: 62.5%;
 }
 
+.utterances-frame {
+  border-top: 0.2rem solid #000;
+}
+
 .sourceCode {
   overflow-x: auto;
 }
