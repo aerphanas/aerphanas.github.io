@@ -24,7 +24,13 @@ syarat tools yang harus diinstal sebelum melakukan pengembangan :
 - GHC base == 4.*
 - hakyll == 4.15.*
 
-untuk menginstall GHC dan cabal dianjurkan menggunakan [GHCup](https://www.haskell.org/ghcup/) agar lebih mudah, setelah menginstall tools yang diperlukan kita hanya perlu clone github reponya, dengan cara :
+untuk menginstall GHC dan cabal dianjurkan menggunakan [GHCup](https://www.haskell.org/ghcup/) agar lebih mudah dan hakyll bisa diinstall dengan command
+
+```sh
+cabal new-install hakyll
+```
+
+setelah menginstall tools yang diperlukan kita hanya perlu clone github reponya, dengan cara :
 
 ```sh
 git clone https://github.com/aerphanas/aerphanas.github.io.git
