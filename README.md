@@ -5,7 +5,6 @@ Static site menggunakan Hakyll sebagai generator
 [![Author](https://img.shields.io/badge/author-aerphanas-red.svg)](https://github.com/aerphanas)
 [![License](https://img.shields.io/badge/License-BSD--3--Clause-important)](https://github.com/aerphanas/aerphanas.github.io/blob/master/LICENSE)
 [![pages-build-deployment](https://github.com/aerphanas/aerphanas.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/aerphanas/aerphanas.github.io/actions/workflows/pages/pages-build-deployment)
-![Haskell Language](https://img.shields.io/badge/Haskell-Haskell2010-informational)
 
 
 ## Daftar isi
