@@ -41,26 +41,26 @@ lalu setelah itu pergilah ke directori ```aerphanas.github.io``` dan lakukan
 cabal new-install
 ```
 
-setelah itu akan dibuat sebuah perintah yang bernama ```site```.
+setelah itu akan dibuat sebuah perintah yang bernama ```kompor```.
 
 #### cara meggunakan site
-> note : site harus dijalankan di folder ```aerphanas.github.io```
+> note : kompor harus dijalankan di folder ```aerphanas.github.io```
 
 ```sh
-site build # membangun site dan ditujukan di ./doc folder 
+kompor build # membangun site dan ditujukan di ./doc folder
 ```
 
 ```sh
-site clean # membersihkan tujuan (disini tujuanya adalah folder ./doc)
+kompor clean # membersihkan tujuan (disini tujuanya adalah folder ./doc)
 ```
 
 ```sh
-site watch # menjalankan website secara interaktif
+kompor watch # menjalankan website secara interaktif
            # interaktif disini adalah web akan otomatis berubah bila ada file yang berubah
 ```
 
 ```sh
-site watch site watch --host 10.11.53.122 --port 8080
+kompor watch --host 10.11.53.122 --port 8080
            # sama seperti diatas tetapi daripada menggunakan ip 127.0.0.1 dan port 8000
            # kita menggunakan ip 10.11.53.122 dan port 8080
 ```
