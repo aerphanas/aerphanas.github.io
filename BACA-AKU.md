@@ -50,6 +50,32 @@ cabal new-install
 
 setelah itu akan dibuat sebuah perintah yang bernama ```kompor```.
 
+### Kontainer
+
+disini saya akan menggunakan Podman, untuk bisa menghasilkan static site kita perlu hakyll, kita bisa mendapatkanya dengan command :
+
+```sh
+podman build -t hakyll:latest -f Container.file
+```
+
+setelah kita berhasil membuat image hakyll kita baru bisa membuat image kompor dengan cara :
+
+```sh
+podman build -t kompor:latest -f Containerfile.Kompor
+```
+
+setelah kita berhasil membuat image kompor kita bisa memulai dengan command :
+
+```sh
+podman run --rm -v $PWD:/kompor localhost/kompor:latest build
+```
+
+atau
+
+```sh
+podman run --rm -v $PWD:/kompor localhost/kompor:latest clean
+```
+
 #### cara meggunakan kompor
 > note : kompor harus dijalankan di folder ```aerphanas.github.io```
 

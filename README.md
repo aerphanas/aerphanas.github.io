@@ -52,6 +52,32 @@ cabal new-install
 
 after that a command will be made ```kompor```.
 
+### Container
+
+Here I will use Podman, to be able to produce static sites we need hakyll, we can get it with command:
+
+```sh
+podman build -t hakyll:latest -f Container.file
+```
+
+After we succeeded in making the Hakyll image we can only create a kompor image by:
+
+```sh
+podman build -t kompor:latest -f Containerfile.Kompor
+```
+
+After we succeeded in making the kompor image we can start with the command:
+
+```sh
+podman run --rm -v $PWD:/kompor localhost/kompor:latest build
+```
+
+or
+
+```sh
+podman run --rm -v $PWD:/kompor localhost/kompor:latest clean
+```
+
 #### How to use kompor
 > note : must run in the folder ```aerphanas.github.io```
 
