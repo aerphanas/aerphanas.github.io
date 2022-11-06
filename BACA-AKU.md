@@ -50,7 +50,7 @@ cabal new-install
 
 setelah itu akan dibuat sebuah perintah yang bernama ```kompor```.
 
-#### cara meggunakan site
+#### cara meggunakan kompor
 > note : kompor harus dijalankan di folder ```aerphanas.github.io```
 
 ```sh
