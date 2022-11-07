@@ -6,6 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="memutar audio dengan kualitas tinggi di sistem operasi linux">
         <meta name="google-site-verification" content="PtVSsNbHUZiIKmCTl_XmAhpsKNuaQynBo3s6NcvA4IA" />
+        <meta name="yandex-verification" content="23d78fa93441542e" />
+        <meta name="msvalidate.01" content="D584132B529EC5AF6250A7305A706FA0" />
         <link rel="icon" href="../images/logo.png" type="image/icon type">
         <title>Λerphanas Blog - Linux Hi-Res Audio</title>
         <link rel="stylesheet" href="../css/default.css" />
@@ -100,12 +102,12 @@
 <p>untuk mendapatkan kualitas audio yang maksimal saya menggunakan konfigurasi yang hampir sama dengan Pulseaudio yaitu mengubah sample rate, untuk mengubah sample rate silakan anda membuka <code>pipewire.conf</code> dengan text editor kesayangan anda, jika sudah silakan edit atau tambah (bila tidak ada) configurasi :</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">default.clock.rate</span>          = <span class="op">&lt;</span>ganti<span class="op">&gt;</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">default.clock.allowed-rates</span> = [ <span class="op">&lt;</span>ganti<span class="op">&gt;</span> <span class="op">&lt;</span>ganti<span class="op">&gt;</span> ... ]</span></code></pre></div>
-<p>hampir mirip dengan pulse audio saya akan menggunakan 44100 sebagai standar sample rate, namun disini ada yang berbeda yaitu configurasi</p>
+<p>hampir mirip dengan PulseAudio, saya akan menggunakan 44100 sebagai standar sample rate, namun disini ada yang berbeda yaitu configurasi</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">default.clock.allowed-rates</span> = [ <span class="op">&lt;</span>ganti<span class="op">&gt;</span> <span class="op">&lt;</span>ganti<span class="op">&gt;</span> ... ]</span></code></pre></div>
 <p>disini saya akan menggunakan 44100 48000 88200 96000 sebagai sample rate, kegunaanya adalah pipewire akan otomatis mengubah sample rate sesuai sumber audio tetapi menggunakan list, disinilah gunakan samplerate yang disupport oleh DAC anda, saat ini configurasi saya adalah :</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">default.clock.rate</span>          = 44100</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">default.clock.allowed-rates</span> = [ 44100 48000 88200 96000 ]</span></code></pre></div>
-<p>untuk bit depth pipewire akan otomatis mengkonversi ke float32, namun bila kita memiliki DAC yang mensupport int24 maka pipewire akan menyesuaikanya</p>
+<p>untuk bit depth pipewire akan otomatis mengkonversi ke float32, namun bila kita memiliki DAC yang mensupport int24 maka pipewire akan menyesuaikanya.</p>
 <h2 id="dafta-pustaka">Dafta Pustaka</h2>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Advanced_Linux_Sound_Architecture">Wikipedia:ALSA</a></li>
@@ -117,12 +119,17 @@
 </ul>
     </section>
 </article>
+<br>
+<script src="https://utteranc.es/client.js" repo="aerphanas/aerphanas.github.io" issue-term="title" label="issues created by Utterances. " theme="github-light" crossorigin="anonymous" async>
+</script>
+<br>
+
 
         </main>
 
         <footer>
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" class="license">
-                <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" />
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" class="license">
+                <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" />
             </a>
             Dibuat Menggunakan
             <a href="http://jaspervdj.be/hakyll" class="make">Hakyll</a>

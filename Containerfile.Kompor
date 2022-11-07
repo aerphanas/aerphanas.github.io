@@ -1,0 +1,8 @@
+FROM localhost/hakyll:latest
+VOLUME /kompor
+WORKDIR /kompor
+COPY api.hs .
+COPY aerphanas-github-io.cabal .
+RUN cabal new-install .
+ENTRYPOINT ["kompor"]
+CMD [ "clean", "build" ]

@@ -122,7 +122,7 @@ default.clock.rate          = <ganti>
 default.clock.allowed-rates = [ <ganti> <ganti> ... ]
 ```
 
-hampir mirip dengan pulse audio saya akan menggunakan 44100 sebagai standar sample rate, namun disini ada yang berbeda yaitu configurasi
+hampir mirip dengan PulseAudio, saya akan menggunakan 44100 sebagai standar sample rate, namun disini ada yang berbeda yaitu configurasi
 
 ```sh
 default.clock.allowed-rates = [ <ganti> <ganti> ... ]
@@ -135,7 +135,7 @@ default.clock.rate          = 44100
 default.clock.allowed-rates = [ 44100 48000 88200 96000 ]
 ```
 
-untuk bit depth pipewire akan otomatis mengkonversi ke float32, namun bila kita memiliki DAC yang mensupport int24 maka pipewire akan menyesuaikanya
+untuk bit depth pipewire akan otomatis mengkonversi ke float32, namun bila kita memiliki DAC yang mensupport int24 maka pipewire akan menyesuaikanya.
 
 ## Dafta Pustaka
 
