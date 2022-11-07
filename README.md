@@ -32,7 +32,7 @@ Terms of the tools that must be installed before developing:
 - GHC base == 4.*
 - hakyll == 4.15.*
 
-To install GHC and Cabal is recommended to useGHCup](https://www.haskell.org/ghcup/) And Hakyll can be installed with a command
+To install GHC and Cabal is recommended to use [GHCup](https://www.haskell.org/ghcup/) And Hakyll can be installed with a command
 
 ```sh
 cabal update
