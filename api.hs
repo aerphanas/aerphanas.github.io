@@ -90,7 +90,7 @@ main = hakyllWith config $ do
         compile $ do
             let feedCtx = postCtx `mappend`
                     constField "description" "aerphanas blog update"
-    
+
             posts <- fmap (take 10) . recentFirst =<< loadAllSnapshots "posts/*" "content"
             renderAtom myFeedConfiguration feedCtx posts
 
