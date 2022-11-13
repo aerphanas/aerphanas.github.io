@@ -1,3 +1,4 @@
 {
-    "nixEnvSelector.nixFile": "${workspaceRoot}/default.nix"
+  "nixEnvSelector.suggestion": false,
+  "nixEnvSelector.nixFile": "${workspaceRoot}/default.nix"
 }

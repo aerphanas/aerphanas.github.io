@@ -139,9 +139,16 @@ untuk bit depth pipewire akan otomatis mengkonversi ke float32, namun bila kita 
 
 ## Dafta Pustaka
 
-- [Wikipedia:ALSA](https://en.wikipedia.org/wiki/Advanced_Linux_Sound_Architecture)
-- [Wikipedia:PulseAudio](https://en.wikipedia.org/wiki/PulseAudio)
-- [Wikipedia:Pipewire](https://en.wikipedia.org/wiki/PipeWire)
-- [Wiki:Pipewire](https://gitlab.freedesktop.org/pipewire/pipewire/-/wikis/home)
-- [Pulseaudio](https://www.freedesktop.org/wiki/Software/PulseAudio/)
-- [Pipewire](https://pipewire.org/)
+- Wikipedia  
+↪ [ALSA](https://en.wikipedia.org/wiki/Advanced_Linux_Sound_Architecture)  
+↪ [PulseAudio](https://en.wikipedia.org/wiki/PulseAudio)  
+↪ [Pipewire](https://en.wikipedia.org/wiki/PipeWire)  
+
+- Gitlab Freedesktop  
+↪ [Pipewire](https://gitlab.freedesktop.org/pipewire/pipewire/-/wikis/home)  
+
+- Freedesktop  
+↪ [Pulseaudio](https://www.freedesktop.org/wiki/Software/PulseAudio/)  
+
+- Piperiwe  
+↪ [Pipewire](https://pipewire.org/)
