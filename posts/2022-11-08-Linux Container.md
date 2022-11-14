@@ -12,20 +12,21 @@ desc: Mengupas lebih dalam teknologi container, yang digunakan oleh Developer un
   - [Nerdctl](#nerdctl)
   - [Podman](#podman)
   - [LXD](#lxd)
-- [Proses](#proses)
+- [Prosesor](#prosesor)
   - [Runc](#runc)
   - [Crun](#crun)
   <!--- [continerd]() -->
+  - [Youki](#youki)
   - [LXC](#lxc)
   - [Railcar](#railcar)
-- [Proses Dengan Virtualisasi]()
+- [Proses Dengan Teknologi yang unik](#proses-dengan-teknologi-yang-unik)
   - [Kata Container](#kata-container)
-  - [Gvysor](#gvysor)
+  - [gVisor](#gvisor)
 - [Daftar Pustaka](#daftar-pustaka)
 
 ## Pendahuluan
 
-Container merupakan sebuah teknologi yang memungkinkan kita untuk menjalankan sebuah aplikasi atau sebuah peroses tanpa mempedulikan library apa yang ada di mesin kita, dan container ini ditujukan untuk programmer dan urusan server, container juga merupakan bagian dari OS-level virtualization atau virtualisasi level os meskipun memiliki paradigma virtualisasi namun tidak satupun menggunakan virtual hardware tetapi ada beberapa runtime yang memungkinkan kita untuk membuat virtualisasi hardware yang akan dibahas pada pos ini, namun beberapa runtime menggunakan kernel untuk meperbolehkan sebuah proses untuk berjalan didalam isolasi.
+Container merupakan sebuah teknologi yang memungkinkan kita untuk menjalankan sebuah aplikasi atau sebuah peroses tanpa mempedulikan library apa yang ada di mesin kita, dan container ini ditujukan untuk programmer dan urusan server, container juga merupakan bagian dari OS-level virtualization atau virtualisasi level os meskipun memiliki paradigma virtualisasi namun tidak satupun menggunakan virtual hardware tetapi ada beberapa runtime dan interface yang memungkinkan kita untuk membuat virtualisasi hardware yang akan dibahas pada pos ini, namun beberapa runtime menggunakan kernel untuk meperbolehkan sebuah prosesor untuk berjalan didalam isolasi.
 
 ## Interface
 
@@ -35,9 +36,11 @@ Interface merupakan sebuah program yang berfungsi untuk mengontrol runtime,build
 
 Docker merupakan sebuah interface yang secara bawaan menggunakan runc,docker juga merupakan sebuah nama perusahaan yang bernama Docker Inc. yang dibuat oleh Kamel Founadi, Solomon Hykes, dan Sebastien Pahl, Docker pertama kali terbit ke public di Santa Clara apada PyCon tahun 2013.dan di rilis sebagai open-source pada March 2013. pada saat itu, docker menggunakan LXC sebagai runtime. namun satu tauh setelahnya tepatnya saat rilis versi 0.9, Docker menggantikan LXC dengan runtime buatanya sendiri yang bernama libcontainer yang ditulis menggunakan bahasa program GO.
 
+docker cli pertama kali muncul di github yang di buat oleh Avatar Thatcher dan Tibor Vass pada 2 Juni 2017.
+
 ### Nerdctl
 
-Nerdctl merupakan sebuah interface yang dibuat untuk containered yang merupakan sebuah sistem service yang melakukan komunikasi dengan proses runc, namun nerdctl tidak hanya berkomunikasi dengan containerd tetapi nerdctl juga memerlukan buildkit, buildkit yang yang bertujuan untuk membuat sebuah container image.
+Nerdctl merupakan sebuah interface yang dibuat untuk containered yang merupakan sebuah sistem service yang melakukan komunikasi dengan prosesor runc, namun nerdctl tidak hanya berkomunikasi dengan containerd tetapi nerdctl juga memerlukan buildkit, buildkit yang yang bertujuan untuk membuat sebuah container image.
 
 Nerdctl juga memiliki baris perintah yang hampir sama dengan docker namun ada beberapa baris perintah yang tidak tersedia, nerdctl memiliki tujuan sebagai interface termutakhir untuk berkomunikasi dengan containerd.
 
@@ -51,17 +54,51 @@ Podman memiliki baris perintah yang sama dengan docker sampai-sampai di dokument
 
 ### LXD
 
-## Proses
+LXD dibuat oleh Canonical sebagai  interface dari lxc yang lebih bersahabat, lxd berkomunikasi dengan lxc melalui librari liblxc, tidak hanya menjadi interface alternatif dari lxc tetapi lxd menambahkan beberapa fungsi baru agar mudah di gunakan dan lxd juga dapat berkomunikasi dengan libvirt sehingga dapat membuat mesin virtual dengan lxd pada versi 4.0 lts keatas.
+
+LXD dibuat menggunakan bahasa program GO.
+
+LXD berbeda dengan kebanyakan container, jika container yang lain bertujuan untuk aplikasi container tetapi LXD adalah system container dimana system container memberikan kebebasan  kepada pengguna untuk mengupdate, menambah user, mengedit user dan mengupdate aplikasi namun tetap terisolasi dari sistem berbeda dengan aplikasi container dimana kita hanya dapat membuat image dan bila ingin mengupdate satu komponen kita harus membuat ulang imagenya, sehingga system container sangat cocok untuk para developer untuk menjadikanya sebagai tempat Test.
+
+## Prosesor
+
+Prosesor adalah sebuah software yang mengatur urusan level rendah yang diantaranya yaitu mengatur cgroups, SELinux Policy, App Armor rules, berkomunikasi dengan kernel untuk memulai container, membuat mount point, dan metadata lainya yang disediakan oleh interface, terdapat banyak prosesor yang dibuat maka dibuatlah sebuah standar (OCI), prosesor yang mengikuti standar adalah runc. This is the most widely used container runtime, but there are others OCI compliant runtimes, such as crun, railcar, dan katacontainers.
 
 ### Runc
 
+Runc pertamakali dibuat di github oleh 2 maintainer yaitu ichael Crosby dan Guillaume Charmes pada 22 Februari 2014, dengan lisensi bertipe Apache dan diberi nama libcontainer, meskipun runc dirancang untuk menjadi prosesor tetapi runc memberikan sebuah beberapa baris perintah yang dapat digunakan untuk berinteraksi dengan runc, tetapi pada githubnya dianjurkan untuk meggunakan interface yang ada separti docker.
+
 ### Crun
+
+Hampir semua prosesor container menggunakan bahasa programm GO yang akan memanggil modul yang di buat dengan bahasa C, maka dari itu beberapa programmer yang percaya bahwa bahasa C lebih baik untuk berkomunikasi untuk urusan level yang rendah, dibuat crun sebuah Prosesor yang berstandar OCI dan dibuat dengan bahasa program C.
+
+karna dibuat menggunakan bahasa C, crun lebih cepat dari prosesor yang lainya.
+
+crun pertama kali muncul di github pada 30 agustus 2017 oleh Giuseppe Scrivano dan sebelum memiliki nama Crun namanya adalah libocispec
+
+### Youki
+
+Sebuah tren belakangan ini adalah menulis kembali sebuah program dalam bahasa rust, tren itu sampai pada teknologi container yang diberi nama Youki yang dalam bahasa jepang berarti container, para pembuat youki berpikir bahwa rust lebih aman karna bahasa rust memiliki managemen memori yang bagus yang diberinama memory safety.
+
+saat ini youki memiliki kecepatan lebih cepat dari runc namun tidak lebih cepat dari crun, dalam githubnya dikatakan bahwa youki masih belum sempurna untuk menjadi alternatif dari runc atau yang lain
+
+youki pernama kali muncul di github pada 27 Maret 2021 oleh Toru Komatsu, dimana proyek ini sangatlah muda jika anda ingin membantunya anda tinggal pergi ke github si youki
 
 ### LXC
 
+LXC merupakan sebuah runtime dibangun sejak 2008, lxc dibangun sangatlah aman karna lxc berjalan pada user namespace pada kernel, maka dari itu lxc hanya bisa dijalankan pada kernel versi 2.6.32, fungsi isolasi user namespace memerlukan kita untuk menset UID (User Id) dan GID (Group ID) tertentu yang nanti akan digunakan untuk kernel, sehingga UID Dan GID ini akan muncul di dalam.
+
+## Proses dengan teknologi yang unik
+
 ### Kata Container
 
-### Gvysor
+Kata container merupakan sebuah prosesor yang unik dimana dia memadukan virtualisasi dan container, tujuanya adalah agar lebih aman, karna biasanya interface container akan berjalan pada root dan bila ada sebuah image yang berbahaya maka akan berakibat fatal karna memiliki akses root pada sistem.
+
+Kata container memiliki 2 versi, dimana versi 1 sudah tidak lagi berkembang dan semua pengembangan berpindah ke versi 2.
+
+### gVisor
+
+gVisor merupakan projek yang tertutup namun akhirnya di buat opensource oleh google pada 2 Mai 2018, proses container ini merupakan salah satu yang unik, karna meggunakan teknologi sandbox, sehingga memiliki keamanan yang exstra dari pada proses yang lain
 
 ### Railcar
 
@@ -76,7 +113,36 @@ Podman memiliki baris perintah yang sama dengan docker sampai-sampai di dokument
 - Podman  
 ↪ [What is Podman?](https://docs.podman.io/en/latest/)  
 
-- Github  
+- Linuxcontainers  
+↪ [LXD Introduction](https://linuxcontainers.org/lxd/introduction/)  
+
+- Canonical  
+↪ [LXD virtual machines: an overview](https://canonical.com/blog/lxd-virtual-machines-an-overview)  
+
+- the Open Container Initiative  
+↪ [About the Open Container Initiative](https://opencontainers.org/about/overview/)  
+
+- Youki  
+↪ [Youki User and Developer Documentation](https://containers.github.io/youki/)  
+
+- Kata Container  
+↪ [An overview of the Kata Containers project](https://katacontainers.io/learn/)  
+
+- Google Cloud  
+↪ [Open-sourcing gVisor, a sandboxed container runtime](https://cloud.google.com/blog/products/identity-security/open-sourcing-gvisor-a-sandboxed-container-runtime)  
+
+- Github  commit  
 ↪ [Docker Rootles pull request](https://github.com/docker/docs/pull/9729)  
 ↪ [Podman initial commit](https://github.com/containers/podman/commit/a031b83a09a8628435317a03f199cdc18b78262f)  
-↪ [Nerdctl initial commit](https://github.com/containerd/nerdctl/commit/f0d302cac40fbdbfcfe74a3ba5cbefdf2f5b3741)
+↪ [Nerdctl initial commit](https://github.com/containerd/nerdctl/commit/f0d302cac40fbdbfcfe74a3ba5cbefdf2f5b3741)  
+↪ [Runc initial commit](https://github.com/opencontainers/runc/commit/6415e8becc2c47845cf565b87229b5dbd2fa40ad)  
+↪ [Crun initial commit](https://github.com/containers/crun/commit/b8be7fd24c8f15a4abeaa06ad6c5e5d00cdd58d4)  
+
+- Github Repository  
+↪ [Runc](https://github.com/opencontainers/runc)  
+↪ [Crun](https://github.com/containers/crun)  
+↪ [LXC](https://github.com/lxc/lxc)  
+↪ [Podman](https://github.com/containers/podman)  
+↪ [Youki](https://github.com/containers/youki)  
+↪ [Kata Container](https://github.com/kata-containers/kata-containers)  
+↪ [gVisor](https://github.com/google/gvisor)  
