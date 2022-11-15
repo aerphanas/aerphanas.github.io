@@ -98,9 +98,15 @@ Kata container memiliki 2 versi, dimana versi 1 sudah tidak lagi berkembang dan 
 
 ### gVisor
 
-gVisor merupakan projek yang tertutup namun akhirnya di buat opensource oleh google pada 2 Mai 2018, proses container ini merupakan salah satu yang unik, karna meggunakan teknologi sandbox, sehingga memiliki keamanan yang exstra dari pada proses yang lain
+gVisor merupakan projek yang tertutup namun akhirnya di buat opensource oleh google pada 2 Mai 2018, proses container ini merupakan salah satu yang unik, karna meggunakan teknologi sandbox, sehingga memiliki keamanan yang exstra dari pada proses yang lain dan lebih ringan dari mesin virtual, perbedaan dari proses biasa adalah gVisor menyediakan kernel sendiri yang berjalan pada proses normal, kernel ini pun dibuat dengan bahasa program GO
+
+bila igin menjalankan gVisor dengan docker bira mengganti docker runtime mencadi runsc, runsc merupakan kepanjangan dari run Sandboxed Container.
 
 ### Railcar
+
+sebelum proyek proses youki ada, oracle membuat sebuah runtime yang menggunakan bahasa program rust, proyek railcar pretama muncul di github pada tahun 2017 namun sebelum memiliki nama railcar proyek ini memiliki nama smith.
+
+disanyangkan saat ini proyek railcar tidak bisa berkembang karena github reponya sudah di arsipkan dan hanya bisa dibaca.
 
 ## Daftar Pustaka
 
@@ -137,6 +143,7 @@ gVisor merupakan projek yang tertutup namun akhirnya di buat opensource oleh goo
 ↪ [Nerdctl initial commit](https://github.com/containerd/nerdctl/commit/f0d302cac40fbdbfcfe74a3ba5cbefdf2f5b3741)  
 ↪ [Runc initial commit](https://github.com/opencontainers/runc/commit/6415e8becc2c47845cf565b87229b5dbd2fa40ad)  
 ↪ [Crun initial commit](https://github.com/containers/crun/commit/b8be7fd24c8f15a4abeaa06ad6c5e5d00cdd58d4)  
+↪ [Railcar commit](https://github.com/oracle/railcar/commit/f2666751efb3310d843442d60bf9b8df40e009d8)
 
 - Github Repository  
 ↪ [Runc](https://github.com/opencontainers/runc)  

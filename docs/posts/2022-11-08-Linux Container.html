@@ -97,8 +97,11 @@
 <p>Kata container merupakan sebuah prosesor yang unik dimana dia memadukan virtualisasi dan container, tujuanya adalah agar lebih aman, karna biasanya interface container akan berjalan pada root dan bila ada sebuah image yang berbahaya maka akan berakibat fatal karna memiliki akses root pada sistem.</p>
 <p>Kata container memiliki 2 versi, dimana versi 1 sudah tidak lagi berkembang dan semua pengembangan berpindah ke versi 2.</p>
 <h3 id="gvisor">gVisor</h3>
-<p>gVisor merupakan projek yang tertutup namun akhirnya di buat opensource oleh google pada 2 Mai 2018, proses container ini merupakan salah satu yang unik, karna meggunakan teknologi sandbox, sehingga memiliki keamanan yang exstra dari pada proses yang lain</p>
+<p>gVisor merupakan projek yang tertutup namun akhirnya di buat opensource oleh google pada 2 Mai 2018, proses container ini merupakan salah satu yang unik, karna meggunakan teknologi sandbox, sehingga memiliki keamanan yang exstra dari pada proses yang lain dan lebih ringan dari mesin virtual, perbedaan dari proses biasa adalah gVisor menyediakan kernel sendiri yang berjalan pada proses normal, kernel ini pun dibuat dengan bahasa program GO</p>
+<p>bila igin menjalankan gVisor dengan docker bira mengganti docker runtime mencadi runsc, runsc merupakan kepanjangan dari run Sandboxed Container.</p>
 <h3 id="railcar">Railcar</h3>
+<p>sebelum proyek proses youki ada, oracle membuat sebuah runtime yang menggunakan bahasa program rust, proyek railcar pretama muncul di github pada tahun 2017 namun sebelum memiliki nama railcar proyek ini memiliki nama smith.</p>
+<p>disanyangkan saat ini proyek railcar tidak bisa berkembang karena github reponya sudah di arsipkan dan hanya bisa dibaca.</p>
 <h2 id="daftar-pustaka">Daftar Pustaka</h2>
 <ul>
 <li><p>Redhat<br />
@@ -124,7 +127,8 @@
 ↪ <a href="https://github.com/containers/podman/commit/a031b83a09a8628435317a03f199cdc18b78262f">Podman initial commit</a><br />
 ↪ <a href="https://github.com/containerd/nerdctl/commit/f0d302cac40fbdbfcfe74a3ba5cbefdf2f5b3741">Nerdctl initial commit</a><br />
 ↪ <a href="https://github.com/opencontainers/runc/commit/6415e8becc2c47845cf565b87229b5dbd2fa40ad">Runc initial commit</a><br />
-↪ <a href="https://github.com/containers/crun/commit/b8be7fd24c8f15a4abeaa06ad6c5e5d00cdd58d4">Crun initial commit</a></p></li>
+↪ <a href="https://github.com/containers/crun/commit/b8be7fd24c8f15a4abeaa06ad6c5e5d00cdd58d4">Crun initial commit</a><br />
+↪ <a href="https://github.com/oracle/railcar/commit/f2666751efb3310d843442d60bf9b8df40e009d8">Railcar commit</a></p></li>
 <li><p>Github Repository<br />
 ↪ <a href="https://github.com/opencontainers/runc">Runc</a><br />
 ↪ <a href="https://github.com/containers/crun">Crun</a><br />
