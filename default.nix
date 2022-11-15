@@ -6,6 +6,7 @@ let
   haskellDeps = ps: with ps; [
     base
     hakyll
+    haskell-language-server
   ];
   haskellEnv = haskell.packages.ghc924.ghcWithPackages haskellDeps;
 in mkShell {
