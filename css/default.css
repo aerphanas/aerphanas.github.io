@@ -1,27 +1,89 @@
-html {
-  font-size: 62.5%;
+/* Font Section */
+
+@font-face {
+  font-family: 'Fira Code Regular';
+  src: url('../font/FiraCode-Regular.woff2') format('woff2');
 }
 
+@font-face {
+  font-family: 'Fira Sans Regular';
+  src: url('../font/FiraSans-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Fira Sans Book';
+  src: url('../font/FiraSans-Book.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Fira Mono Medium';
+  src: url('../font/FiraMono-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Fira Sans Light';
+  src: url('../font/FiraSans-Light.woff2') format('woff2');
+}
+
+/* Class Section */
+
 .utterances-frame {
-  border-top: 0.2rem solid #000;
+  border-top: 0.2rem solid #4c566a;
 }
 
 .sourceCode {
+  font-family: "Fira Code Regular";
   overflow-x: auto;
 }
 
+.header {
+  font-family: "Fira Sans Light";
+}
+
+.logo a {
+  font-weight: bold;
+  color: #000;
+  text-decoration: none;
+}
+
+/* Singgle Tag Section */
+
+html { font-size: 62.5%; }
+header { border-bottom: 0.2rem solid #3b4252; }
+h1 { font-size: 2.4rem; }
+h2 { font-size: 2rem; }
+table, th, td { border: 1px solid; }
+ul li { list-style-type: decimal-leading-zero; }
+
+
+/* Tag root Section */
+
 body {
   font-size: 1.6rem;
-  color: #000;
+  font-family: "Fira Sans Regular";
+  color: #2e3440;
+  background-color: #e5e9f0;
 }
 
-header {
-  border-bottom: 0.2rem solid #000;
+footer {
+  margin-top: 3rem;
+  padding: 1.2rem 0;
+  border-top: 0.2rem solid #3b4252;
+  font-size: 1.2rem;
+  color: #555;
 }
 
-nav {
-  text-align: right;
+a {
+  text-decoration: none;
+  color: #004080;
 }
+
+a:hover {
+  color: #434c5e;
+  text-decoration: underline;
+}
+
+nav { text-align: right; }
 
 nav a {
   font-size: 1.8rem;
@@ -31,36 +93,10 @@ nav a {
   text-transform: none;
 }
 
-footer {
-  margin-top: 3rem;
-  padding: 1.2rem 0;
-  border-top: 0.2rem solid #000;
-  font-size: 1.2rem;
-  color: #555;
-}
-
-h1 {
-  font-size: 2.4rem;
-}
-
-h2 {
-  font-size: 2rem;
-}
-
 article .header {
   font-size: 1.4rem;
   font-style: italic;
-  color: #555;
-}
-
-.logo a {
-  font-weight: bold;
-  color: #000;
-  text-decoration: none;
-}
-
-table, th, td {
-  border: 1px solid;
+  color: #4c566a;
 }
 
 @media (max-width: 319px) {

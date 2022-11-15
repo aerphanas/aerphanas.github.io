@@ -50,7 +50,14 @@ sebuah sistem operasi memiliki sebuah tabel partisi yang berguna untuk mengatur 
 
 ## Daftar Pustaka
 
-- [A Basic UNIX Tutorial](https://fsl.fmrib.ox.ac.uk/fslcourse/unix_intro/index.html)
-- [Unix File System](https://www.geeksforgeeks.org/unix-file-system/)
-- [UNIX Past](https://unix.org/what_is_unix/history_timeline.html)
-- [The Evolution of the Unix Time-sharing System](https://www.bell-labs.com/usr/dmr/www/hist.html)
+- IDAHO STATE UNIVERSITY  
+↪ [A Basic UNIX Tutorial](https://fsl.fmrib.ox.ac.uk/fslcourse/unix_intro/index.html)
+
+- Geeks for Geeks  
+↪ [Unix File System](https://www.geeksforgeeks.org/unix-file-system/)
+
+- The Open Group  
+↪ [UNIX Past](https://unix.org/what_is_unix/history_timeline.html)
+
+- Bell Laboratories  
+↪ [The Evolution of the Unix Time-sharing System](https://www.bell-labs.com/usr/dmr/www/hist.html)

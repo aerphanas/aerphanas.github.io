@@ -21,6 +21,10 @@ config = defaultConfiguration { destinationDirectory = "docs" }
 
 main :: IO ()
 main = hakyllWith config $ do
+    match "font/*" $ do
+        route   idRoute
+        compile copyFileCompiler
+
     match "images/*" $ do
         route   idRoute
         compile copyFileCompiler
@@ -90,7 +94,7 @@ main = hakyllWith config $ do
         compile $ do
             let feedCtx = postCtx `mappend`
                     constField "description" "aerphanas blog update"
-    
+
             posts <- fmap (take 10) . recentFirst =<< loadAllSnapshots "posts/*" "content"
             renderAtom myFeedConfiguration feedCtx posts
 
