@@ -19,7 +19,7 @@ desc: Mengupas lebih dalam teknologi container, yang digunakan oleh Developer un
   - [Youki](#youki)
   - [LXC](#lxc)
   - [Railcar](#railcar)
-- [Proses Dengan Teknologi yang unik](#proses-dengan-teknologi-yang-unik)
+- [Prosesor Dengan Teknologi yang unik](#prosesor-dengan-teknologi-yang-unik)
   - [Kata Container](#kata-container)
   - [gVisor](#gvisor)
 - [Daftar Pustaka](#daftar-pustaka)
@@ -88,7 +88,7 @@ youki pernama kali muncul di github pada 27 Maret 2021 oleh Toru Komatsu, dimana
 
 LXC merupakan sebuah runtime dibangun sejak 2008, lxc dibangun sangatlah aman karna lxc berjalan pada user namespace pada kernel, maka dari itu lxc hanya bisa dijalankan pada kernel versi 2.6.32, fungsi isolasi user namespace memerlukan kita untuk menset UID (User Id) dan GID (Group ID) tertentu yang nanti akan digunakan untuk kernel, sehingga UID Dan GID ini akan muncul di dalam.
 
-## Proses dengan teknologi yang unik
+## Prosesor dengan teknologi yang unik
 
 ### Kata Container
 
