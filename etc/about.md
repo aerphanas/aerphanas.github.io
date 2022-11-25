@@ -44,6 +44,6 @@ bila ingin melihat beberapa proyek saya bisa pergi ke akun git saya :
 
 beberapa kontak saya :
 
-1. [Email](mailto:muhamadaviv14@gmail.com>)
+1. [Email](mailto:muhamadaviv14@gmail.com>) - ( [GPG Key](https://keys.openpgp.org/vks/v1/by-fingerprint/AA79C548ED0C96A51E632B0CFCE880D64949859D) )
 2. [Twitter](https://twitter.com/aerphanas/)
 3. [Telegram](https://t.me/+YoGClK90aLtmZmNl)
