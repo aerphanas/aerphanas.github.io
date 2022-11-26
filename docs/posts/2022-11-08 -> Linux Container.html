@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Mengupas lebih dalam teknologi container, yang digunakan oleh Developer untuk mendistribusikan aplikasi mereka">
+        <meta name="description" content="Mengupas lebih dalam teknologi container yang digunakan oleh Developer untuk mendistribusikan aplikasi mereka">
         <meta name="google-site-verification" content="PtVSsNbHUZiIKmCTl_XmAhpsKNuaQynBo3s6NcvA4IA" />
         <meta name="yandex-verification" content="23d78fa93441542e" />
         <meta name="msvalidate.01" content="D584132B529EC5AF6250A7305A706FA0" />
@@ -43,6 +43,7 @@
 <li><a href="#nerdctl">Nerdctl</a></li>
 <li><a href="#podman">Podman</a></li>
 <li><a href="#lxd">LXD</a></li>
+<li><a href="#machinectl">machinectl</a></li>
 </ul></li>
 <li><a href="#prosesor">Prosesor</a>
 <ul>
@@ -52,6 +53,7 @@
 <li><a href="#youki">Youki</a></li>
 <li><a href="#lxc">LXC</a></li>
 <li><a href="#railcar">Railcar</a></li>
+<li><a href="#systemd-nspawn">Systemd-nspawn</a></li>
 </ul></li>
 <li><a href="#prosesor-dengan-teknologi-yang-unik">Prosesor Dengan Teknologi yang unik</a>
 <ul>
@@ -61,8 +63,10 @@
 <li><a href="#daftar-pustaka">Daftar Pustaka</a></li>
 </ul>
 <h2 id="pendahuluan">Pendahuluan</h2>
+<hr />
 <p>Container merupakan sebuah teknologi yang memungkinkan kita untuk menjalankan sebuah aplikasi atau sebuah peroses tanpa mempedulikan library apa yang ada di mesin kita, dan container ini ditujukan untuk programmer dan urusan server, container juga merupakan bagian dari OS-level virtualization atau virtualisasi level os meskipun memiliki paradigma virtualisasi namun tidak satupun menggunakan virtual hardware tetapi ada beberapa runtime dan interface yang memungkinkan kita untuk membuat virtualisasi hardware yang akan dibahas pada pos ini, namun beberapa runtime menggunakan kernel untuk meperbolehkan sebuah prosesor untuk berjalan didalam isolasi.</p>
 <h2 id="interface">Interface</h2>
+<hr />
 <p>Interface merupakan sebuah program yang berfungsi untuk mengontrol runtime,builder, etc untuk mempermudah membuat sebuah container, saat ini terdapat banyak interface diantaranya docker, nerdctl, podman, LXD, dan mungkin di luar sana terdapat lebih banyak lagi yang belum saya ketahui.</p>
 <h3 id="docker">Docker</h3>
 <p>Docker merupakan sebuah interface yang secara bawaan menggunakan runc,docker juga merupakan sebuah nama perusahaan yang bernama Docker Inc. yang dibuat oleh Kamel Founadi, Solomon Hykes, dan Sebastien Pahl, Docker pertama kali terbit ke public di Santa Clara apada PyCon tahun 2013.dan di rilis sebagai open-source pada March 2013. pada saat itu, docker menggunakan LXC sebagai runtime. namun satu tauh setelahnya tepatnya saat rilis versi 0.9, Docker menggantikan LXC dengan runtime buatanya sendiri yang bernama libcontainer yang ditulis menggunakan bahasa program GO.</p>
@@ -78,7 +82,17 @@
 <p>LXD dibuat oleh Canonical sebagai interface dari lxc yang lebih bersahabat, lxd berkomunikasi dengan lxc melalui librari liblxc, tidak hanya menjadi interface alternatif dari lxc tetapi lxd menambahkan beberapa fungsi baru agar mudah di gunakan dan lxd juga dapat berkomunikasi dengan libvirt sehingga dapat membuat mesin virtual dengan lxd pada versi 4.0 lts keatas.</p>
 <p>LXD dibuat menggunakan bahasa program GO.</p>
 <p>LXD berbeda dengan kebanyakan container, jika container yang lain bertujuan untuk aplikasi container tetapi LXD adalah system container dimana system container memberikan kebebasan kepada pengguna untuk mengupdate, menambah user, mengedit user dan mengupdate aplikasi namun tetap terisolasi dari sistem berbeda dengan aplikasi container dimana kita hanya dapat membuat image dan bila ingin mengupdate satu komponen kita harus membuat ulang imagenya, sehingga system container sangat cocok untuk para developer untuk menjadikanya sebagai tempat Test.</p>
+<h3 id="machinectl">machinectl</h3>
+<p>sesuai dengan deskripsinya machinectl digunakan untuk berinteraksi dengan systemd, tidak hanya dapat mengontrol container tapi machinectl dapat mengontrol mesin virtual yang dibuat menggunakan systemd-machined.</p>
+<p>machinectl mensupport :</p>
+<ul>
+<li>sebuah folder yang berisi full sistem operasi, termasuk folder /usr, /etc, dan sebagainya.</li>
+<li>partisi btrfs subvolume yang berisi file sistem operasi.</li>
+<li>image “raw” yang berisi tabel partisi MBR ataupun GPT dan berisi file system os.</li>
+<li>File sistem os itu sendiri.</li>
+</ul>
 <h2 id="prosesor">Prosesor</h2>
+<hr />
 <p>Prosesor adalah sebuah software yang mengatur urusan level rendah yang diantaranya yaitu mengatur cgroups, SELinux Policy, App Armor rules, berkomunikasi dengan kernel untuk memulai container, membuat mount point, dan metadata lainya yang disediakan oleh interface, terdapat banyak prosesor yang dibuat maka dibuatlah sebuah standar (OCI), prosesor yang mengikuti standar adalah runc. This is the most widely used container runtime, but there are others OCI compliant runtimes, such as crun, railcar, dan katacontainers.</p>
 <h3 id="runc">Runc</h3>
 <p>Runc pertamakali dibuat di github oleh 2 maintainer yaitu ichael Crosby dan Guillaume Charmes pada 22 Februari 2014, dengan lisensi bertipe Apache dan diberi nama libcontainer, meskipun runc dirancang untuk menjadi prosesor tetapi runc memberikan sebuah beberapa baris perintah yang dapat digunakan untuk berinteraksi dengan runc, tetapi pada githubnya dianjurkan untuk meggunakan interface yang ada separti docker.</p>
@@ -93,6 +107,7 @@
 <h3 id="lxc">LXC</h3>
 <p>LXC merupakan sebuah runtime dibangun sejak 2008, lxc dibangun sangatlah aman karna lxc berjalan pada user namespace pada kernel, maka dari itu lxc hanya bisa dijalankan pada kernel versi 2.6.32, fungsi isolasi user namespace memerlukan kita untuk menset UID (User Id) dan GID (Group ID) tertentu yang nanti akan digunakan untuk kernel, sehingga UID Dan GID ini akan muncul di dalam.</p>
 <h2 id="prosesor-dengan-teknologi-yang-unik">Prosesor dengan teknologi yang unik</h2>
+<hr />
 <h3 id="kata-container">Kata Container</h3>
 <p>Kata container merupakan sebuah prosesor yang unik dimana dia memadukan virtualisasi dan container, tujuanya adalah agar lebih aman, karna biasanya interface container akan berjalan pada root dan bila ada sebuah image yang berbahaya maka akan berakibat fatal karna memiliki akses root pada sistem.</p>
 <p>Kata container memiliki 2 versi, dimana versi 1 sudah tidak lagi berkembang dan semua pengembangan berpindah ke versi 2.</p>
@@ -102,7 +117,11 @@
 <h3 id="railcar">Railcar</h3>
 <p>sebelum proyek proses youki ada, oracle membuat sebuah runtime yang menggunakan bahasa program rust, proyek railcar pretama muncul di github pada tahun 2017 namun sebelum memiliki nama railcar proyek ini memiliki nama smith.</p>
 <p>disanyangkan saat ini proyek railcar tidak bisa berkembang karena github reponya sudah di arsipkan dan hanya bisa dibaca.</p>
+<h3 id="systemd-nspawn">Systemd-nspawn</h3>
+<p>systemd tidah hanya menghadirkan beberapa tool yang berguna di dalamnya tetapi memberikan juga sebuah kemudahan untuk membuat container, namun systemd-nspawn sebenarnya menggunakan teknologi chroot namun dengan tambahannya yaitu membuat virtualisasi penuh dengan linux FSH dan juga process tree, IPC Subsystem, nama host dan nama domain.</p>
+<p>systemd-nspawn dibuat pada 14 Maret 2011, dan awal tujuanya adalah untuk memudahkan user untuk melakukan chroot.</p>
 <h2 id="daftar-pustaka">Daftar Pustaka</h2>
+<hr />
 <ul>
 <li><p>Redhat<br />
 ↪ <a href="https://developers.redhat.com/blog/2018/02/22/container-terminology-practical-introduction#container_runtime">A Practical Introduction to Container Terminology</a></p></li>
@@ -122,13 +141,19 @@
 ↪ <a href="https://katacontainers.io/learn/">An overview of the Kata Containers project</a></p></li>
 <li><p>Google Cloud<br />
 ↪ <a href="https://cloud.google.com/blog/products/identity-security/open-sourcing-gvisor-a-sandboxed-container-runtime">Open-sourcing gVisor, a sandboxed container runtime</a></p></li>
+<li><p>freedesktop.org<br />
+↪ <a href="https://www.freedesktop.org/software/systemd/man/systemd-nspawn.html">Systemd-nspawn</a><br />
+↪ <a href="https://www.freedesktop.org/software/systemd/man/machinectl.html">machinectl</a></p></li>
+<li><p>Arch Wiki<br />
+↪ <a href="https://wiki.archlinux.org/title/systemd-nspawn#Management">systemd-nspawn</a></p></li>
 <li><p>Github commit<br />
 ↪ <a href="https://github.com/docker/docs/pull/9729">Docker Rootles pull request</a><br />
 ↪ <a href="https://github.com/containers/podman/commit/a031b83a09a8628435317a03f199cdc18b78262f">Podman initial commit</a><br />
 ↪ <a href="https://github.com/containerd/nerdctl/commit/f0d302cac40fbdbfcfe74a3ba5cbefdf2f5b3741">Nerdctl initial commit</a><br />
 ↪ <a href="https://github.com/opencontainers/runc/commit/6415e8becc2c47845cf565b87229b5dbd2fa40ad">Runc initial commit</a><br />
 ↪ <a href="https://github.com/containers/crun/commit/b8be7fd24c8f15a4abeaa06ad6c5e5d00cdd58d4">Crun initial commit</a><br />
-↪ <a href="https://github.com/oracle/railcar/commit/f2666751efb3310d843442d60bf9b8df40e009d8">Railcar commit</a></p></li>
+↪ <a href="https://github.com/oracle/railcar/commit/f2666751efb3310d843442d60bf9b8df40e009d8">Railcar commit</a><br />
+↪ <a href="https://github.com/systemd/systemd/commit/88213476187cafc86bea2276199891873000588d">Systemd-nspawn initial commit</a></p></li>
 <li><p>Github Repository<br />
 ↪ <a href="https://github.com/opencontainers/runc">Runc</a><br />
 ↪ <a href="https://github.com/containers/crun">Crun</a><br />
@@ -136,7 +161,9 @@
 ↪ <a href="https://github.com/containers/podman">Podman</a><br />
 ↪ <a href="https://github.com/containers/youki">Youki</a><br />
 ↪ <a href="https://github.com/kata-containers/kata-containers">Kata Container</a><br />
-↪ <a href="https://github.com/google/gvisor">gVisor</a></p></li>
+↪ <a href="https://github.com/google/gvisor">gVisor</a><br />
+↪ <a href="https://github.com/systemd/systemd/blob/main/src/machine/machinectl.c">Machinectl</a><br />
+↪ <a href="https://github.com/systemd/systemd/blob/main/src/nspawn/nspawn.c">Systemd-nspawn</a></p></li>
 </ul>
     </section>
 </article>
