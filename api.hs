@@ -36,7 +36,7 @@ main = hakyllWith config $ do
     match "etc/about.md" $ do
         route   $ setExtension "html"
         compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/default.html" defaultContext
+            >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
 
     match "posts/*" $ do
@@ -53,6 +53,7 @@ main = hakyllWith config $ do
             posts <-  (fmap (take 5) . recentFirst) =<< loadAll "posts/*"
             let indexCtx =
                     listField "posts" postCtx (return posts) `mappend`
+                    constField "root" root `mappend`
                     defaultContext
 
             getResourceBody
@@ -68,6 +69,7 @@ main = hakyllWith config $ do
             posts <- recentFirst =<< loadAll "posts/*"
             let archiveCtx =
                     listField "posts" postCtx (return posts) `mappend`
+                    constField "root" root `mappend`
                     constField "title" "Arsip"            `mappend`
                     constField "desc" "Semua postingan yang ada di aerphanas bisa dilihat di sini"  `mappend`
                     defaultContext
