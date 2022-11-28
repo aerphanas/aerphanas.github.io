@@ -34,7 +34,11 @@
         
     </section>
     <section>
-        <h2 id="daftar-isi">Daftar isi</h2>
+        <figure>
+<img src="../images/unix-filesystem-fig1.svg" title="Standard Unix Filesystem Hierarchy" alt="Standard Unix Filesystem Hierarchy" />
+<figcaption aria-hidden="true">Standard Unix Filesystem Hierarchy</figcaption>
+</figure>
+<h2 id="daftar-isi">Daftar isi</h2>
 <ul>
 <li><a href="#pendahuluan">Pendahuluan</a></li>
 <li><a href="#unix-file-system">Unix FileSystem</a>
@@ -46,8 +50,10 @@
 <li><a href="#daftar-pustaka">Daftar Pustaka</a></li>
 </ul>
 <h2 id="pendahuluan">Pendahuluan</h2>
+<hr />
 <p>Di Blog ini saya ingin membagikan informasi mengenai linux file system, sebelum saya menjelaskan linux filesystem saya akan menjelaskan terlebih dahulu soal unix filesystem, karna linux terinspirasi dari Minix yang di buat oleh <a href="https://www.cs.vu.nl/~ast/">Andrew S. Tanenbaum</a> yang bertujuan untuk pelajaran, Minix sendiri terinspirasi dari UNIX.</p>
 <h2 id="unix-file-system">Unix File System</h2>
+<hr />
 <p>File sistem merupakan komponen utama dalam sebuah sistem operasi, maka dari itu sebelum dibuatnya sistem operasi yang pertama kali di pikirkan adalah file system, unix file system sendiri didesain oleh Kent Thompson untuk unix sistem operasi versi eksperimen pada 1969, di unix sendiri tipe file terbage menjadi 4 tipe, yaitu file, folder, file spesial dan tautan, tautan sendiri bisa berupa file atau folder.</p>
 <h3 id="i-list">I-List</h3>
 <p>Sebuah sistem operasi Unix pasti terkoneksi dengan beberapa file system dan setiap file sistem itu mempunyai i-list, i-list sendiri adalah representasi dari area yang berada pada memori fisik, salah satu i-list menunjuk pada root file system, root file system sendiri berisi sistem operasi yang harus ada setiap waktu, sehingga menunjukan bahwa tujuan dari adanya i-list adalah untuk mapping atau pemetaan dari memori fisik ke sistem operasi yang berbentuk file dan folder, pemetaan ini bisa diubah ukuranya bisa dibesarkan atau dikecilkan tergantung jenis file system yang kita pakai, untuk UNIX sendiri memakai file system dengan nama FS.</p>
@@ -118,6 +124,7 @@
 </tbody>
 </table>
 <h2 id="daftar-pustaka">Daftar Pustaka</h2>
+<hr />
 <ul>
 <li><p>IDAHO STATE UNIVERSITY<br />
 ↪ <a href="https://fsl.fmrib.ox.ac.uk/fslcourse/unix_intro/index.html">A Basic UNIX Tutorial</a></p></li>
@@ -127,6 +134,8 @@
 ↪ <a href="https://unix.org/what_is_unix/history_timeline.html">UNIX Past</a></p></li>
 <li><p>Bell Laboratories<br />
 ↪ <a href="https://www.bell-labs.com/usr/dmr/www/hist.html">The Evolution of the Unix Time-sharing System</a></p></li>
+<li><p>WikiPedia Image<br />
+↪ <a href="https://en.wikipedia.org/wiki/Unix_filesystem#/media/File:Standard-unix-filesystem-hierarchy.svg">An overview of a Unix filesystem layout, CC BY-SA 4.0</a></p></li>
 </ul>
     </section>
 </article>

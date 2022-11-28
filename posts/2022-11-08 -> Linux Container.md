@@ -4,6 +4,8 @@ author: aerphanas
 desc: Mengupas lebih dalam teknologi container yang digunakan oleh Developer untuk mendistribusikan aplikasi mereka
 ---
 
+![Linux Container](/images/linux-container-fig1.png "Linux Container")
+
 ## Daftar isi
 
 - [Pendahuluan](#pendahuluan)

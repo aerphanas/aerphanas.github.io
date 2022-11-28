@@ -30,6 +30,11 @@
 .sourceCode {
   font-family: "Fira Code Regular";
   overflow-x: auto;
+  background-color: #F6F8FA;
+}
+
+span .ex {
+  padding-left: 10px;
 }
 
 .header {
@@ -439,6 +444,18 @@ article .header {
     cursor: pointer;
   }
 
+  figure img {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+  }
+  
+  figure figcaption {
+    text-align: center;
+    font-size: small;
+    font-style: italic;
+  }
+
   .logo {
     text-align: center;
     margin: 1rem auto 3rem;
@@ -487,6 +504,18 @@ article .header {
   details summary {
     display: block;
     cursor: pointer;
+  }
+
+  figure img {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+  }
+  
+  figure figcaption {
+    text-align: center;
+    font-size: small;
+    font-style: italic;
   }
 
   .license {
@@ -548,6 +577,18 @@ article .header {
     cursor: pointer;
   }
   
+  figure img {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+  }
+  
+  figure figcaption {
+    text-align: center;
+    font-size: small;
+    font-style: italic;
+  }
+
   .license {
     float: left;
   }
@@ -604,6 +645,18 @@ article .header {
     cursor: pointer;
   }
   
+  figure img {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+  }
+  
+  figure figcaption {
+    text-align: center;
+    font-size: small;
+    font-style: italic;
+  }
+
   .license {
     float: left;
   }

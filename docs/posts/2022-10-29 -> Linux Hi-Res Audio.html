@@ -34,7 +34,11 @@
         
     </section>
     <section>
-        <h2 id="daftar-isi">Daftar Isi</h2>
+        <figure>
+<img src="../images/linux-hires-audio-fig1.png" title="A PipeWire Graph Qt GUI Interface" alt="A PipeWire Graph Qt GUI Interface" />
+<figcaption aria-hidden="true">A PipeWire Graph Qt GUI Interface</figcaption>
+</figure>
+<h2 id="daftar-isi">Daftar Isi</h2>
 <ul>
 <li><a href="#pendahuluan">Pendahuluan</a></li>
 <li><a href="#alsa">ALSA</a></li>
@@ -52,8 +56,10 @@
 <li><a href="#dafta-pustaka">Dafta Pustaka</a></li>
 </ul>
 <h2 id="pendahuluan">Pendahuluan</h2>
+<hr />
 <p>Saya memiliki hobi yang unik yaitu mendengarkan musik, musik yang saya dengar merupakan musik yang memiliki kualitas tinggi yang biasanya memiliki bit depth dari 16 sampai 24 bit dan memiliki sample rate sama dengan diatas 44.1 kHz, agar bisa mendengarkan kualitas suara yang baik di linux memerlukan beberapa configurasi, disinilah saya akan memebagikan bagaimana cara menconfigurasi sebuah mesin linux agar bisa memutar kualitas audio yang berkualitas tinggi, linux memiliki sound API yang bernama alsa yang berada di dalam linux kernel.</p>
 <h2 id="alsa">ALSA</h2>
+<hr />
 <p>ALSA adalah singkatan dari Advanced Linux Sound Architecture, pada awalnya ALSA merupakan proyek yang terpisah dari kernel Linux sebelum linux menggunakan ALSA, linux menggunakan OSS (Open Sound System) ALSA sendiri masuk ke Linux kernel pada versi 2.5 dan pada Linux versi 2.6 OSS di gantikan oleh ALSA, ALSA juga Kompatibel dengan OSS sehingga memudahkan aplikasi yang menggunakan OSS untuk memakai ALSA.</p>
 <p>ALSA juga memiliki keunggulan dari OSS yaitu :</p>
 <ul>
@@ -64,6 +70,7 @@
 </ul>
 <p>ALSA sendiri memiliki API lebih rumit dari OSS jadi akan sulit pengembang applikasi untuk menggunakan ALSA maka dibuatlah beberapa sound servre yang gunanya memepermudah pembuatan aplikasi pada linux, ALSA sendiri memerlukan tool agar user dapat mengontrol volume dsb toolnya adalah <a href="https://pkgs.org/download/alsa-utils">alsa-utils</a>.</p>
 <h2 id="sound-server">Sound Server</h2>
+<hr />
 <p>Sound server adalah software yang berguna mengelola akses dan penggunaan terhadap sound card dan biasanya berjalan pada latar, saat ini keberadaan sound server di linux ada 3 dan dari ke-3 itu memiliki tujuannya masing-masing, contohnya JACK selalu mengedepankan urusan latensi sehingga cocok untuk rekaman suara.</p>
 <h3 id="pulseaudio">PulseAudio</h3>
 <p>PulseAudio adalah sebuah sound server yang ditujukan untuk Linux namun ada beberapa sistem operasi yang memportingnya ke dalam sistemnya, pada awalnya lebih tepatnya pada tahun 2004 pulseaudio memiliki nama Polypaudio namun pada tahun 2006 barulah diubah menjadi PulseAudio.</p>
@@ -109,6 +116,7 @@
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">default.clock.allowed-rates</span> = [ 44100 48000 88200 96000 ]</span></code></pre></div>
 <p>untuk bit depth pipewire akan otomatis mengkonversi ke float32, namun bila kita memiliki DAC yang mensupport int24 maka pipewire akan menyesuaikanya.</p>
 <h2 id="dafta-pustaka">Dafta Pustaka</h2>
+<hr />
 <ul>
 <li><p>Wikipedia<br />
 ↪ <a href="https://en.wikipedia.org/wiki/Advanced_Linux_Sound_Architecture">ALSA</a><br />
@@ -117,7 +125,8 @@
 <li><p>Gitlab Freedesktop<br />
 ↪ <a href="https://gitlab.freedesktop.org/pipewire/pipewire/-/wikis/home">Pipewire</a></p></li>
 <li><p>Freedesktop<br />
-↪ <a href="https://www.freedesktop.org/wiki/Software/PulseAudio/">Pulseaudio</a></p></li>
+↪ <a href="https://www.freedesktop.org/wiki/Software/PulseAudio/">Pulseaudio</a><br />
+↪ <a href="https://gitlab.freedesktop.org/rncbc/qpwgraph">Qpwgraph</a></p></li>
 <li><p>Piperiwe<br />
 ↪ <a href="https://pipewire.org/">Pipewire</a></p></li>
 </ul>

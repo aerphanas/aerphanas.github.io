@@ -4,6 +4,8 @@ author: aerphanas
 desc: Unix mempunyai file system yang bernama FS, dan memiliki standar hirarki untuk mempermudah memanage file dan folder
 ---
 
+![Standard Unix Filesystem Hierarchy](/images/unix-filesystem-fig1.svg "Standard Unix Filesystem Hierarchy")
+
 ## Daftar isi
 
 - [Pendahuluan](#pendahuluan)
@@ -15,9 +17,13 @@ desc: Unix mempunyai file system yang bernama FS, dan memiliki standar hirarki u
 
 ## Pendahuluan
 
+---
+
 Di Blog ini saya ingin membagikan informasi mengenai linux file system, sebelum saya menjelaskan linux filesystem saya akan menjelaskan terlebih dahulu soal unix filesystem, karna linux terinspirasi dari Minix yang di buat oleh [Andrew S. Tanenbaum](https://www.cs.vu.nl/~ast/) yang bertujuan untuk pelajaran, Minix sendiri terinspirasi dari UNIX.
 
 ## Unix File System
+
+---
 
 File sistem merupakan komponen utama dalam sebuah sistem operasi, maka dari itu sebelum dibuatnya sistem operasi yang pertama kali di pikirkan adalah file system, unix file system sendiri didesain oleh Kent Thompson untuk unix sistem operasi versi eksperimen pada 1969, di unix sendiri tipe file terbage menjadi 4 tipe, yaitu file, folder, file spesial dan tautan, tautan sendiri bisa berupa file atau folder.
 
@@ -50,6 +56,8 @@ sebuah sistem operasi memiliki sebuah tabel partisi yang berguna untuk mengatur 
 
 ## Daftar Pustaka
 
+---
+
 - IDAHO STATE UNIVERSITY  
 ↪ [A Basic UNIX Tutorial](https://fsl.fmrib.ox.ac.uk/fslcourse/unix_intro/index.html)
 
@@ -61,3 +69,6 @@ sebuah sistem operasi memiliki sebuah tabel partisi yang berguna untuk mengatur 
 
 - Bell Laboratories  
 ↪ [The Evolution of the Unix Time-sharing System](https://www.bell-labs.com/usr/dmr/www/hist.html)
+
+- WikiPedia Image  
+↪ [An overview of a Unix filesystem layout, CC BY-SA 4.0](https://en.wikipedia.org/wiki/Unix_filesystem#/media/File:Standard-unix-filesystem-hierarchy.svg)

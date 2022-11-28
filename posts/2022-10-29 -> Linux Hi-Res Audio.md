@@ -4,6 +4,8 @@ author: aerphanas
 desc: memutar audio dengan kualitas tinggi di sistem operasi linux
 ---
 
+![ A PipeWire Graph Qt GUI Interface](/images/linux-hires-audio-fig1.png "A PipeWire Graph Qt GUI Interface")
+
 ## Daftar Isi
 
 - [Pendahuluan](#pendahuluan)
@@ -17,9 +19,13 @@ desc: memutar audio dengan kualitas tinggi di sistem operasi linux
 
 ## Pendahuluan
 
+---
+
 Saya memiliki hobi yang unik yaitu mendengarkan musik, musik yang saya dengar merupakan musik yang memiliki kualitas tinggi yang biasanya memiliki bit depth dari 16 sampai 24 bit dan memiliki sample rate sama dengan diatas 44.1 kHz, agar bisa mendengarkan kualitas suara yang baik di linux memerlukan beberapa configurasi, disinilah saya akan memebagikan bagaimana cara menconfigurasi sebuah mesin linux agar bisa memutar kualitas audio yang berkualitas tinggi, linux memiliki sound API yang bernama alsa yang berada di dalam linux kernel.
 
 ## ALSA
+
+---
 
 ALSA adalah singkatan dari Advanced Linux Sound Architecture, pada awalnya ALSA merupakan proyek yang terpisah dari kernel Linux sebelum linux menggunakan ALSA, linux menggunakan OSS (Open Sound System) ALSA sendiri masuk ke Linux kernel pada versi 2.5 dan pada Linux versi 2.6 OSS di gantikan oleh ALSA, ALSA juga Kompatibel dengan OSS sehingga memudahkan aplikasi yang menggunakan OSS untuk memakai ALSA.
 
@@ -33,6 +39,8 @@ ALSA juga memiliki keunggulan dari OSS yaitu :
 ALSA sendiri memiliki API lebih rumit dari OSS jadi akan sulit pengembang applikasi untuk menggunakan ALSA maka dibuatlah beberapa sound servre yang gunanya memepermudah pembuatan aplikasi pada linux, ALSA sendiri memerlukan tool agar user dapat mengontrol volume dsb toolnya adalah [alsa-utils](https://pkgs.org/download/alsa-utils).
 
 ## Sound Server
+
+---
 
 Sound server adalah software yang berguna mengelola akses dan penggunaan terhadap sound card dan biasanya berjalan pada latar, saat ini keberadaan sound server di linux ada 3 dan dari ke-3 itu memiliki tujuannya masing-masing, contohnya JACK selalu mengedepankan urusan latensi sehingga cocok untuk rekaman suara.
 
@@ -139,6 +147,8 @@ untuk bit depth pipewire akan otomatis mengkonversi ke float32, namun bila kita 
 
 ## Dafta Pustaka
 
+---
+
 - Wikipedia  
 ↪ [ALSA](https://en.wikipedia.org/wiki/Advanced_Linux_Sound_Architecture)  
 ↪ [PulseAudio](https://en.wikipedia.org/wiki/PulseAudio)  
@@ -149,6 +159,7 @@ untuk bit depth pipewire akan otomatis mengkonversi ke float32, namun bila kita 
 
 - Freedesktop  
 ↪ [Pulseaudio](https://www.freedesktop.org/wiki/Software/PulseAudio/)  
+↪ [Qpwgraph](https://gitlab.freedesktop.org/rncbc/qpwgraph)
 
 - Piperiwe  
 ↪ [Pipewire](https://pipewire.org/)
