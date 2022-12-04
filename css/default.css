@@ -25,6 +25,11 @@
   src: url('../font/FiraSans-Light.woff2') format('woff2');
 }
 
+@font-face {
+  font-family: 'Fira Sans Book Italic';
+  src: url('../font/FiraSans-BookItalic.woff2') format('woff2');
+}
+
 /* Class Section */
 
 .sourceCode {
@@ -96,6 +101,11 @@ article .header {
   font-size: 1.4rem;
   font-style: italic;
   color: #4c566a;
+}
+
+blockquote {
+  font-family: "Fira Sans Book Italic";
+  font-style: italic;
 }
 
 @media (max-width: 319px) {
