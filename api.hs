@@ -21,6 +21,10 @@ config = defaultConfiguration { destinationDirectory = "docs" }
 
 main :: IO ()
 main = hakyllWith config $ do
+    match "robots.txt" $ do
+        route   idRoute
+        compile copyFileCompiler
+
     match "font/*" $ do
         route   idRoute
         compile copyFileCompiler
