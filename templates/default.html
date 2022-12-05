@@ -24,8 +24,8 @@
 
         <!-- Open Graph / Facebook -->
         <meta property="og:title" content="Λerphanas Blog - $title$" />
-        <meta property="og:url" content="$root$" />
-        <meta property="og:image" content="$root$/images/logo.png" />
+        <meta property="og:url" content="$root$$if(url)$$url$$endif$" />
+        <meta property="og:image" content="$root$/images/$if(image)$$image$$else$logo.png$endif$" />
         <meta property="og:description" content="$desc$" />
         <meta property="og:locale" content="id_ID" />
         <meta property="og:site_name" content="Λerphanas" />
