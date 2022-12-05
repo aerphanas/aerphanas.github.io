@@ -2,6 +2,7 @@
 title: Linux Container
 author: aerphanas
 desc: Mengupas lebih dalam teknologi container yang digunakan oleh Developer untuk mendistribusikan aplikasi mereka
+image: linux-container-fig1.png
 ---
 
 ![Linux Container](/images/linux-container-fig1.png "Linux Container")

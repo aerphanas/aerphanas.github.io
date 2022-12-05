@@ -2,6 +2,7 @@
 title: Linux Hi-Res Audio
 author: aerphanas
 desc: memutar audio dengan kualitas tinggi di sistem operasi linux
+image: linux-hires-audio-fig1.png
 ---
 
 ![ A PipeWire Graph Qt GUI Interface](/images/linux-hires-audio-fig1.png "A PipeWire Graph Qt GUI Interface")

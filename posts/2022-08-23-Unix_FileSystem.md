@@ -2,9 +2,10 @@
 title: Unix Filesytem
 author: aerphanas
 desc: Unix mempunyai file system yang bernama FS, dan memiliki standar hirarki untuk mempermudah memanage file dan folder
+image: unix-filesystem-fig1.png
 ---
 
-![Standard Unix Filesystem Hierarchy](/images/unix-filesystem-fig1.svg "Standard Unix Filesystem Hierarchy")
+![Standard Unix Filesystem Hierarchy](/images/unix-filesystem-fig1.png "Standard Unix Filesystem Hierarchy")
 
 ## Daftar isi
 
