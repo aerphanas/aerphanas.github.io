@@ -5,30 +5,30 @@
         $if(author)$
             oleh $author$
         $endif$ <br>
-        <a href="https://twitter.com/share?url=$root$$url$&text=$title$&via=$author$">
+        <a href="https://twitter.com/share?url=$root$$url$&text=$title$&via=$author$" target="_blank">
             <i class="fa-brands fa-twitter"></i>
         </a>
         <!-- Facebook (url) -->
-        <a href="https://www.facebook.com/sharer/sharer.php?u=$root$$url$">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=$root$$url$" target="_blank">
             <i class="fa-brands fa-facebook"></i>
         </a>
         <!-- Reddit (url, title) -->
-        <a href="https://reddit.com/submit?url=$root$$url$&title=$title$">
+        <a href="https://reddit.com/submit?url=$root$$url$&title=$title$" target="_blank">
             <i class="fa-brands fa-reddit"></i>
         </a>
         <!-- Hacker News (url, title) -->
-        <a href="https://news.ycombinator.com/submitlink?u=$root$$url$&t=$title$">
+        <a href="https://news.ycombinator.com/submitlink?u=$root$$url$&t=$title$" target="_blank">
             <i class="fa-brands fa-hacker-news"></i>
         </a>
         <!-- LinkedIn (url, title, summary, source url) -->
-        <a href="https://www.linkedin.com/shareArticle?url=$root$$url$&title=$title$&summary=$desc$">
+        <a href="https://www.linkedin.com/shareArticle?url=$root$$url$&title=$title$&summary=$desc$" target="_blank">
             <i class="fa-brands fa-linkedin"></i>
         </a>
         <!-- Email (subject, body) -->
         <a href="mailto:?subject=$title$&body=$root$$url$">
             <i class="fa-solid fa-envelope"></i>
         </a>
-        <a href="https://wa.me/?text=$root$$url$">
+        <a href="https://wa.me/?text=$root$$url$" target="_blank">
             <i class="fa-brands fa-square-whatsapp"></i>
         </a>
     </section>
