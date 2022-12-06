@@ -1,7 +1,7 @@
 ---
 title: Linux Hi-Res Audio
 author: aerphanas
-desc: memutar audio dengan kualitas tinggi di sistem operasi linux
+desc: Berkenalan dengan sistem suara di Linux dan cara memutar audio dengan kualitas tinggi dengan mudah.
 image: linux-hires-audio-fig1.png
 ---
 

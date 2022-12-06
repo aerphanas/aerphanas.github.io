@@ -1,7 +1,10 @@
 <ul>
     $for(posts)$
-        <li>
-            <a href="$url$">$title$</a><br> $author$ - $date$
+        <li style="list-style-type: disc;">
+            <a href="$url$">$title$</a><br><span style="font-size: 15px;">oleh $author$ - $date$</span>
+            <br>
+            $desc$
         </li>
+        <br>
     $endfor$
 </ul>

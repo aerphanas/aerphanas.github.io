@@ -50,17 +50,18 @@
     <body>
         <header>
             <div class="logo">
-                <a href="$root$">Λerphanas</a>
+                <a href="$root$"><i class="fa-solid fa-temperature-full"></i> Λerphanas</a>
             </div>
             <nav>
-                <a href="$root$/etc/about.html">Tentang</a>
-                <a href="$root$/archive.html">Arsip</a>
-                <a href="$root$/atom.xml">Atom</a>
+                <a href="$root$/etc/about.html"><i class="fa-regular fa-address-card"></i> Tentang</a>
+                <a href="$root$/archive.html"><i class="fa-regular fa-file-zipper"></i> Arsip</a>
+                <a href="https://github.com/aerphanas?tab=repositories" target="_blank"><i class="fa-solid fa-code"></i> Proyek</a>
             </nav>
         </header>
 
         <main role="main">
-            <h1>$title$</h1>
+            <h1>$title$ $if(land)$ <a href="$root$/atom.xml"><i class="fa-solid fa-rss fa-2xs"></i></a>$endif$</h1>
+            $if(land)$$desc$$endif$
             $body$
         </main>
 

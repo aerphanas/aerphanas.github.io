@@ -1,7 +1,7 @@
 ---
 title: Melatih Algoritma
 author: aerphanas
-desc: Mencari tantangan untuk mendapatkan umpan balik agar dapat menjadi seorang ahli dalam pemrograman
+desc: Mencari tantangan untuk mendapatkan umpan balik agar dapat menjadi seorang ahli dalam pemrograman.
 image: melatih-algoritma-fig1.png
 ---
 
