@@ -46,4 +46,5 @@ RUN ghcup install ghc "${GHC_VERSION}" --set \
     && ghcup install cabal recommended --set \
     && ghcup install stack recommended --set \
     && ghcup install hls recommended --set \
-    && cabal update
+    && cabal update \
+    && cabal new-install hakyll
