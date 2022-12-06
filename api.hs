@@ -10,7 +10,7 @@ root = "https://aerphanas.github.io"
 myFeedConfiguration :: FeedConfiguration
 myFeedConfiguration = FeedConfiguration
     { feedTitle       = "aerphanas blog"
-    , feedDescription = "blog untuk berbagi ilmu"
+    , feedDescription = "blog untuk berbagi ilmu seputar teknologi dalam bahasa indonesia"
     , feedAuthorName  = "aerphanas"
     , feedAuthorEmail = "muhamadaviv14@gmail.com"
     , feedRoot        = "aerphanas.github.io"
