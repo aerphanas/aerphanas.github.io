@@ -2,10 +2,10 @@
 title: Melatih Algoritma
 author: aerphanas
 desc: Mencari tantangan untuk mendapatkan umpan balik agar dapat menjadi seorang ahli dalam pemrograman
-image: melatih-algoritma-fig1.jpg
+image: melatih-algoritma-fig1.png
 ---
 
-![Wojacks Bermain Catur Dengan Otaknya](/images/melatih-algoritma-fig1.jpg "Wojacks Bermain Catur Dengan Otaknya")
+![Wojacks Bermain Catur Dengan Otaknya](/images/melatih-algoritma-fig1.png "Wojacks Bermain Catur Dengan Otaknya")
 
 ## Daftar isi
 
