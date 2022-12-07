@@ -130,22 +130,58 @@
 <h3 id="ext2">ext2</h3>
 <p>seperti yang dikatakan diatas ext2 merupakan ekstensi dari ext yang memiliki kelebihan diantaranya :</p>
 <ul>
-<li>maksimal penyimpanan dari 2GB di ext menjai 4TB di ext2</li>
-<li>mensupport ukuran blok berupa variable</li>
+<li>maksimal penyimpanan dari 2GB di ext menjai 4TB di ext2.</li>
+<li>mensupport ukuran blok berupa variable.</li>
 </ul>
 <p>diluar dari ekstensi untuk ext filesystem ext2 juga membawa fitur baru diantaranya :</p>
 <ul>
 <li>Untuk BSD atau System V 4 semantics dapat dipilih pada waktu pemasangan.</li>
 <li>singkronis update seperti BSD dapat dilakukan.</li>
 <li>sistem administrator dapat memilih ukuran alokasi logical block pada saat membuat partisi ext2.</li>
-<li>ext2 mengimplementasikan fast symbolic links</li>
-<li>ext2 melacak keadaan filesystem</li>
-<li>check filesystem secara paksa</li>
+<li>implementasi fast symbolic links.</li>
+<li>melacak keadaan filesystem.</li>
+<li>check filesystem secara paksa.</li>
 </ul>
 <h3 id="ext3">ext3</h3>
+<p>sama seperti ext dan ext2, ext3 merupakan exstensi dari ext2 exstensi yang dimaksud adalah adanya tambahan jurnal.
+fungsi jurnal disini adalah untuk mempercepat pemulihan pada filesystem yang mengalami kegagalan atau sistem padam secara mendadak, semua data yang berpotensi tidak konsisten pada disk harus dicatat juga dalam jurnal karena hal itulah kecepatan pemulihan pada filesystem ext3 lebih cepat dari ext2.</p>
+<p>cara kerja fitur pemulihan dengan jurnal adalah memindai semua jurnal dan menkopinya ke filesystem, pemulihan jurnal cepat karna ukuran jurnal lebih kecil dari filesystemnya.</p>
+<p>selain exstensi jurnal ext3 juga memiliki kelebihan diantaranya :</p>
+<ul>
+<li>menambahkan/growth filesystem secara online (sedang terpasang).</li>
+<li>ukuran penyimpanan dan file lebih besar dari ext2 tapi terpengaruh oleh ukuran block.</li>
+</ul>
 <h3 id="ext4">ext4</h3>
+<p>pada awalnya ext3 akan mendapat improfisasi seperti menambah limitasi penyimpanan dan menambah performa namun beberapa pengembang ext3 tidak setuju karna alasan stabilitas, setelah itu dibuatlah sebuah fork atau sebuah percabangan agar tidak mengganggu pengguna ext3 maka lahirlah ext4, dan sampai saat inilah ext4 masih digunakan.</p>
+<p>ext4 memiliki kompatibilitas untuk versi lamanya yang artinya kita bisa memasang ext2 atau ext3 sebagai ext4, ekstensi ext4 diantaranya :</p>
+<ul>
+<li>penyimpanan filesystem dan file lebih besar, masing-masing sampai 1 Exabyte dan 16 Terabyte</li>
+<li>improfisasi terhadap file besar dan fragmentasi</li>
+<li>kompatibilitas untuk ext2 dan ext3</li>
+<li>Pra-alokasi yang persisten</li>
+<li>jumlah subdirektori yang tak terhingga</li>
+<li>jurnal yang menggunakan checksum</li>
+</ul>
 <h2 id="cara-membuat-partisi">Cara Membuat Partisi</h2>
 <hr />
+<p>untuk membuat partisi ext4 kita harus memiliki software e2fsprogs di linux, setelah terinstall maka kita bisa mengetik :</p>
+<p>NOTE : untuk mengubah partisi kita harus mengeksekusinya dalam user root</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mkfs.ext4</span> <span class="co"># untuk ext4</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">mkfs.ext3</span> <span class="co"># untuk ext3</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">mkfs.ext2</span> <span class="co"># untuk ext2</span></span></code></pre></div>
+<p>command diatas merupakan singkatan dari :</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mk2fs</span> <span class="at">-t</span> ext4 <span class="co"># untuk ext4</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">mk2fs</span> <span class="at">-t</span> ext3 <span class="co"># untuk ext3</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">mk2fs</span> <span class="at">-t</span> ext2 <span class="co"># untuk ext2</span></span></code></pre></div>
+<p>karna dilinuk semua hardware dianggap sebagai folder atau file, maka kita harus mencari dimanakah keberadaan hardware kita, dalam linux <code>/dev/</code> merupakan sebuah folder tempat penyimpanan, untuk mengetahuinya kita bisa menggunakan software <code>lsblk</code>, setiap distro memiliki software ini namun bila tidak ada kalian bisa menginstall <code>util-linux</code> untuk mendapatkanya.</p>
+<p>setelah mendapatkannya kita bisa mengecek 2x untuk memastikanya, untuk memastikanya apakah pinyimpanan yang dituju benar kita memerlukan software fdisk.</p>
+<p>disini saya akan menggunakan /dev/sda sebagai contoh</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fdisk</span> <span class="at">-l</span> /dev/sda</span></code></pre></div>
+<p>perintah diatas akan memberikan kita sebuah info tipe disk, id, ukuran, dsb</p>
+<p>untuk dapat memformat kita harus mempunyai partisi karna <code>/dev/sda</code> merupakan disk/perangkat keras, kita bisa menggunakan fdisk untuk membuat partisi, untuk membuatnya kita bisa :</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fdisk</span> /dev/sda</span></code></pre></div>
+<p>setelah itu kita mindapat kan sebiah prom interaktif, silakan ketik <code>m</code> untuk melihat semua perintah yang diperlukan, setalah kita mendadpatkan partisi kita hanya perlu menjalankan perintah diawal <code>mkfs</code> atau <code>mk2fs -t</code></p>
+<p>Note : Berhati-hatilah saat menjalankan perintah diatas, karna bila ada kesalahan maka semua data yang berada di partisi itu akan terhapus, maka bila perlu buatlah sebuah backup, pindahkanlah data penting ke penyimpanan lain.</p>
 <h2 id="daftar-pustaka">Daftar Pustaka</h2>
 <hr />
 <ul>
@@ -153,12 +189,16 @@
 ↪ <a href="https://www.tuhs.org/cgi-bin/utree.pl?file=Linux0.96c/include/linux/ext_fs.h">Linux v0.96c</a></p></li>
 <li><p>ext2fsprogs<br />
 ↪ <a href="https://e2fsprogs.sourceforge.net/ext2intro.html">Design and Implementation of the Second Extended Filesystem</a><br />
-↪ <a href="https://e2fsprogs.sourceforge.net/journal-design.pdf">Journaling the Linux ext2fs Filesystem</a></p></li>
-<li><p>Wayback Machine<br />
-↪ <a href="https://web.archive.org/web/20120204044824/http://e2fsprogs.sourceforge.net/ext2intro.html">Design and Implementation of the Second Extended Filesystem</a></p></li>
+↪ <a href="https://e2fsprogs.sourceforge.net/journal-design.pdf">Journaling the Linux ext2fs Filesystem</a><br />
+↪ <a href="https://e2fsprogs.sourceforge.net/ext2.html">Ext2fs Home Page</a></p></li>
+<li><p>Ext4 (and Ext2/Ext3) Wiki<br />
+↪ <a href="https://ext4.wiki.kernel.org/index.php/Main_Page">Ext4</a></p></li>
 <li><p>Manual<br />
 ↪ <a href="https://man7.org/linux/man-pages/man5/ext4.5.html">Ext4</a><br />
 ↪ <a href="https://linux.die.net/man/5/filesystems">filesystems(5)</a></p></li>
+<li><p>Wikipedia<br />
+↪ <a href="https://en.wikipedia.org/wiki/Ext4">ext4</a><br />
+↪ <a href="https://en.wikipedia.org/wiki/Ext3">ext3</a></p></li>
 </ul>
     </section>
 </article>
