@@ -1,7 +1,7 @@
 ---
 title: Linux Filesystem, keluarga extfs
 author: aerphanas
-desc: ext merupakan singkatan dari extended file system yang dibuat khusus untuk linux kernel,yang sebelumnya linux menggunakan filesystem milik minix
+desc: ext merupakan singkatan dari extended file system yang dibuat khusus untuk linux kernel,yang sebelumnya linux menggunakan filesystem milik minix.
 image: linux_filesystem,_keluarga_extfs-fig1.png
 ---
 
