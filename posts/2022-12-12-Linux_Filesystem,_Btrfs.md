@@ -10,6 +10,8 @@ image:
 - [Pendahuluan](#pendahuluan)
 - [Fitur](#fitur)
 - [Cara Membuat Partisi](#cara-membuat-partisi)
+  - [Sub Volume](#sub-volume)
+  - [Snapshots](#snapshots)
 - [Daftar Pustaka](#daftar-pustaka)
 
 ## Pendahuluan
@@ -57,10 +59,114 @@ setelah membuat partisi kita harus membuat sebuah subvolume, agar dengan mudan m
 /dev/mapper/cr_system-opensuse             /home        btrfs  subvol=/@/home        0  0
 /dev/mapper/cr_system-opensuse             /.snapshots  btrfs  subvol=/@/.snapshots  0  0
 /dev/system/swap                           swap         swap   defaults              0  0
-UUID=3efcee78-2bc1-4311-9e0a-8105eabfea36  /home/adivin ext4   defaults              0  0
-UUID=012d1240-27ce-4a72-bc08-986536624f49  /boot        ext4   data=ordered          0  2
-UUID=0B96-B7E3                             /boot/efi    vfat   utf8                  0  2
+ UUID=3efcee78-2bc1-4311-9e0a-8105eabfea36 /home/adivin ext4   defaults              0  0
+ UUID=012d1240-27ce-4a72-bc08-986536624f49 /boot        ext4   data=ordered          0  2
+ UUID=0B96-B7E3                            /boot/efi    vfat   utf8                  0  2
 ```
+
+setelah kita membuat sebuah partisi, kita harus memasang partisinya ke dalam sebuah folder :
+
+```sh
+ mkdir /root/disk # membuat folder disk
+ mount /dev/sda1 /root/disk # pasang drive sda1 ke folder disk
+```
+
+setelah berhasil memasang partisi ke folder ```/root/disk```, kita harus membuat sebuah folder ```@``` lalu membuat sub volume disana.
+
+```sh
+ mkdir /root/disk/@
+```
+
+### Sub Volume
+
+melihat contoh fstab OpenSUSE kita bisa simpulkan bahwa kita memerlukan beberapa sub volume yaitu :
+
+1. /var
+2. /usr/local
+3. /tmp
+4. /srv
+5. /root
+6. /opt
+7. /home
+
+sub volume bisa dibuat dengan cara :
+
+```sh
+btrfs subvolume create <volume yang mau dibuat>
+```
+
+maka kita bisa membuat sub volume seperti opensuse dengan cara :
+
+```sh
+ mkdir /root/disk/@/usr # membuat folder untuk local sub volume
+btrfs subvolume create /root/disk/@/var
+btrfs subvolume create /root/disk/@/usr/local
+btrfs subvolume create /root/disk/@/tmp
+btrfs subvolume create /root/disk/@/srv
+btrfs subvolume create /root/disk/@/root
+btrfs subvolume create /root/disk/@/opt
+btrfs subvolume create /root/disk/@/home
+```
+
+untuk menghapus subvolume kita bisa menghapusnya dengan :
+
+```sh
+btrfs subvolume delete /root/disk/@/var
+btrfs subvolume delete /root/disk/@/usr/local
+btrfs subvolume delete /root/disk/@/tmp
+btrfs subvolume delete /root/disk/@/srv
+btrfs subvolume delete /root/disk/@/root
+btrfs subvolume delete /root/disk/@/opt
+btrfs subvolume delete /root/disk/@/home
+```
+
+untuk melihat list apasaja subvolume yang ada bisa dengan komand :
+
+```sh
+btrfs subvolume list /root/disk/@
+```
+
+kita bisa memasang subvolume dengan :
+
+kita bisa menggunakan subvolid atau menggunakan tempat dimana subvol dibuat, untuk mendapatkan subvolid kita bisa melihatnya dengan 
+```sh
+btrfs subvolume show /root/disk/@/var
+```
+ bila sudah mendapatkan subvolid kita bisa memasangnya di ```/root/disk/var``` dengan perintah seperti berikut, namun bila folder ```/root/disk/var``` tidak ada kita harus membuatnya dengan secara manual
+
+```sh
+ mount /dev/sdb1 -o subvolid=261 /root/disk/var
+```
+
+atau menggunakan tempat dimana subvol dibuat
+
+```sh
+ mount /dev/sdb1 -o subvol=/root/disk/@/var /root/disk/var
+```
+
+### Snapshots
+
+setelah membuat sub volume jita bisa mudah mengelola snapshot, untuk membuat snapshot kita bisa menggunakan software timeshift atau snapper, namun kita juga bisa membuat snapshot secara manual, bila kita menggunakan timesift atau snapper otomatis akan membuat subvolume/folder .snapshots pada partisi.
+
+```sh
+btrfs subvolume create /root/disk/@/.snapshots # membuat subvolume untuk menampung snapshots
+btrfs subvolume snapshot /root/disk /root/disk/.snapshots/yy-mm-dd-backup # membuat snapshots RW bernama yy-mm-dd-backup
+btrfs subvolume snapshot -r /root/disk /root/disk/.snapshots/yy-mm-dd-backup # membuat snapshots RO bernama yy-mm-dd-backup
+```
+
+untuk menghapus snpashot kita bisa menggunakan komand :
+
+```sh
+btrfs subvolume delete /root/disk/.snapshots/yy-mm-dd-backup
+```
+
+setelah kita membuat snapshot, kita bisa mengembalikan keadaan folder dengan cara manual menggunakan komand ```cp``` atau ```rsync``` untuk mengembalikan keseluruhanya.
+
+```sh
+ rsync -avz /root/disk /root/disk/.snapshots/yy-mm-dd-backup /root/disk
+```
+
+untuk mengupdate snapshot sama caranya untuk mengembalikan keadaan folder/file, yaitu dengan komand ```cp``` atau ```rsync```
 
 ## Daftar Pustaka
 
@@ -68,10 +174,14 @@ UUID=0B96-B7E3                             /boot/efi    vfat   utf8             
 
 - Wikipedia  
 ↪ [Btrfs](https://en.wikipedia.org/wiki/Btrfs)  
-↪ [Copy On Write](https://en.wikipedia.org/wiki/Copy-on-write)
+↪ [Copy On Write](https://en.wikipedia.org/wiki/Copy-on-write)  
 
 - Btrfs Wiki  
-↪ [Btrfs Wiki Main Pages](https://btrfs.wiki.kernel.org/index.php/Main_Page)
+↪ [Btrfs Wiki Main Pages](https://btrfs.wiki.kernel.org/index.php/Main_Page)  
 
 - Btrfs Read The Docs  
-↪ [BTRFS documentation](https://btrfs.readthedocs.io/en/latest/index.html)
+↪ [BTRFS documentation](https://btrfs.readthedocs.io/en/latest/index.html)  
+
+- Linux Hint  
+↪ [How to Create and Mount Btrfs Subvolumes](https://linuxhint.com/create-mount-btrfs-subvolumes/)  
+↪ [How to Use Btrfs Snapshots](https://linuxhint.com/use-btrfs-snapshots/)

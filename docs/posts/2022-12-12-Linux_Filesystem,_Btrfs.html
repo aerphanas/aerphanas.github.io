@@ -101,7 +101,11 @@
 <ul>
 <li><a href="#pendahuluan">Pendahuluan</a></li>
 <li><a href="#fitur">Fitur</a></li>
-<li><a href="#cara-membuat-partisi">Cara Membuat Partisi</a></li>
+<li><a href="#cara-membuat-partisi">Cara Membuat Partisi</a>
+<ul>
+<li><a href="#sub-volume">Sub Volume</a></li>
+<li><a href="#snapshots">Snapshots</a></li>
+</ul></li>
 <li><a href="#daftar-pustaka">Daftar Pustaka</a></li>
 </ul>
 <h2 id="pendahuluan">Pendahuluan</h2>
@@ -134,9 +138,63 @@
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">/dev/mapper/cr_system-opensuse</span>             /home        btrfs  subvol=/@/home        0  0</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ex">/dev/mapper/cr_system-opensuse</span>             /.snapshots  btrfs  subvol=/@/.snapshots  0  0</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ex">/dev/system/swap</span>                           swap         swap   defaults              0  0</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="va">UUID</span><span class="op">=</span>3efcee78-2bc1-4311-9e0a-8105eabfea36  <span class="ex">/home/adivin</span> ext4   defaults              0  0</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="va">UUID</span><span class="op">=</span>012d1240-27ce-4a72-bc08-986536624f49  <span class="ex">/boot</span>        ext4   data=ordered          0  2</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="va">UUID</span><span class="op">=</span>0B96-B7E3                             <span class="ex">/boot/efi</span>    vfat   utf8                  0  2</span></code></pre></div>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a> <span class="va">UUID</span><span class="op">=</span>3efcee78-2bc1-4311-9e0a-8105eabfea36 <span class="ex">/home/adivin</span> ext4   defaults              0  0</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a> <span class="va">UUID</span><span class="op">=</span>012d1240-27ce-4a72-bc08-986536624f49 <span class="ex">/boot</span>        ext4   data=ordered          0  2</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a> <span class="va">UUID</span><span class="op">=</span>0B96-B7E3                            <span class="ex">/boot/efi</span>    vfat   utf8                  0  2</span></code></pre></div>
+<p>setelah kita membuat sebuah partisi, kita harus memasang partisinya ke dalam sebuah folder :</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">mkdir</span> /root/disk <span class="co"># membuat folder disk</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">mount</span> /dev/sda1 /root/disk <span class="co"># pasang drive sda1 ke folder disk</span></span></code></pre></div>
+<p>setelah berhasil memasang partisi ke folder <code>/root/disk</code>, kita harus membuat sebuah folder <code>@</code> lalu membuat sub volume disana.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">mkdir</span> /root/disk/@</span></code></pre></div>
+<h3 id="sub-volume">Sub Volume</h3>
+<p>melihat contoh fstab OpenSUSE kita bisa simpulkan bahwa kita memerlukan beberapa sub volume yaitu :</p>
+<ol type="1">
+<li>/var</li>
+<li>/usr/local</li>
+<li>/tmp</li>
+<li>/srv</li>
+<li>/root</li>
+<li>/opt</li>
+<li>/home</li>
+</ol>
+<p>sub volume bisa dibuat dengan cara :</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">btrfs</span> subvolume create <span class="op">&lt;</span>volume yang mau dibuat<span class="op">&gt;</span></span></code></pre></div>
+<p>maka kita bisa membuat sub volume seperti opensuse dengan cara :</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">mkdir</span> /root/disk/@/usr <span class="co"># membuat folder untuk local sub volume</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">btrfs</span> subvolume create /root/disk/@/var</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">btrfs</span> subvolume create /root/disk/@/usr/local</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">btrfs</span> subvolume create /root/disk/@/tmp</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">btrfs</span> subvolume create /root/disk/@/srv</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">btrfs</span> subvolume create /root/disk/@/root</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="ex">btrfs</span> subvolume create /root/disk/@/opt</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="ex">btrfs</span> subvolume create /root/disk/@/home</span></code></pre></div>
+<p>untuk menghapus subvolume kita bisa menghapusnya dengan :</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">btrfs</span> subvolume delete /root/disk/@/var</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">btrfs</span> subvolume delete /root/disk/@/usr/local</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">btrfs</span> subvolume delete /root/disk/@/tmp</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ex">btrfs</span> subvolume delete /root/disk/@/srv</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="ex">btrfs</span> subvolume delete /root/disk/@/root</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="ex">btrfs</span> subvolume delete /root/disk/@/opt</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="ex">btrfs</span> subvolume delete /root/disk/@/home</span></code></pre></div>
+<p>untuk melihat list apasaja subvolume yang ada bisa dengan komand :</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">btrfs</span> subvolume list /root/disk/@</span></code></pre></div>
+<p>kita bisa memasang subvolume dengan :</p>
+<p>kita bisa menggunakan subvolid atau menggunakan tempat dimana subvol dibuat, untuk mendapatkan subvolid kita bisa melihatnya dengan</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">btrfs</span> subvolume show /root/disk/@/var</span></code></pre></div>
+<p>bila sudah mendapatkan subvolid kita bisa memasangnya di <code>/root/disk/var</code> dengan perintah seperti berikut, namun bila folder <code>/root/disk/var</code> tidak ada kita harus membuatnya dengan secara manual</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">mount</span> /dev/sdb1 <span class="at">-o</span> subvolid=261 /root/disk/var</span></code></pre></div>
+<p>atau menggunakan tempat dimana subvol dibuat</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">mount</span> /dev/sdb1 <span class="at">-o</span> subvol=/root/disk/@/var /root/disk/var</span></code></pre></div>
+<h3 id="snapshots">Snapshots</h3>
+<p>setelah membuat sub volume jita bisa mudah mengelola snapshot, untuk membuat snapshot kita bisa menggunakan software timeshift atau snapper, namun kita juga bisa membuat snapshot secara manual, bila kita menggunakan timesift atau snapper otomatis akan membuat subvolume/folder .snapshots pada partisi.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">btrfs</span> subvolume create /root/disk/@/.snapshots <span class="co"># membuat subvolume untuk menampung snapshots</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">btrfs</span> subvolume snapshot /root/disk /root/disk/.snapshots/yy-mm-dd-backup <span class="co"># membuat snapshots RW bernama yy-mm-dd-backup</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">btrfs</span> subvolume snapshot <span class="at">-r</span> /root/disk /root/disk/.snapshots/yy-mm-dd-backup <span class="co"># membuat snapshots RO bernama yy-mm-dd-backup</span></span></code></pre></div>
+<p>untuk menghapus snpashot kita bisa menggunakan komand :</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">btrfs</span> subvolume delete /root/disk/.snapshots/yy-mm-dd-backup</span></code></pre></div>
+<p>setelah kita membuat snapshot, kita bisa mengembalikan keadaan folder dengan cara manual menggunakan komand <code>cp</code> atau <code>rsync</code> untuk mengembalikan keseluruhanya.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">rsync</span> <span class="at">-avz</span> /root/disk /root/disk/.snapshots/yy-mm-dd-backup /root/disk</span></code></pre></div>
+<p>untuk mengupdate snapshot sama caranya untuk mengembalikan keadaan folder/file, yaitu dengan komand <code>cp</code> atau <code>rsync</code></p>
 <h2 id="daftar-pustaka">Daftar Pustaka</h2>
 <hr />
 <ul>
@@ -147,6 +205,9 @@
 ↪ <a href="https://btrfs.wiki.kernel.org/index.php/Main_Page">Btrfs Wiki Main Pages</a></p></li>
 <li><p>Btrfs Read The Docs<br />
 ↪ <a href="https://btrfs.readthedocs.io/en/latest/index.html">BTRFS documentation</a></p></li>
+<li><p>Linux Hint<br />
+↪ <a href="https://linuxhint.com/create-mount-btrfs-subvolumes/">How to Create and Mount Btrfs Subvolumes</a><br />
+↪ <a href="https://linuxhint.com/use-btrfs-snapshots/">How to Use Btrfs Snapshots</a></p></li>
 </ul>
     </section>
 </article>
