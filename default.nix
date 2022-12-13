@@ -8,7 +8,7 @@ let
     hakyll
     haskell-language-server
   ];
-  haskellEnv = haskell.packages.ghc924.ghcWithPackages haskellDeps;
+  haskellEnv = haskell.packages.ghc902.ghcWithPackages haskellDeps;
 in mkShell {
   buildInputs = [
     haskellEnv
