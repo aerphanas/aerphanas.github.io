@@ -1,9 +1,11 @@
 ---
 title: Linux Filesystem, Btrfs
 author: aerphanas
-desc: sebuah filesystem yang menggunakan teknologi COW atau copy on write dan fokus ke toleransi kesalahan, perbaikan dan administrasi yang mudah.
-image:
+desc: sebuah filesystem yang menggunakan teknologi COW atau copy on write dan fokus terhadap toleransi kesalahan, perbaikan dan administrasi yang mudah.
+image: linux_filesystem,_keluarga_btrfs-fig1.png
 ---
+
+![Butter slices in the kitchen by Sorin Gheorghita](/images/linux_filesystem,_keluarga_btrfs-fig1.png "Butter slices in the kitchen by Sorin Gheorghita")
 
 ## Daftar isi
 
@@ -18,13 +20,13 @@ image:
 
 ---
 
-btrfs merupakan sebuah filesystem moderen yang menggunakan teknologi copy on write, yang artinya bila kita melakukan perubahan pada folder atau file maka file/folder itu akan menjadi 2, yang pertama adalah sebelum diubah dan yang kedua adalah yang sudah terubah, maka bila terjadi kesalahan kita bisa melakukan roll-back atau kembali ke keadaan awal.
+btrfs merupakan sebuah filesystem modern yang menggunakan teknologi copy on write, yang artinya bila kita melakukan perubahan pada folder atau file maka file/folder itu akan menjadi 2, pertama adalah sebelum diubah dan yang kedua adalah yang sudah terubah, maka bila terjadi kesalahan kita bisa melakukan roll-back atau kembali ke keadaan awal.
 
 ## Sejarah
 
 ---
 
-btrfs pertama kali di desain oleh perusahaan oracle untuk mengatasi masalah kurangnya fitur yang ada pada linux filesystem, yaitu snapshots, checksum dan volume managemen pada tahun 2007, barulah pada tahun 2013 btrfs memasuki fase stabil.
+btrfs pertama kali di desain oleh perusahaan oracle pada tahun 2007 untuk mengatasi masalah kurangnya fitur yang ada pada linux filesystem, yaitu snapshots, checksum dan volume managemen, barulah pada tahun 2013 btrfs memasuki fase stabil.
 
 ## Fitur
 
@@ -42,11 +44,12 @@ btrfs memiliki beberapa fitur utamanya adalah :
 
 saya akan memberitahukan bagai mana cara konfigurasi btrfs dengan benar sehingga kita dapat mendapatkan performa yang sempurna.
 
-hampir sama seperti [cara saya membuat partisi ext4](https://aerphanas.github.io/posts/2022-12-08-Linux_Filesystem%2C_keluarga_extfs.html#cara-membuat-partisi), kita perlu beberapa penyesuaian yaitu :
+hampir sama seperti [cara saya membuat partisi ext4](https://aerphanas.github.io/posts/2022-12-08-Linux_Filesystem%2C_keluarga_extfs.html#cara-membuat-partisi), namun kita perlu beberapa penyesuaian yaitu :
 
-daripada ```mkfs.ext4``` kita harus ```mkfs.btrfs```, sebelum menjalankan perintah itu kita harus menginstall ```btrfs-progs```.
+daripada ```mkfs.ext4``` kita harus ```mkfs.btrfs```, namun sebelum menjalankan perintah itu kita harus menginstall software ```btrfs-progs```.
 
-setelah membuat partisi kita harus membuat sebuah subvolume, agar dengan mudan mengelola snapshots, tidak ada dasar peraturan dalam membuat sub volume namun kita bisa mencontohnya pada distro OpenSUSE, seperti inilah fstabnya:
+setelah membuat partisi, kita harus membuat sebuah subvolume, agar dengan mudan mengelola snapshots.
+tidak ada dasar peraturan dalam membuat sub volume namun kita bisa mencontohnya pada distro OpenSUSE, seperti inilah fstabnya:
 
 ```sh
 /dev/mapper/cr_system-opensuse             /            btrfs  defaults,ssd          0  0
@@ -111,13 +114,7 @@ btrfs subvolume create /root/disk/@/home
 untuk menghapus subvolume kita bisa menghapusnya dengan :
 
 ```sh
-btrfs subvolume delete /root/disk/@/var
-btrfs subvolume delete /root/disk/@/usr/local
-btrfs subvolume delete /root/disk/@/tmp
-btrfs subvolume delete /root/disk/@/srv
-btrfs subvolume delete /root/disk/@/root
-btrfs subvolume delete /root/disk/@/opt
-btrfs subvolume delete /root/disk/@/home
+btrfs subvolume delete <volume yang mau dihapus>
 ```
 
 untuk melihat list apasaja subvolume yang ada bisa dengan komand :
@@ -126,13 +123,13 @@ untuk melihat list apasaja subvolume yang ada bisa dengan komand :
 btrfs subvolume list /root/disk/@
 ```
 
-kita bisa memasang subvolume dengan :
+untuk memasang subvolume kita bisa menggunakan subvolid atau menggunakan tempat dimana subvol dibuat, untuk mendapatkan subvolid kita bisa melihatnya
 
-kita bisa menggunakan subvolid atau menggunakan tempat dimana subvol dibuat, untuk mendapatkan subvolid kita bisa melihatnya dengan 
 ```sh
 btrfs subvolume show /root/disk/@/var
 ```
- bila sudah mendapatkan subvolid kita bisa memasangnya di ```/root/disk/var``` dengan perintah seperti berikut, namun bila folder ```/root/disk/var``` tidak ada kita harus membuatnya dengan secara manual
+
+bila sudah mendapatkan subvolid kita bisa memasangnya di ```/root/disk/var``` dengan perintah seperti berikut, namun bila folder ```/root/disk/var``` tidak ada, kita harus membuatnya dengan secara manual
 
 ```sh
  mount /dev/sdb1 -o subvolid=261 /root/disk/var
@@ -146,7 +143,7 @@ atau menggunakan tempat dimana subvol dibuat
 
 ### Snapshots
 
-setelah membuat sub volume jita bisa mudah mengelola snapshot, untuk membuat snapshot kita bisa menggunakan software timeshift atau snapper, namun kita juga bisa membuat snapshot secara manual, bila kita menggunakan timesift atau snapper otomatis akan membuat subvolume/folder .snapshots pada partisi.
+setelah membuat sub volume kita bisa mudah mengelola snapshot, untuk membuat snapshot kita bisa menggunakan software timeshift atau snapper, namun kita juga bisa membuat snapshot secara manual, bila kita menggunakan timesift atau snapper, software itu akan otomatis membuat subvolume/folder ```.snapshots``` pada partisi.
 
 ```sh
 btrfs subvolume create /root/disk/@/.snapshots # membuat subvolume untuk menampung snapshots
@@ -154,7 +151,7 @@ btrfs subvolume snapshot /root/disk /root/disk/.snapshots/yy-mm-dd-backup # memb
 btrfs subvolume snapshot -r /root/disk /root/disk/.snapshots/yy-mm-dd-backup # membuat snapshots RO bernama yy-mm-dd-backup
 ```
 
-untuk menghapus snpashot kita bisa menggunakan komand :
+untuk menghapus snapashot kita bisa menggunakan :
 
 ```sh
 btrfs subvolume delete /root/disk/.snapshots/yy-mm-dd-backup
@@ -184,4 +181,8 @@ untuk mengupdate snapshot sama caranya untuk mengembalikan keadaan folder/file, 
 
 - Linux Hint  
 ↪ [How to Create and Mount Btrfs Subvolumes](https://linuxhint.com/create-mount-btrfs-subvolumes/)  
-↪ [How to Use Btrfs Snapshots](https://linuxhint.com/use-btrfs-snapshots/)
+↪ [How to Use Btrfs Snapshots](https://linuxhint.com/use-btrfs-snapshots/)  
+
+- Unsplash  
+↪ [Butter slices in the kitchen by Sorin Gheorghita](https://unsplash.com/photos/094mP_CBdpM?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink)  
+  
