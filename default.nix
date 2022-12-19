@@ -4,15 +4,14 @@ with pkgs;
 
 let
   haskellDeps = ps: with ps; [
-    base
     hakyll
     haskell-language-server
+    cabal-install
   ];
   haskellEnv = haskell.packages.ghc902.ghcWithPackages haskellDeps;
 in mkShell {
   buildInputs = [
     haskellEnv
-    haskellPackages.cabal-install
   ];
   shellHook = ''
       export PATH=$PATH:$HOME/.cabal/bin/
