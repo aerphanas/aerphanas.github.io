@@ -42,7 +42,7 @@ jobs:
     - name: Run tests
       run: cabal test all
     - name: generate site
-      run: kompor build
+      run: cabal exec kompor build
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
