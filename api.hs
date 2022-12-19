@@ -1,8 +1,36 @@
---------------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
-import  Data.Monoid (mappend)
-import  Hakyll
---------------------------------------------------------------------------------
+
+import Hakyll
+    ( getResourceBody,
+      makeItem,
+      saveSnapshot,
+      loadAll,
+      loadAllSnapshots,
+      defaultConfiguration,
+      copyFileCompiler,
+      fromList,
+      idRoute,
+      setExtension,
+      compile,
+      create,
+      match,
+      route,
+      hakyllWith,
+      compressCssCompiler,
+      renderAtom,
+      relativizeUrls,
+      pandocCompiler,
+      constField,
+      dateField,
+      defaultContext,
+      listField,
+      applyAsTemplate,
+      loadAndApplyTemplate,
+      templateBodyCompiler,
+      recentFirst,
+      Configuration(destinationDirectory),
+      FeedConfiguration(..),
+      Context )
 
 root :: String
 root = "https://aerphanas.github.io"
@@ -21,6 +49,8 @@ config = defaultConfiguration { destinationDirectory = "docs" }
 
 main :: IO ()
 main = hakyllWith config $ do
+    match "templates/*" $ compile templateBodyCompiler
+    
     match "robots.txt" $ do
         route   idRoute
         compile copyFileCompiler
@@ -38,16 +68,16 @@ main = hakyllWith config $ do
         compile compressCssCompiler
 
     match "etc/about.md" $ do
-        route   $ setExtension "html"
+        route   $ setExtension       "html"
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
 
     match "posts/*" $ do
-        route $ setExtension "html"
+        route $ setExtension         "html"
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/post.html"    postCtx
-            >>= saveSnapshot "content"
+            >>= saveSnapshot         "content"
             >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
 
@@ -56,8 +86,8 @@ main = hakyllWith config $ do
         compile $ do
             posts <-  (fmap (take 5) . recentFirst) =<< loadAll "posts/*"
             let indexCtx =
-                    listField "posts" postCtx (return posts) `mappend`
-                    constField "root" root `mappend`
+                    listField  "posts" postCtx (return posts) <>
+                    constField "root"  root                   <>
                     defaultContext
 
             getResourceBody
@@ -65,17 +95,15 @@ main = hakyllWith config $ do
                 >>= loadAndApplyTemplate "templates/default.html" indexCtx
                 >>= relativizeUrls
 
-    match "templates/*" $ compile templateBodyCompiler
---------------------------------------------------------------------------------
     create ["archive.html"] $ do
         route idRoute
         compile $ do
             posts <- recentFirst =<< loadAll "posts/*"
             let archiveCtx =
-                    listField "posts" postCtx (return posts) `mappend`
-                    constField "root" root `mappend`
-                    constField "title" "Arsip"            `mappend`
-                    constField "desc" "Semua postingan yang ada di aerphanas bisa dilihat di sini"  `mappend`
+                    listField  "posts"  postCtx (return posts)                                      <>
+                    constField "root"   root                                                        <>
+                    constField "title" "Arsip"                                                      <>
+                    constField "desc"  "Semua postingan yang ada diaerphanas bisa dilihat di sini"  <>
                     defaultContext
 
             makeItem ""
@@ -90,15 +118,15 @@ main = hakyllWith config $ do
             singlePages <- loadAll (fromList ["etc/about.md"])
             let pages = posts <> singlePages
                 sitemapCtx =
-                    constField "root" root `mappend`
-                    listField "pages" postCtx (return pages)
+                    constField "root"  root <>
+                    listField  "pages" postCtx (return pages)
             makeItem ""
                 >>= loadAndApplyTemplate "templates/sitemap.xml" sitemapCtx
 
     create ["atom.xml"] $ do
         route idRoute
         compile $ do
-            let feedCtx = postCtx `mappend`
+            let feedCtx = postCtx <>
                     constField "description" "aerphanas blog update"
 
             posts <- fmap (take 10) . recentFirst =<< loadAllSnapshots "posts/*" "content"
@@ -107,7 +135,7 @@ main = hakyllWith config $ do
 --------------------------------------------------------------------------------
 postCtx :: Context String
 postCtx =
-    constField "root"     root        `mappend`
-    dateField  "sitedate" "%Y-%m-%d"  `mappend`
-    dateField  "date"     "%b %d, %Y" `mappend`
+    constField "root"     root        <>
+    dateField  "sitedate" "%Y-%m-%d"  <>
+    dateField  "date"     "%b %d, %Y" <>
     defaultContext
