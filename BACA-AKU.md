@@ -3,7 +3,7 @@
 [![Author](https://img.shields.io/badge/author-aerphanas-red.svg)](https://github.com/aerphanas)
 [![License](https://img.shields.io/badge/License-BSD--3--Clause-important)](https://github.com/aerphanas/aerphanas.github.io/blob/master/LICENSE)
 [![pages-build-deployment](https://github.com/aerphanas/aerphanas.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/aerphanas/aerphanas.github.io/actions/workflows/pages/pages-build-deployment)
-[![Haskell CI](https://github.com/aerphanas/aerphanas.github.io/actions/workflows/haskell.yml/badge.svg)](https://github.com/aerphanas/aerphanas.github.io/actions/workflows/haskell.yml)
+[![Generate Pages](https://github.com/aerphanas/aerphanas.github.io/actions/workflows/hakyll.yml/badge.svg)](https://github.com/aerphanas/aerphanas.github.io/actions/workflows/hakyll.yml)
 
 Static site menggunakan Hakyll sebagai generator
 
