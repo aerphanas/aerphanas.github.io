@@ -50,7 +50,10 @@ Dalam websitenya Proyek Euler memiliki tujuan untuk :
 
 Proyek Euler pada awalnya ditujukan untuk pincinta matematika namun siapasaja dapat mencobanya, tentunya programming pasti akan selalu bersinggungan dengan matematika.
 
-Matematika sangatlah penting agar setiap perhitungan yang kita lakukan dilakukan dapat efisien dan elegan.
+Matematika sangatlah penting agar setiap perhitungan yang kita lakukan dilakukan dapat efisien dan elegan, selain proyek euler ada beberapa web yang bisa digunakan untuk melatih algoritma diantaranya :
+
+- LeetCode
+- HackerRank
 
 ## Daftar Pustaka
 
