@@ -5,14 +5,6 @@
 
 Static Site Powered by Hakyll
 
-<details>
-<summary>Translation :</summary>
-
-- [en](https://github.com/aerphanas/aerphanas.github.io/blob/master/README.md)
-- [id](https://github.com/aerphanas/aerphanas.github.io/blob/master/BACA-AKU.md)
-
-</details>
-
 ## Table of contents
 - [Description](#description)
 - [Prerequisites](#prerequisites)
