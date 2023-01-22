@@ -1,7 +1,7 @@
 ---
 title: Linux Chroot
 author: aerphanas
-desc: Chroot merupakan sebuah "utilitas" dalam sistem UNIX-Like yang digunakan untuk mengubah direktori menjadi direktori root.
+desc: Chroot merupakan sebuah utilitas dalam sistem UNIX-Like yang digunakan untuk mengubah direktori menjadi direktori root.
 image: linux-chroot-fig1.png
 ---
 
