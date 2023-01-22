@@ -12,7 +12,7 @@ image: linux-chroot-fig1.png
 - [Pendahuluan](#pendahuluan)
   - [Persiapan](#persiapan)
   - [Chroot](#chroot)
-  - [Spesial Filesystem](#spesial-filesystem)
+  - [Perlakuan Khusus](#perlakuan-khusus)
     - [OpenZFS](#openzfs)
     - [GuixSD](#guixsd)
     - [NixOS](#nixos)
