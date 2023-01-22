@@ -56,9 +56,17 @@ mount --bind  /run  ./mydisk/run
 mount --make-rslave ./mydisk/dev
 mount --make-rslave ./mydisk/sys
 mount -t proc /proc ./mydisk/proc
-# Khusus EFI atau perbaikan boot
+```
+
+khusus Efi dan tujuan untuk perbaikan EFI
+
+```sh
 mount --rbind /sys/firmware/efi/efivars sys/firmware/efi/efivars/
-# Untuk mendapatkan koneksi internet dalam chroot
+```
+
+untuk menggunakan koneksi internet pada chroot
+
+```sh
 cp /etc/resolv.conf mydisk/etc
 ```
 
@@ -110,7 +118,6 @@ zpool export -a
 zpool import -N -R /mnt rpool
 zpool import -N -R /mnt bpool
 zfs load-key -a
-# Add *UUID* at the end, if appropriate; use zfs list to see your values:
 zfs mount rpool/ROOT/ubuntu
 zfs mount bpool/BOOT/ubuntu
 zfs mount -a
@@ -129,8 +136,7 @@ untuk keluar dari chroot gunakan perintah berikut :
 
 ```sh
 exit
-mount | grep -v zfs | tac | awk '/\/mnt/ {print $3}' | \
-    xargs -i{} umount -lf {}
+mount | grep -v zfs | tac | awk '/\/mnt/ {print $3}' | xargs -i{} umount -lf {}
 zpool export -a
 ```
 
