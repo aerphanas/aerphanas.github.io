@@ -61,7 +61,7 @@ span .ex {
 
 /* Singgle Tag Section */
 
-html { font-size: 62.5%; }
+html { font-size: 62.5%;scroll-behavior: smooth; }
 header { border-bottom: 0.2rem solid #3b4252; }
 h1 { font-size: 2.4rem; }
 h2 { font-size: 2rem; }
