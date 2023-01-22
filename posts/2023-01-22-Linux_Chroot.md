@@ -61,7 +61,7 @@ mount -t proc /proc ./mydisk/proc
 khusus Efi dan tujuan untuk perbaikan EFI
 
 ```sh
-mount --rbind /sys/firmware/efi/efivars sys/firmware/efi/efivars/
+mount --rbind /sys/firmware/efi/efivars ./mydisk/sys/firmware/efi/efivars/
 ```
 
 untuk menggunakan koneksi internet pada chroot
