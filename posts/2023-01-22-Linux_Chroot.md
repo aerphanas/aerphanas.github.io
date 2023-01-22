@@ -14,6 +14,8 @@ image: linux-chroot-fig1.png
   - [Chroot](#chroot)
   - [Spesial Filesystem](#spesial-filesystem)
     - [OpenZFS](#openzfs)
+    - [GuixSD](#guixsd)
+    - [NixOS](#nixos)
 - [Daftar Pustaka](#daftar-pustaka)
 
 ## Pendahuluan
