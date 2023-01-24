@@ -21,9 +21,9 @@ yang sudah lama.
 
 website ini bersifat publik jadi jika kamu ingin memposting kamu tinggak pergi ke github dan berkontribusi pada proyek ini atau
  anda bisa menkontak saya ke [email](mailto:muhamadaviv14@gmail.com) dan [GPG Key](https://keys.openpgp.org/vks/v1/by-fingerprint/AA79C548ED0C96A51E632B0CFCE880D64949859D),
-dan jika ingin melihat beberapa proyek saya bisa pergi ke akun git saya :
+dan jika ingin melihat beberapa proyek saya bisa pergi ke akun git saya atau kontak saya di :
 
 1. [aerphanas](https://github.com/aerphanas) (github)
 2. [aerphanas](https://gitlab.com/aerphanas) (gitlab)
-3. [aerphanas@libretooth.gr](https://libretooth.gr/@aerphanas) (mastodon)
+3. <a rel="me" href="https://libretooth.gr/@aerphanas">aerphanas@libretooth.gr</a> (mastodon)
 4. aerphanas@gnu.gr (xmpp)
