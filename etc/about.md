@@ -25,3 +25,5 @@ dan jika ingin melihat beberapa proyek saya bisa pergi ke akun git saya :
 
 1. [aerphanas](https://github.com/aerphanas) (github)
 2. [aerphanas](https://gitlab.com/aerphanas) (gitlab)
+3. [aerphanas@libretooth.gr](https://libretooth.gr/@aerphanas) (mastodon)
+4. aerphanas@gnu.gr (xmpp)
