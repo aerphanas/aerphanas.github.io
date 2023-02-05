@@ -1,7 +1,7 @@
 ---
 title: Alternatif Docker - Podman Pod
 author: aerphanas
-desc: Podman memiliki fungsi yang hampir mirip dengan docker compose tetapi lebih baik menurut saya, kita juga bisa import konfigurasi dari kubernetes.
+desc: Podman memiliki fungsi yang hampir mirip dengan docker compose tetapi lebih baik menurut saya, kita juga bisa import konfigurasi dari kubernetes dan sebaliknya.
 image: alternatif-docker-podman-pod-fig1.png
 ---
 
