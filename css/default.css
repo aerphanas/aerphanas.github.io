@@ -32,7 +32,7 @@
 
 /* Class Section */
 
-.sourceCode {
+/* .sourceCode {
   font-family: "Fira Code Regular";
   overflow-x: auto;
   background-color: #F6F8FA;
@@ -44,8 +44,9 @@
 .sourceCode::-webkit-scrollbar {
   display: none;
 }
+ */
 
-span .ex {
+ span .ex {
   padding-left: 10px;
 }
 
