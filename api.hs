@@ -1,36 +1,18 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 import Hakyll
-    ( getResourceBody,
-      makeItem,
-      saveSnapshot,
-      loadAll,
-      loadAllSnapshots,
-      defaultConfiguration,
-      copyFileCompiler,
-      fromList,
-      idRoute,
-      setExtension,
-      compile,
-      create,
-      match,
-      route,
-      hakyllWith,
-      compressCssCompiler,
-      renderAtom,
-      relativizeUrls,
-      pandocCompiler,
-      constField,
-      dateField,
-      defaultContext,
-      listField,
-      applyAsTemplate,
-      loadAndApplyTemplate,
-      templateBodyCompiler,
-      recentFirst,
-      Configuration(destinationDirectory),
-      FeedConfiguration(..),
-      Context )
+import Text.Pandoc.Highlighting (Style, breezeDark, styleToCss)
+import Text.Pandoc.Options      (ReaderOptions (..), WriterOptions (..))
+
+pandocCodeStyle :: Style
+pandocCodeStyle = breezeDark
+
+pandocCompiler' :: Compiler (Item String)
+pandocCompiler' =
+  pandocCompilerWith
+    defaultHakyllReaderOptions
+    defaultHakyllWriterOptions
+      { writerHighlightStyle = Just pandocCodeStyle }
 
 root :: String
 root = "https://aerphanas.github.io"
@@ -75,7 +57,7 @@ main = hakyllWith config $ do
 
     match "posts/*" $ do
         route $ setExtension         "html"
-        compile $ pandocCompiler
+        compile $ pandocCompiler'
             >>= loadAndApplyTemplate "templates/post.html"    postCtx
             >>= saveSnapshot         "content"
             >>= loadAndApplyTemplate "templates/default.html" postCtx
@@ -131,6 +113,11 @@ main = hakyllWith config $ do
 
             posts <- fmap (take 10) . recentFirst =<< loadAllSnapshots "posts/*" "content"
             renderAtom myFeedConfiguration feedCtx posts
+
+    create ["css/syntax.css"] $ do
+        route idRoute
+        compile $ do
+            makeItem $ styleToCss pandocCodeStyle
 
 --------------------------------------------------------------------------------
 postCtx :: Context String
