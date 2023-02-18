@@ -19,7 +19,7 @@ image: install_software_dari_aur-fig1.png
 
 ---
 
-Arch User Repository atau disingkat AUR adalah sebuah tempat untuk developer atau pihak ke 2 mendistribusikan software/packagenya ke arch linux dengan mudah.
+Arch User Repository atau disingkat AUR adalah sebuah tempat untuk developer atau pihak ke 3 mendistribusikan software/packagenya ke arch linux dengan mudah.
 
 sebelum menginstal software dari AUR kita harus mimiliki ```git``` dan ```base-devel```, kita bisa menginstallnya dengan pacman :
 
