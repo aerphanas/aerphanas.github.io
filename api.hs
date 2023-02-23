@@ -1,6 +1,9 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 import Hakyll
+import Hakyll.Web.Meta.OpenGraph
+import Hakyll.Web.Meta.TwitterCard
+
 import Text.Pandoc.Highlighting (Style, kate, styleToCss)
 import Text.Pandoc.Options      (ReaderOptions (..), WriterOptions (..))
 
@@ -27,7 +30,10 @@ myFeedConfiguration = FeedConfiguration
     }
 
 config :: Configuration
-config = defaultConfiguration { destinationDirectory = "docs" }
+config = defaultConfiguration
+    { destinationDirectory = "docs"
+    , inMemoryCache = True
+    }
 
 main :: IO ()
 main = hakyllWith config $ do
@@ -57,11 +63,18 @@ main = hakyllWith config $ do
 
     match "posts/*" $ do
         route $ setExtension         "html"
-        compile $ pandocCompiler'
-            >>= loadAndApplyTemplate "templates/post.html"    postCtx
-            >>= saveSnapshot         "content"
-            >>= loadAndApplyTemplate "templates/default.html" postCtx
-            >>= relativizeUrls
+        compile $ do
+            let postWithOg =
+                    constField "root"  root               <>
+                    openGraphField "opengraph" postWithOg <>
+                    twitterCardField "twitter" postWithOg <>
+                    defaultContext
+
+            pandocCompiler'
+                >>= loadAndApplyTemplate "templates/post.html"    postCtx
+                >>= saveSnapshot         "content"
+                >>= loadAndApplyTemplate "templates/default.html" postWithOg
+                >>= relativizeUrls
 
     match "index.html" $ do
         route idRoute
@@ -70,6 +83,7 @@ main = hakyllWith config $ do
             let indexCtx =
                     listField  "posts" postCtx (return posts) <>
                     constField "root"  root                   <>
+                    openGraphField "opengraph" indexCtx <>
                     defaultContext
 
             getResourceBody
@@ -125,4 +139,5 @@ postCtx =
     constField "root"     root        <>
     dateField  "sitedate" "%Y-%m-%d"  <>
     dateField  "date"     "%b %d, %Y" <>
+    openGraphField "opengraph" defaultContext <>
     defaultContext

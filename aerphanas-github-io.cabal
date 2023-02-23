@@ -4,7 +4,7 @@ version:            0.1.0.0
 synopsis:           aerphanas static site blog
 description:        static site blog using hakyll
 copyright:          aerphanas 2023
-license:            BSD-3-Clause
+license:            BSD3
 license-file:       LICENSE
 author:             aerphanas
 maintainer:         muhamadaviv14@gmail.com
