@@ -55,6 +55,10 @@ main = hakyllWith config $ do
         route   idRoute
         compile compressCssCompiler
 
+    match "404.html" $ do
+        route   idRoute
+        compile copyFileCompiler
+
     match "etc/about.md" $ do
         route   $ setExtension       "html"
         compile $ pandocCompiler
