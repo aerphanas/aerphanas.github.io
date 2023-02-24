@@ -93,7 +93,7 @@ test = do c_main
 main :: IO ()
 main = do
     _ <- c_print_something
-    ptr <- testing_mem
+    ptr <- c_testing_mem
     x <- peek ptr
     free ptr
     c_main
