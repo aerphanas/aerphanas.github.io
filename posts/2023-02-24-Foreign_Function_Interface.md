@@ -118,6 +118,22 @@ ghc -o main Main.hs Cbits.c -lcurl
 
 bisa dilihat dalam program C saya membuat 3 buah fungsi, fungsi untuk mencetak sebuah string ke layar, fungsi yang didalamnya terdapat pointer yang berisi address memori yang teralokasikan dan juga fungsi yang mengambil sebuah input lalu mencetaknya, semua yang saya panggil bisa berjalan dengan lancar di dalam bahasa Haskell, dari sini kita bisa membuat sebuah program yang lebih fleksibel karna memiliki kelebihan dari kedua bahasa yang berbeda.
 
+selain menggunakan fungsi yang kita buat kita juga mampu memanggil fungsi yang berasal dari header system, contohnya saya bisa menggunakan printf dalam haskell dengan mengimport ```stdio.h``` seperti ini :
+
+```haskell
+{-# LANGUAGE CApiFFI #-}
+
+import Foreign.C.String ( CString, withCString )
+
+foreign import capi "stdio.h printf" c_printf :: CString -> IO ()
+
+printf :: String -> IO ()
+printf x = withCString x c_printf
+
+main :: IO ()
+main = printf "Hello world \n"
+```
+
 ### Racket
 
 dalam sacket kita bahkan bisa langsung memanggil librari yang kita mau, sebagai contoh kita bisa memanggil ```libc``` lalu kita bisa jalankan langsung di racketnya, contohnya seperti ini :
