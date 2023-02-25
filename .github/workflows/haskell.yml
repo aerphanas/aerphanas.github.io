@@ -1,0 +1,47 @@
+name: Build Devel
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "devel" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: haskell/actions/setup@v2
+      with:
+        ghc-version: '9.2.5'
+        cabal-version: '3.6.2.0'
+
+    - name: Cache ~/.cabal/packages, ~/.cabal/store and dist-newstyle
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.cabal/packages
+          ~/.cabal/store
+          dist-newstyle
+        key: ${{ runner.os }}-${{ matrix.ghc }}-${{ hashFiles('**/*.cabal', '**/cabal.project', '**/cabal.project.freeze') }}
+        restore-keys: ${{ runner.os }}-${{ matrix.ghc }}-
+
+    - name: Install dependencies
+      run: |
+        cabal update
+        cabal build --only-dependencies --enable-tests --enable-benchmarks
+
+    - name: Build
+      run: cabal build --enable-tests --enable-benchmarks all
+
+    - name: generate site
+      run: cabal exec kompor build
+
+    - name: Setup Pages
+      uses: actions/configure-pages@v2
+        
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v1
+      with:
+        path: "./docs"
