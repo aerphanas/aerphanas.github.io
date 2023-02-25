@@ -12,7 +12,9 @@ image: foreign_function_interface-fig1.png
 - [Pendahuluan](#pendahuluan)
 - [Apa itu FFI ?](#apa-itu-ffi)
 - [Tujuan Menggunakan FFI](#tujuan-menggunakan-ffi)
+- [Contoh penggunaan FFI](#contoh-penggunaan-ffi)
   - [Haskell](#haskell)
+  - [Racket](#racket)
 - [Daftar Pustaka](#daftar-pustaka)
 
 ## Pendahuluan
@@ -116,6 +118,33 @@ ghc -o main Main.hs Cbits.c -lcurl
 
 bisa dilihat dalam program C saya membuat 3 buah fungsi, fungsi untuk mencetak sebuah string ke layar, fungsi yang didalamnya terdapat pointer yang berisi address memori yang teralokasikan dan juga fungsi yang mengambil sebuah input lalu mencetaknya, semua yang saya panggil bisa berjalan dengan lancar di dalam bahasa Haskell, dari sini kita bisa membuat sebuah program yang lebih fleksibel karna memiliki kelebihan dari kedua bahasa yang berbeda.
 
+### Racket
+
+dalam sacket kita bahkan bisa langsung memanggil librari yang kita mau, sebagai contoh kita bisa memanggil ```libc``` lalu kita bisa jalankan langsung di racketnya, contohnya seperti ini :
+
+```scheme
+#lang racket
+
+(require ffi/unsafe)
+
+(define libc
+  (ffi-lib "libc.so.6"))
+
+(define printf
+  (get-ffi-obj "printf" libc
+    (_fun _string -> _void)))
+
+(printf "Hello Worlds\n")
+```
+
+kita juga bisa memanggil dari c program yang kita buat, tetapi kita harus membuat shared object terlebih dahulu, untuk membuat shared library kita bisa menggunakan perintah gcc :
+
+```sh
+gcc -shared -fpic -o <nama-output>.so <nama-source>.c
+```
+
+cara memanggilnya sama dengan sebelumnya
+
 ## Daftar Pustaka
 
 ---
@@ -125,6 +154,9 @@ bisa dilihat dalam program C saya membuat 3 buah fungsi, fungsi untuk mencetak s
 
 - Wikipedia  
 ↪ [Foreign function interface](https://en.wikipedia.org/wiki/Foreign_function_interface)  
+
+- Racket Docs  
+↪ [The Racket Foreign Interface](https://docs.racket-lang.org/foreign/index.html)  
 
 - Fire Salamander Photo  
 ↪ [by William Warby](https://www.flickr.com/photos/26782864@N00/7129150359)  
