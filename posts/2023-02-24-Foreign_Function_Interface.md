@@ -136,7 +136,7 @@ main = printf "Hello world \n"
 
 ### Racket
 
-dalam sacket kita bahkan bisa langsung memanggil librari yang kita mau, sebagai contoh kita bisa memanggil ```libc``` lalu kita bisa jalankan langsung di racketnya, contohnya seperti ini :
+dalam racket kita juga bisa langsung memanggil librari yang kita mau, sebagai contoh kita bisa memanggil ```libc``` lalu kita bisa jalankan langsung di racketnya, contohnya seperti ini :
 
 ```scheme
 #lang racket
