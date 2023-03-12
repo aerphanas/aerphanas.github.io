@@ -1,7 +1,7 @@
 ---
 title: Apa itu Monad
 author: aerphanas
-desc: "monad adalah monoid dalam kategori endofunctors", sebuah kata-kata yang membingungkan, tetapi dalam post ini akan di jelaskan arti sebenarnya apa itu monad
+desc: monad adalah monoid dalam kategori endofunctors, sebuah kata-kata yang membingungkan, tetapi dalam post ini akan di jelaskan arti sebenarnya apa itu monad
 image: apa-itu-monad-fig1.png
 ---
 
