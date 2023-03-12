@@ -34,10 +34,12 @@ Monad pertama kali saya dengar ada pada bahasa program yang memiliki paradigma f
 > monad adalah monoid dalam kategori endofunctor, apa masalahnya ?
 
 sebuah kata kata yang diucapkan oleh Philip Wadler saat ditanya apa itu monad dan dalam sebuah buku yang berjudul "Categories for the working mathematician" yang ditulis oleh Saunders Mac Lane di halaman 138 menjelaskan monad,
->"Monad in X is just a monoid in the category of endofunctors of X, with product x replaced by composition of endofunctors and unit set by the identity endofunctor"
+
+> "Monad in X is just a monoid in the category of endofunctors of X, with product x replaced by composition of endofunctors and unit set by the identity endofunctor"
 
 atau dalam bahasa indonesia
->"Secara keseluruhan, Monad di X hanyalah Monid dalam Kategori EndoFunctors X, dengan produk x diganti dengan komposisi endofunctors dan unit yang ditetapkan oleh identitas EndoFunctor"
+
+> "Secara keseluruhan, Monad di X hanyalah Monid dalam Kategori EndoFunctors X, dengan produk x diganti dengan komposisi endofunctors dan unit yang ditetapkan oleh identitas EndoFunctor"
 
 dari pernyataan itu kita harus mebedah satu-satu apa itu monoid, category theory dan endofunctor
 
