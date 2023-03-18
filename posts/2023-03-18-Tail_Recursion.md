@@ -1,7 +1,7 @@
 ---
 title: Tail Recursion
 author: aerphanas
-desc: Tail Recursion merupakan sebuah melakukan loop pada bahasa program yang tidak mendukung looping, Tail Recursion juga lebih efisien dari Recursion biasa
+desc: Tail Recursion merupakan sebuah tehnik loop pada bahasa program yang tidak mendukung looping pada umumnya, Tail Recursion juga lebih efisien dari Recursion biasa
 image: tail-recursion-fig1.png
 ---
 
