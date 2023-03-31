@@ -1,7 +1,7 @@
 ---
-title: Memori Managemen C dan C++
+title: Memori Manajemen C dan C++
 author: aerphanas
-desc: dalam sebuah bahasa program yang tidak memiliki Garbage Colector, biasanya penguna bahasa tersebut diharuskan untuk menggelola memori sendiri
+desc: dalam sebuah bahasa program yang tidak memiliki Garbage Colector, biasanya penguna bahasa tersebut diharuskan untuk menggelola memori mereka sendiri
 image: memori-managemen-c-dan-cpp-fig1.png
 ---
 
@@ -10,7 +10,7 @@ image: memori-managemen-c-dan-cpp-fig1.png
 ## Daftar isi
 
 - [Pendahuluan](#pendahuluan)
-- [Manual Memory C Proggram](#manual-memory-c-program)
+- [Manual Memory C Program](#manual-memory-c-program)
   - [malloc](#malloc)
   - [calloc](#calloc)
   - [realloc](#realloc)
@@ -36,7 +36,7 @@ fungsi `free` digunakan untuk membebaskan memori yang di alokasikan
 
 ### malloc
 
-malloc digunakan untuk mengalokasikan memori pada heap, malloc memerlukan input `size_t` dan mengembalikan `void*` yang artinya fungsi malloc mengembalikan sebuah alamat memori dan fungsi malloc memerlukan input untuk berapa besar memori yang akan dialokasikan.
+malloc digunakan untuk mengalokasikan memori pada memori heap, malloc memerlukan input `size_t` dan mengembalikan `void*` yang artinya fungsi malloc mengembalikan sebuah alamat memori dan fungsi malloc memerlukan input untuk berapa besar memori yang akan dialokasikan.
 
 ```c
 #include <stdio.h>
@@ -55,7 +55,7 @@ int main() {
 }
 ```
 
-pada program diatas kita harus memgkonversi tipe `void*` ke `int*` agar kita dapat menaruh isi di dalamnya kita juga secara manual harus mengunakan fungsi `free` untuk mebersikan memori yang kita pakai.
+pada program diatas kita harus memgkonversi tipe `void*` ke `int*` agar kita dapat menaruh isi di dalamnya kita juga secara manual harus menggunakan fungsi `free` untuk membersihkan memori yang kita pakai.
 
 ### calloc
 
@@ -107,13 +107,13 @@ int main() {
 }
 ```
 
-jika kode di atas di jalankan maka ukuran memori variable n akan berubah yang sebelumnya 4 menjadi 8, karna ukuran dari tipe data int di sini adalah 4.
+jika kode di atas di jalankan maka ukuran memori pada variable n akan berubah yang sebelumnya 4 menjadi 8, karena ukuran dari tipe data int disini adalah 4.
 
 ## Mengelola Memory C++
 
 ---
 
-C++ memiliki 2 buah fungsi yang digunakan untuk mengalokasikan memor yaitu `new` dan `delede`, kita tidak perlu memberikan berapa memori yang kita perlukan, C++ akan otomatis mengalokasikannya untuk kita.
+C++ memiliki 2 buah fungsi yang digunakan untuk mengalokasikan memori yaitu `new` dan `delede`, kita tidak perlu memberikan berapa memori yang kita perlukan, C++ akan otomatis mengalokasikannya untuk kita.
 
 ```c++
 #include <iostream>
@@ -131,7 +131,7 @@ int main(){
 
 ---
 
-terdapat masalah pada kode-kode diatas yang biasanya terjadi pada bahasa program yang mulakukan pengolahan memori secara manual, diantaranya adalah Dangling pointer, Double Free
+terdapat masalah pada kode-kode diatas yang biasanya terjadi pada bahasa program yang mulakukan pengolahan memori secara manual, diantaranya adalah Dangling pointer dan Double Free
 
 Dangling Pointer adalah sebuah pointer yang tidak menunjuk sebuah memori.
 
@@ -152,7 +152,7 @@ int main() {
 }
 ```
 
-kode diatas kita mencoba mengaksesk alamat memori sebuah variable yang berada diluar scope, apa yang terjadi jika alamat memori yang kita gunakan digunakan oleh program lain.
+kode diatas kita mencoba mengaksesk alamat memori sebuah variable yang berada diluar scope, bayangkan apa yang terjadi jika alamat memori yang kita gunakan digunakan oleh program lain ?.
 
 salah satu masalah lain adalah double free yaitu dimana kita melakukan pembersihan memori yang sudah dibersihkan.
 
