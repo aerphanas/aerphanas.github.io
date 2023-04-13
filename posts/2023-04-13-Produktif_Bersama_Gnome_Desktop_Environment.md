@@ -25,7 +25,7 @@ Gnome merupakan sebuah desktop environment atau biasa disingkat DE merupakan seb
 
 ---
 
-Biasanya sebelum saya menggunakan Gnome saya menginstall beberapa eksteni menggunakan Extension Manager yang ada di Flathub.
+Biasanya sebelum saya menggunakan Gnome saya menginstall beberapa ekstensi menggunakan Extension Manager yang ada di Flathub.
 
 Eksteni Gnome yang saya pakai :
 
@@ -37,7 +37,7 @@ Eksteni Gnome yang saya pakai :
 - Pano - Clipboard Manager
 - Status Area Horizontal Spacing
 
-dari eksteni diatas saya mengkonfigurasi
+dari ekstensi diatas saya mengkonfigurasi
 
 - Just Perfection  
 Disable Search, Workspaces App Grid dan menambahkan Activities Button icon dengan logo distro linux yang saya pakai
@@ -50,7 +50,7 @@ khusuh untuk Pano Extension diperlukan beberapa step untuk bisa berjalan
 
 ---
 
-ketika menggunakan gnome saya paling banyak menggunakan keyboard shortcut, tenang saja kombinasi pada Gnome DE sangatlah simple dan tidak terlalu rumit seperti Window Manager, keyboard shortcut yang biasa saya pakai adalah :
+ketika menggunakan Gnome saya paling banyak menggunakan keyboard shortcut, tenang saja kombinasi pada Gnome DE sangatlah simple dan tidak terlalu rumit seperti Window Manager, keyboard shortcut yang biasa saya pakai adalah :
 
 ### SUPER
 
@@ -120,7 +120,7 @@ kombinasi yang digunakan untuk memindahkan window applikasi ke workspace berbeda
 
 ---
 
-statu lagi shortcut yang berguna untuk memanage window yaitu Activities Overview, disini kita bisa menutup, berpindah dan memindahkan applikasi.
+Satu lagi fitur yang berguna untuk memanajemen window yaitu Activities Overview, disini kita bisa menutup, berpindah dan memindahkan applikasi.
 
 untuk bisa menggunakan Activities Overview kita bisa mengklik Activities atau mendorong pointer mouse ke kiri-atas-pinggir layar atau menggunakan tombol SUPER
 
@@ -128,7 +128,7 @@ untuk bisa menggunakan Activities Overview kita bisa mengklik Activities atau me
     <source src="/images/produktif-bersama-gnome-desktop-environment-vid9.webm" type="video/webm">
 </video>
 
-seperti inilah saya menggunakan Gnome DE, saya juga pernah menggunakan KDE tetapi saya lebih merasa produktif di Gnome, Gnome juga mempermudah saya dalam menginstall linux, saya tidak perlu memusingkan mengenai Wifi, Bluetooth dan Brightness save seperti ketika saya menggunakan Window Manager.
+seperti inilah saya menggunakan Gnome DE, saya juga pernah menggunakan KDE tetapi saya lebih merasa produktif di Gnome, Gnome juga mempermudah saya dalam menginstall linux, saya tidak perlu memikirkan/konfigurasi Wifi, Bluetooth dan Brightness save seperti ketika saya menggunakan Window Manager.
 
 ## Daftar Pustaka
 
