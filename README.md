@@ -7,16 +7,14 @@ Static Site Powered by Hakyll
 
 ## Table of contents
 - [Description](#description)
-- [Prerequisites](#prerequisites)
-  - [Container](#container)
-  - [How to use](#how-to-use-kompor)
+- [How to Generate site](#how-to-generate-site)
 - [Contribution](#contribution)
 
 ## Description
 
 The purpose of this blog is to promote OpenSource and teach some tricks and tips on OpenSource in depth, ranging from history, type, configuration, etc..
 
-## Prerequisites
+## How to Generate site
 Terms of the tools that must be installed before developing:
 
 - cabal  >= 1.10
