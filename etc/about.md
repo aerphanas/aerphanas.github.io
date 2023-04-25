@@ -1,13 +1,13 @@
 ---
 title: Tentang Saya
-desc: siapa itu aerphanas, tujuan kenapa blog ini dibuat berdesain menimalis tanpa bloat, cara mengkontak pembuat web.
+desc: siapa itu aerphanas, tujuan kenapa blog ini dibuat, cara mengkontak pembuat web.
 sitedate: 2022-08-21
 ---
 
 Hai, nama saya Muhammad Aviv Burhanudin tapi di sini saya menggunakan nama aerphanas karna itu adalah nama username github saya,
 saya mendukung gerakan kode terbuka atau opens source, sebenarnya saya sudah menggunakan static site sejak dulu dan dulu
 saya menggunakan static site generator yang bernama jekyll, karna saya tidak lagi meggunakan ruby dan saat ini saya sedang
-tertarik dengan bahasa program haskell maka dari itu saya migrasi dari jekyll ke hakyll, di dunia open source ini saya 
+tertarik dengan bahasa program haskell maka dari itu saya migrasi dari jekyll ke hakyll, di dunia open source ini saya
 mimiliki beberapa proyek yaitu mulai dari alat untuk terminal sampai graphical user interface (gui), dan saya juga sudah lama
 menggunakan sistem operasi GNU/Linux, saat ini menggunakan Linux distribution yang bernama NixOS.
 
