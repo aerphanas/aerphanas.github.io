@@ -1,0 +1,56 @@
+#!/bin/sh
+#|-*- mode:lisp -*-|#
+#|
+exec ros -Q -- $0 "$@"
+|#
+(progn ;;init forms
+  (ros:ensure-asdf)
+  #+quicklisp(ql:quickload '() :silent t))
+
+(defpackage :ros.script.new-post.3891820277
+  (:use :cl))
+
+(in-package :ros.script.new-post.3891820277)
+
+;; (list day month year)
+(defvar *today*
+  (let ((times
+	  (multiple-value-list
+	     (decode-universal-time (get-universal-time)))))
+    (list (fourth times)
+	  (fifth times)
+	  (sixth times))))
+
+(defun append-zero1 (num)
+  "appends the number 0 to the number output string"
+  (concatenate
+	 'string
+	 "0"
+	 (format nil "~a" num)))
+
+(defun num-pretty (num)
+  "make a good number by adding 0 in front of the number"
+  (if (> 10 num)
+      (append-zero1 num)
+      (format nil "~a" num)))
+
+(defun gen-file-name (title)
+  "generate file name"
+  (let ((name (substitute #\_ #\Space title))
+	(year (num-pretty (caddr *today*)))
+	(month (num-pretty (cadr *today*)))
+	(day (num-pretty (car *today*))))
+     (format nil "~a-~a-~a-~a.md" year month day name)))
+
+(defun main (&rest argv)
+  (declare (ignorable argv))
+  (format t "input file name : ")
+  (force-output)
+  (let ((file-name (concatenate
+		    'string
+		    "posts/"
+		    (gen-file-name (read-line))))
+	(file-template "templates/post-template.md"))
+    (uiop:run-program (list "cp" file-template file-name))))
+
+;;; vim: set ft=lisp lisp:

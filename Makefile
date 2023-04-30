@@ -3,9 +3,10 @@
 CBL := @cabal
 EXE := kompor
 CMD := $(CBL) run -- $(EXE)
+SCRIPT-DIR := ./script/
 
 help:
-	@echo "make [dep-update/dep-clean/dep-build/watch/clean/build/rebuild/check]"
+	@echo "make [dep-update/dep-clean/dep-build/watch/clean/build/rebuild/check/new]"
 
 dep-update:
 	$(CBL) update
@@ -30,3 +31,6 @@ rebuild:
 
 check:
 	$(CMD) check
+
+new: $(SCRIPT-DIR)new-post.ros
+	@$(SHELL) $(SCRIPT-DIR)new-post.ros
