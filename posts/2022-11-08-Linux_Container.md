@@ -152,46 +152,46 @@ systemd-nspawn dibuat pada 14 Maret 2011, dan awal tujuanya adalah untuk memudah
 ↪ [What is Podman?](https://docs.podman.io/en/latest/)  
 
 - Linuxcontainers  
-↪ [LXD Introduction](https://linuxcontainers.org/lxd/introduction/)  
+→ [LXD Introduction](https://linuxcontainers.org/lxd/introduction/)  
 
 - Canonical  
-↪ [LXD virtual machines: an overview](https://canonical.com/blog/lxd-virtual-machines-an-overview)  
+→ [LXD virtual machines: an overview](https://canonical.com/blog/lxd-virtual-machines-an-overview)  
 
 - the Open Container Initiative  
-↪ [About the Open Container Initiative](https://opencontainers.org/about/overview/)  
+→ [About the Open Container Initiative](https://opencontainers.org/about/overview/)  
 
 - Youki  
-↪ [Youki User and Developer Documentation](https://containers.github.io/youki/)  
+→ [Youki User and Developer Documentation](https://containers.github.io/youki/)  
 
 - Kata Container  
-↪ [An overview of the Kata Containers project](https://katacontainers.io/learn/)  
+→ [An overview of the Kata Containers project](https://katacontainers.io/learn/)  
 
 - Google Cloud  
-↪ [Open-sourcing gVisor, a sandboxed container runtime](https://cloud.google.com/blog/products/identity-security/open-sourcing-gvisor-a-sandboxed-container-runtime)  
+→ [Open-sourcing gVisor, a sandboxed container runtime](https://cloud.google.com/blog/products/identity-security/open-sourcing-gvisor-a-sandboxed-container-runtime)  
 
 - freedesktop.org  
-↪ [Systemd-nspawn](https://www.freedesktop.org/software/systemd/man/systemd-nspawn.html)  
-↪ [machinectl](https://www.freedesktop.org/software/systemd/man/machinectl.html)  
+→ [Systemd-nspawn](https://www.freedesktop.org/software/systemd/man/systemd-nspawn.html)  
+→ [machinectl](https://www.freedesktop.org/software/systemd/man/machinectl.html)  
 
 - Arch Wiki  
-↪ [systemd-nspawn](https://wiki.archlinux.org/title/systemd-nspawn#Management)  
+→ [systemd-nspawn](https://wiki.archlinux.org/title/systemd-nspawn#Management)  
 
 - Github  commit  
-↪ [Docker Rootles pull request](https://github.com/docker/docs/pull/9729)  
-↪ [Podman initial commit](https://github.com/containers/podman/commit/a031b83a09a8628435317a03f199cdc18b78262f)  
-↪ [Nerdctl initial commit](https://github.com/containerd/nerdctl/commit/f0d302cac40fbdbfcfe74a3ba5cbefdf2f5b3741)  
-↪ [Runc initial commit](https://github.com/opencontainers/runc/commit/6415e8becc2c47845cf565b87229b5dbd2fa40ad)  
-↪ [Crun initial commit](https://github.com/containers/crun/commit/b8be7fd24c8f15a4abeaa06ad6c5e5d00cdd58d4)  
-↪ [Railcar commit](https://github.com/oracle/railcar/commit/f2666751efb3310d843442d60bf9b8df40e009d8)  
-↪ [Systemd-nspawn initial commit](https://github.com/systemd/systemd/commit/88213476187cafc86bea2276199891873000588d)
+→ [Docker Rootles pull request](https://github.com/docker/docs/pull/9729)  
+→ [Podman initial commit](https://github.com/containers/podman/commit/a031b83a09a8628435317a03f199cdc18b78262f)  
+→ [Nerdctl initial commit](https://github.com/containerd/nerdctl/commit/f0d302cac40fbdbfcfe74a3ba5cbefdf2f5b3741)  
+→ [Runc initial commit](https://github.com/opencontainers/runc/commit/6415e8becc2c47845cf565b87229b5dbd2fa40ad)  
+→ [Crun initial commit](https://github.com/containers/crun/commit/b8be7fd24c8f15a4abeaa06ad6c5e5d00cdd58d4)  
+→ [Railcar commit](https://github.com/oracle/railcar/commit/f2666751efb3310d843442d60bf9b8df40e009d8)  
+→ [Systemd-nspawn initial commit](https://github.com/systemd/systemd/commit/88213476187cafc86bea2276199891873000588d)
 
 - Github Repository  
-↪ [Runc](https://github.com/opencontainers/runc)  
-↪ [Crun](https://github.com/containers/crun)  
-↪ [LXC](https://github.com/lxc/lxc)  
-↪ [Podman](https://github.com/containers/podman)  
-↪ [Youki](https://github.com/containers/youki)  
-↪ [Kata Container](https://github.com/kata-containers/kata-containers)  
-↪ [gVisor](https://github.com/google/gvisor)  
-↪ [Machinectl](https://github.com/systemd/systemd/blob/main/src/machine/machinectl.c)  
-↪ [Systemd-nspawn](https://github.com/systemd/systemd/blob/main/src/nspawn/nspawn.c)
+→ [Runc](https://github.com/opencontainers/runc)  
+→ [Crun](https://github.com/containers/crun)  
+→ [LXC](https://github.com/lxc/lxc)  
+→ [Podman](https://github.com/containers/podman)  
+→ [Youki](https://github.com/containers/youki)  
+→ [Kata Container](https://github.com/kata-containers/kata-containers)  
+→ [gVisor](https://github.com/google/gvisor)  
+→ [Machinectl](https://github.com/systemd/systemd/blob/main/src/machine/machinectl.c)  
+→ [Systemd-nspawn](https://github.com/systemd/systemd/blob/main/src/nspawn/nspawn.c)

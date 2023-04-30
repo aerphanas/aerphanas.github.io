@@ -166,13 +166,13 @@ cara memanggilnya sama dengan sebelumnya
 ---
 
 - Haskell Wiki  
-↪ [Foreign Function Interface](https://wiki.haskell.org/Foreign_Function_Interface)  
+→ [Foreign Function Interface](https://wiki.haskell.org/Foreign_Function_Interface)  
 
 - Wikipedia  
-↪ [Foreign function interface](https://en.wikipedia.org/wiki/Foreign_function_interface)  
+→ [Foreign function interface](https://en.wikipedia.org/wiki/Foreign_function_interface)  
 
 - Racket Docs  
-↪ [The Racket Foreign Interface](https://docs.racket-lang.org/foreign/index.html)  
+→ [The Racket Foreign Interface](https://docs.racket-lang.org/foreign/index.html)  
 
 - Fire Salamander Photo  
-↪ [by William Warby](https://www.flickr.com/photos/26782864@N00/7129150359)  
+→ [by William Warby](https://www.flickr.com/photos/26782864@N00/7129150359)  

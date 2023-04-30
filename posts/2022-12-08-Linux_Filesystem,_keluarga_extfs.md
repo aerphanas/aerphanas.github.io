@@ -128,20 +128,20 @@ Note : Berhati-hatilah saat menjalankan perintah diatas, karna bila ada kesalaha
 ---
 
 - Linux Source code  
-↪ [Linux v0.96c](https://www.tuhs.org/cgi-bin/utree.pl?file=Linux0.96c/include/linux/ext_fs.h)
+→ [Linux v0.96c](https://www.tuhs.org/cgi-bin/utree.pl?file=Linux0.96c/include/linux/ext_fs.h)
 
 - ext2fsprogs  
-↪ [Design and Implementation of the Second Extended Filesystem](https://e2fsprogs.sourceforge.net/ext2intro.html)  
-↪ [Journaling the Linux ext2fs Filesystem](https://e2fsprogs.sourceforge.net/journal-design.pdf)  
-↪ [Ext2fs Home Page](https://e2fsprogs.sourceforge.net/ext2.html)  
+→ [Design and Implementation of the Second Extended Filesystem](https://e2fsprogs.sourceforge.net/ext2intro.html)  
+→ [Journaling the Linux ext2fs Filesystem](https://e2fsprogs.sourceforge.net/journal-design.pdf)  
+→ [Ext2fs Home Page](https://e2fsprogs.sourceforge.net/ext2.html)  
 
 - Ext4 (and Ext2/Ext3) Wiki  
-↪ [Ext4](https://ext4.wiki.kernel.org/index.php/Main_Page)  
+→ [Ext4](https://ext4.wiki.kernel.org/index.php/Main_Page)  
 
 - Manual  
-↪ [Ext4](https://man7.org/linux/man-pages/man5/ext4.5.html)  
-↪ [filesystems(5)](https://linux.die.net/man/5/filesystems)  
+→ [Ext4](https://man7.org/linux/man-pages/man5/ext4.5.html)  
+→ [filesystems(5)](https://linux.die.net/man/5/filesystems)  
 
 - Wikipedia  
-↪ [ext4](https://en.wikipedia.org/wiki/Ext4)  
-↪ [ext3](https://en.wikipedia.org/wiki/Ext3)  
+→ [ext4](https://en.wikipedia.org/wiki/Ext4)  
+→ [ext3](https://en.wikipedia.org/wiki/Ext3)  

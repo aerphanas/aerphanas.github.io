@@ -54,5 +54,5 @@ Meskipun demikian, ChatGPT masih merupakan pilihan yang bagus untuk digunakan da
 ---
 
 - OpenAI  
-↪ [ChatGPT](https://chat.openai.com)  
-↪ [Dall-E](https://labs.openai.com/)  
+→ [ChatGPT](https://chat.openai.com)  
+→ [Dall-E](https://labs.openai.com/)  

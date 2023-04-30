@@ -134,13 +134,13 @@ diatas bisa dijelaskan bahwa fungsi add mengambil 2 input dan memberikan 1 outpu
 ---
 
 - Youtube  
-↪ [Functional Design Patterns - Scott Wlaschin](https://youtu.be/srQt1NAHYC0)  
+→ [Functional Design Patterns - Scott Wlaschin](https://youtu.be/srQt1NAHYC0)  
 
 - Haskell  
-↪ [Homepage](https://haskell.org)
+→ [Homepage](https://haskell.org)
 
 - Racket  
-↪ [Homepage](https://racket-lang.org)
+→ [Homepage](https://racket-lang.org)
 
 - Practical Adult Insights  
-↪ [What is an Ivory Tower?](https://www.practicaladultinsights.com/what-is-an-ivory-tower.htm)
+→ [What is an Ivory Tower?](https://www.practicaladultinsights.com/what-is-an-ivory-tower.htm)

@@ -60,14 +60,14 @@ Matematika sangatlah penting agar setiap perhitungan yang kita lakukan dilakukan
 ---
 
 - Github Repository  
-↪ [C-ippher](https://github.com/aerphanas/C-ippher)  
-↪ [Chimpanzee](https://github.com/aerphanas/Chimpanzee)  
+→ [C-ippher](https://github.com/aerphanas/C-ippher)  
+→ [Chimpanzee](https://github.com/aerphanas/Chimpanzee)  
 
 - Youtube Video  
-↪ [The 4 things it takes to be an expert](https://youtu.be/5eW6Eagr9XA)  
+→ [The 4 things it takes to be an expert](https://youtu.be/5eW6Eagr9XA)  
 
 - Project Euler  
-↪ [About Project Euler](https://projecteuler.net/)  
+→ [About Project Euler](https://projecteuler.net/)  
 
 - Know Your Meme  
-↪ [Wojacks Playing Chess With His Own Brain](https://knowyourmeme.com/photos/1218305-tfw-too-intelligent-2smart)  
+→ [Wojacks Playing Chess With His Own Brain](https://knowyourmeme.com/photos/1218305-tfw-too-intelligent-2smart)  

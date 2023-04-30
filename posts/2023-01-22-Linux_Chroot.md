@@ -189,22 +189,22 @@ NixOS memberikan sebuah tool untuk memudahkan chroot seperti arch linux (```arch
 ---
 
 - Gentoo Wiki  
-↪ [Chroot](https://wiki.gentoo.org/wiki/Chroot)  
+→ [Chroot](https://wiki.gentoo.org/wiki/Chroot)  
 
 - Arch Wiki  
-↪ [Chroot](https://wiki.archlinux.org/title/chroot)  
+→ [Chroot](https://wiki.archlinux.org/title/chroot)  
 
 - Wikipedia  
-↪ [Chroot](https://en.wikipedia.org/wiki/Chroot)  
+→ [Chroot](https://en.wikipedia.org/wiki/Chroot)  
 
 - Tom's Development Blog  
-↪ [Chroot into an Ubuntu on zfs system](https://tpmullan.com/2021/10/27/chroot-into-an-ubuntu-on-zfs-system/)  
+→ [Chroot into an Ubuntu on zfs system](https://tpmullan.com/2021/10/27/chroot-into-an-ubuntu-on-zfs-system/)  
 
 - Guix Manual  
-↪ [Chrooting into an existing system](https://guix.gnu.org/en/manual/devel/en/guix.html#Chrooting-into-an-existing-system)  
+→ [Chrooting into an existing system](https://guix.gnu.org/en/manual/devel/en/guix.html#Chrooting-into-an-existing-system)  
 
 - NixOS Wiki  
-↪ [Change root](https://nixos.wiki/wiki/Change_root)  
+→ [Change root](https://nixos.wiki/wiki/Change_root)  
 
 - MaiZure's Projects  
-↪ [Decoded: GNU coreutils](https://www.maizure.org/projects/decoded-gnu-coreutils/)  
+→ [Decoded: GNU coreutils](https://www.maizure.org/projects/decoded-gnu-coreutils/)  

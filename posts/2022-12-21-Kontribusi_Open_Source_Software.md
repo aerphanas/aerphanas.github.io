@@ -60,5 +60,5 @@ pengguna yang mengalami masalah tetapi tidak mendapat jawaban akan sangat memben
 ---
 
 - Open Source Guides  
-↪ [How to Contribute to Open Source](https://opensource.guide/how-to-contribute/)  
-↪ [Open Source Initiative](https://opensource.org/about)  
+→ [How to Contribute to Open Source](https://opensource.guide/how-to-contribute/)  
+→ [Open Source Initiative](https://opensource.org/about)  

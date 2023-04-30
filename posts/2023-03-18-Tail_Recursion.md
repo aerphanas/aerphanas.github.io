@@ -97,7 +97,7 @@ dengan melakukan recursion seperti ini kita bisa menghindari stack overflow karn
 ---
 
 - YouTube  
-↪ [Tail Recursion Explained - Computerphile](https://www.youtube.com/watch?v=_JtPhF8MshA&t=357s)  
+→ [Tail Recursion Explained - Computerphile](https://www.youtube.com/watch?v=_JtPhF8MshA&t=357s)  
 
 - Github  
-↪ [NixOS Recursion Artwork](https://github.com/NixOS/nixos-artwork)  
+→ [NixOS Recursion Artwork](https://github.com/NixOS/nixos-artwork)  

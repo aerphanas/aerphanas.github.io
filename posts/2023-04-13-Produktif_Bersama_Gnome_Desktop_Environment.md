@@ -135,22 +135,22 @@ seperti inilah saya menggunakan Gnome DE, saya juga pernah menggunakan KDE tetap
 ---
 
 - Gnome  
-↪ [GNOME Home Page](https://www.gnome.org/)  
-↪ [GNOME About Us](https://www.gnome.org/about-us/)
+→ [GNOME Home Page](https://www.gnome.org/)  
+→ [GNOME About Us](https://www.gnome.org/about-us/)
 
 - Flathub  
-↪ [Extension Manager](https://flathub.org/apps/details/com.mattjakeman.ExtensionManager)
+→ [Extension Manager](https://flathub.org/apps/details/com.mattjakeman.ExtensionManager)
 
 
 - Gnome Extensions  
-↪ [Bluetooth Quick Connect](ipsum)  
-↪ [Caffeine](ipsum)  
-↪ [GSconnect](ipsum)  
-↪ [Just Perfection](ipsum)  
-↪ [Legacy (GTK3) Theme Scheme Auto Switcher](ipsum)  
-↪ [Pano - Clipboard Manager](ipsum)  
-↪ [Status Area Horizontal Spacing](ipsum)  
+→ [Bluetooth Quick Connect](ipsum)  
+→ [Caffeine](ipsum)  
+→ [GSconnect](ipsum)  
+→ [Just Perfection](ipsum)  
+→ [Legacy (GTK3) Theme Scheme Auto Switcher](ipsum)  
+→ [Pano - Clipboard Manager](ipsum)  
+→ [Status Area Horizontal Spacing](ipsum)  
 
 
 - Gnome Help  
-↪ [keyboard shortcuts](https://help.gnome.org/users/gnome-help/stable/keyboard-shortcuts-set.html.en)
+→ [keyboard shortcuts](https://help.gnome.org/users/gnome-help/stable/keyboard-shortcuts-set.html.en)

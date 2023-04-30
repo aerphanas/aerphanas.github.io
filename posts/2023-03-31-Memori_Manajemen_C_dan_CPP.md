@@ -260,19 +260,19 @@ int main() {
 ---
 
 - CPP Reference  
-↪ [stdlib](https://en.cppreference.com/w/c/program)  
-↪ [memory](https://en.cppreference.com/w/cpp/header/memory)
+→ [stdlib](https://en.cppreference.com/w/c/program)  
+→ [memory](https://en.cppreference.com/w/cpp/header/memory)
 
 - Wikipedia  
-↪ [Dangling Pointer](https://en.wikipedia.org/wiki/Dangling_pointer)
+→ [Dangling Pointer](https://en.wikipedia.org/wiki/Dangling_pointer)
 
 - Common Weakness Enumeration (CWE)  
-↪ [CWE-415: Double Free](https://cwe.mitre.org/data/definitions/415.html)  
-↪ [CWE-825: Expired Pointer Dereference](https://cwe.mitre.org/data/definitions/825.html)  
-↪ [CWE-416: Use After Free](https://cwe.mitre.org/data/definitions/416.html)
+→ [CWE-415: Double Free](https://cwe.mitre.org/data/definitions/415.html)  
+→ [CWE-825: Expired Pointer Dereference](https://cwe.mitre.org/data/definitions/825.html)  
+→ [CWE-416: Use After Free](https://cwe.mitre.org/data/definitions/416.html)
 
 - Common Vulnerabilities and Exposures (CVE)  
-↪ [CVE-2014-1776](https://web.archive.org/web/20170430095220/http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-1776)
+→ [CVE-2014-1776](https://web.archive.org/web/20170430095220/http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-1776)
 
 - Wallhaven  
-↪ [blue eyes, blonde, anime, c++, programming, New Game!](https://whvn.cc/83q7ek)
+→ [blue eyes, blonde, anime, c++, programming, New Game!](https://whvn.cc/83q7ek)

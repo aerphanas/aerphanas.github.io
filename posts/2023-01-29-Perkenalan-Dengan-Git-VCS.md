@@ -121,4 +121,4 @@ git memiliki alternatif yang dapat kita gunakan secara gratis, diantaranya
 ---
 
 - Git  
-↪ [git-scm](https://git-scm.com/)  
+→ [git-scm](https://git-scm.com/)  

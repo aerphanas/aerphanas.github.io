@@ -60,16 +60,16 @@ sebuah sistem operasi memiliki sebuah tabel partisi yang berguna untuk mengatur 
 ---
 
 - IDAHO STATE UNIVERSITY  
-↪ [A Basic UNIX Tutorial](https://fsl.fmrib.ox.ac.uk/fslcourse/unix_intro/index.html)
+→ [A Basic UNIX Tutorial](https://fsl.fmrib.ox.ac.uk/fslcourse/unix_intro/index.html)
 
 - Geeks for Geeks  
-↪ [Unix File System](https://www.geeksforgeeks.org/unix-file-system/)
+→ [Unix File System](https://www.geeksforgeeks.org/unix-file-system/)
 
 - The Open Group  
-↪ [UNIX Past](https://unix.org/what_is_unix/history_timeline.html)
+→ [UNIX Past](https://unix.org/what_is_unix/history_timeline.html)
 
 - Bell Laboratories  
-↪ [The Evolution of the Unix Time-sharing System](https://www.bell-labs.com/usr/dmr/www/hist.html)
+→ [The Evolution of the Unix Time-sharing System](https://www.bell-labs.com/usr/dmr/www/hist.html)
 
 - WikiPedia Image  
-↪ [An overview of a Unix filesystem layout, CC BY-SA 4.0](https://en.wikipedia.org/wiki/Unix_filesystem#/media/File:Standard-unix-filesystem-hierarchy.svg)
+→ [An overview of a Unix filesystem layout, CC BY-SA 4.0](https://en.wikipedia.org/wiki/Unix_filesystem#/media/File:Standard-unix-filesystem-hierarchy.svg)

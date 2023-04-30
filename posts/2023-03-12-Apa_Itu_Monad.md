@@ -98,7 +98,7 @@ return :: A -> COntext A
 (>>=) :: Context A -> (A -> Context B) -> Context b
 ```
 
-bila saya perhatikan dalam logo haskell terdapat sebuah monad yaitu ```>>-```
+bila saya perhatikan dalam logo haskell terdapat sebuah monad yaitu ```>>=```
 
 dalam sebuah ```maybe``` atau ```options``` dalam bahasa lain juga merupakan monad, di haskell seperti inilah bentuk kode dari ```maybe``` :
 
@@ -146,18 +146,18 @@ Array.asList(1,2,3)
 ---
 
 - Blogspot  
-↪ [A Brief, Incomplete, and Mostly Wrong History of Programming Languages](https://james-iry.blogspot.com/2009/05/brief-incomplete-and-mostly-wrong.html)
+→ [A Brief, Incomplete, and Mostly Wrong History of Programming Languages](https://james-iry.blogspot.com/2009/05/brief-incomplete-and-mostly-wrong.html)
 
 - Youtube  
-↪ [Okay but WTF is a MONAD?????? #SoME2](https://www.youtube.com/watch?v=-fKAh4PVKbU)  
-↪ [A Sensible Introduction to Category Theory](https://www.youtube.com/watch?v=yAi3XWCBkDo&t=922s)  
-↪ [Functors](https://www.youtube.com/watch?v=Q0WB73fzUXg)  
+→ [Okay but WTF is a MONAD?????? #SoME2](https://www.youtube.com/watch?v=-fKAh4PVKbU)  
+→ [A Sensible Introduction to Category Theory](https://www.youtube.com/watch?v=yAi3XWCBkDo&t=922s)  
+→ [Functors](https://www.youtube.com/watch?v=Q0WB73fzUXg)  
 
 - Community LYAH  
-↪ [Community Learn You a Haskell](https://learnyouahaskell.github.io/a-fistful-of-monads.html)  
+→ [Community Learn You a Haskell](https://learnyouahaskell.github.io/a-fistful-of-monads.html)  
 
 - Oracle Docs  
-↪ [Java stream API](https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html)  
+→ [Java stream API](https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html)  
 
 - Xmobar  
-↪ [Xmobar tutorial](https://xmonad.org/TUTORIAL.html)  
+→ [Xmobar tutorial](https://xmonad.org/TUTORIAL.html)  

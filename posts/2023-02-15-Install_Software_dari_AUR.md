@@ -75,9 +75,9 @@ pacman akan otomatis menginstall dependencies yang diperlukan agar program berja
 ---
 
 - Arch repository  
-↪ [base-devel](https://archlinux.org/packages/core/any/base-devel/)  
-↪ [git](https://archlinux.org/packages/extra/x86_64/git/)  
-↪ [archlinuux-wallpaper](https://archlinux.org/packages/community/any/archlinux-wallpaper/)  
+→ [base-devel](https://archlinux.org/packages/core/any/base-devel/)  
+→ [git](https://archlinux.org/packages/extra/x86_64/git/)  
+→ [archlinuux-wallpaper](https://archlinux.org/packages/community/any/archlinux-wallpaper/)  
 
 - Arch AUR  
-↪ [Home Page](https://aur.archlinux.org/)  
+→ [Home Page](https://aur.archlinux.org/)  

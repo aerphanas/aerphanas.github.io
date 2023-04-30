@@ -170,19 +170,19 @@ untuk mengupdate snapshot sama caranya untuk mengembalikan keadaan folder/file, 
 ---
 
 - Wikipedia  
-↪ [Btrfs](https://en.wikipedia.org/wiki/Btrfs)  
-↪ [Copy On Write](https://en.wikipedia.org/wiki/Copy-on-write)  
+→ [Btrfs](https://en.wikipedia.org/wiki/Btrfs)  
+→ [Copy On Write](https://en.wikipedia.org/wiki/Copy-on-write)  
 
 - Btrfs Wiki  
-↪ [Btrfs Wiki Main Pages](https://btrfs.wiki.kernel.org/index.php/Main_Page)  
+→ [Btrfs Wiki Main Pages](https://btrfs.wiki.kernel.org/index.php/Main_Page)  
 
 - Btrfs Read The Docs  
-↪ [BTRFS documentation](https://btrfs.readthedocs.io/en/latest/index.html)  
+→ [BTRFS documentation](https://btrfs.readthedocs.io/en/latest/index.html)  
 
 - Linux Hint  
-↪ [How to Create and Mount Btrfs Subvolumes](https://linuxhint.com/create-mount-btrfs-subvolumes/)  
-↪ [How to Use Btrfs Snapshots](https://linuxhint.com/use-btrfs-snapshots/)  
+→ [How to Create and Mount Btrfs Subvolumes](https://linuxhint.com/create-mount-btrfs-subvolumes/)  
+→ [How to Use Btrfs Snapshots](https://linuxhint.com/use-btrfs-snapshots/)  
 
 - Unsplash  
-↪ [Butter slices in the kitchen by Sorin Gheorghita](https://unsplash.com/photos/094mP_CBdpM?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink)  
+→ [Butter slices in the kitchen by Sorin Gheorghita](https://unsplash.com/photos/094mP_CBdpM?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink)  
   
