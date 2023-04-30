@@ -53,7 +53,7 @@
 
         <header>
             <div class="logo">
-                <a href="$root$">λerphanas ∷ Blog</a>
+                <a href="$root$">λerphanas ∷ $title$</a>
             </div>
             <nav>
                 <a href="$root$/etc/about.html">Tentang</a>
@@ -63,7 +63,6 @@
         </header>
 
         <main role="main">
-            <h1>$title$ $if(land)$ <a href="$root$/atom.xml"><i class="fa-solid fa-rss fa-2xs"></i></a>$endif$</h1>
             $if(land)$$desc$$endif$
             $body$
         </main>
@@ -72,6 +71,11 @@
             <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" class="license" target="_blank">
                 <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/80x15.png" />
             </a>
+	    $if(land)$
+	    <a href="$root$/atom.xml">
+	      <i class="fa-solid fa-square-rss fa-xl" style="color: #3d3846;"></i>
+	    </a> |
+	    $endif$
             <a href="https://id.linkedin.com/in/aerphanas?trk=profile-badge" target="_blank">
                 <i class="fa-brands fa-linkedin-in fa-xl" style="color: #3d3846;"></i>
             </a> |

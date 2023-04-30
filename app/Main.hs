@@ -2,55 +2,14 @@
 module Main where
 
 import Hakyll
-    ( getResourceBody,
-      makeItem,
-      saveSnapshot,
-      loadAll,
-      loadAllSnapshots,
-      defaultConfiguration,
-      copyFileCompiler,
-      fromList,
-      idRoute,
-      setExtension,
-      compile,
-      create,
-      match,
-      route,
-      hakyllWith,
-      renderAtom,
-      relativizeUrls,
-      openGraphField,
-      twitterCardField,
-      defaultHakyllReaderOptions,
-      defaultHakyllWriterOptions,
-      pandocCompiler,
-      pandocCompilerWith,
-      constField,
-      dateField,
-      defaultContext,
-      listField,
-      applyAsTemplate,
-      loadAndApplyTemplate,
-      templateBodyCompiler,
-      recentFirst,
-      Compiler,
-      Configuration(inMemoryCache, destinationDirectory),
-      Pattern,
-      Item,
-      Rules,
-      FeedConfiguration(..),
-      Context )
-import Hakyll.Web.Meta.OpenGraph ()
-import Hakyll.Web.Meta.TwitterCard ()
-
-import Text.Pandoc.Highlighting ( kate, styleToCss, Style )
+import Text.Pandoc.Highlighting ( haddock, styleToCss, Style )
 import Text.Pandoc.Options ( WriterOptions(writerHighlightStyle) )
 
 root :: String
 root = "https://aerphanas.github.io"
 
 pandocCodeStyle :: Style
-pandocCodeStyle = kate
+pandocCodeStyle = haddock
 
 pandocCompiler' :: Compiler (Item String)
 pandocCompiler' = pandocCompilerWith
@@ -115,7 +74,7 @@ main = hakyllWith config $ do
     match "index.html" $ do
         route idRoute
         compile $ do
-            posts <-  loadAll "posts/*" >>= (fmap (take 5) . recentFirst)
+            posts <-  loadAll "posts/*" >>= fmap (take 5) . recentFirst
             let indexCtx = listField      "posts"     postCtx (return posts) <>
                            constField     "root"      root                   <>
                            openGraphField "opengraph" indexCtx               <>
@@ -136,7 +95,7 @@ main = hakyllWith config $ do
                     constField "desc"  "Semua postingan yang ada diaerphanas bisa dilihat di sini"  <>
                     defaultContext
             makeItem ""                                                  >>=
-              loadAndApplyTemplate "templates/post-list.html" archiveCtx >>=
+              loadAndApplyTemplate "templates/archive-list.html" archiveCtx >>=
               loadAndApplyTemplate "templates/default.html"   archiveCtx >>=
               relativizeUrls
 
@@ -145,7 +104,7 @@ main = hakyllWith config $ do
         route idRoute
         compile $ do
             posts <- loadAll "posts/*" >>= recentFirst
-            singlePages <- loadAll (fromList ["etc/about.md"])
+            singlePages <- loadAll $ fromList ["etc/about.md"]
             let pages = posts <> singlePages
                 sitemapCtx = constField "root"  root <> listField  "pages" postCtx (return pages)
             makeItem "" >>= loadAndApplyTemplate "templates/sitemap.xml" sitemapCtx

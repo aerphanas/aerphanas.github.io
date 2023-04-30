@@ -1,12 +1,12 @@
 <article>
     <section class="header">
-        diposting pada $date$
-
         $if(author)$
-            oleh $author$
+            $author$
         $else$
-            oleh Anonymous
-        $endif$ <br><br>
+            Anonymous
+        $endif$
+	- $date$
+	<br>
         <a href="https://twitter.com/share?url=$root$$url$&text=$title$&via=$author$" target="_blank">
             <i class="fa-brands fa-twitter fa-xl" style="color: #3d3846;"></i>
         </a>
