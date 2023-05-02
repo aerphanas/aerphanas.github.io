@@ -6,7 +6,8 @@ CMD := $(CBL) run -- $(EXE)
 SCRIPT-DIR := ./script/
 
 help:
-	@echo "make [dep-update/dep-clean/dep-build/watch/clean/build/rebuild/check/new]"
+	@echo "make [dep-update/dep-clean/dep-build/watch/clean]"
+	@echo "     [build/rebuild/check/script-init/script-clean/new]"
 
 dep-update:
 	$(CBL) update
@@ -32,5 +33,11 @@ rebuild:
 check:
 	$(CMD) check
 
-new: $(SCRIPT-DIR)new-post.ros
-	@$(SHELL) $(SCRIPT-DIR)new-post.ros
+script-init: $(SCRIPT-DIR)new-post.ros
+	ros build $(SCRIPT-DIR)new-post.ros --disable-compression
+
+script-clean:
+	find $(SCRIPT-DIR) -type f ! -name "*.*" -delete
+
+new: $(SCRIPT-DIR)new-post
+	@./$(SCRIPT-DIR)new-post
