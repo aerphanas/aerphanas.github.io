@@ -33,11 +33,5 @@ rebuild:
 check:
 	$(CMD) check
 
-script-init: $(SCRIPT-DIR)new-post.ros
-	ros build $(SCRIPT-DIR)new-post.ros --disable-compression
-
-script-clean:
-	find $(SCRIPT-DIR) -type f ! -name "*.*" -delete
-
-new: $(SCRIPT-DIR)new-post
-	@./$(SCRIPT-DIR)new-post
+new: $(SCRIPT-DIR)new-post.ros
+	@./$(SCRIPT-DIR)new-post.ros
