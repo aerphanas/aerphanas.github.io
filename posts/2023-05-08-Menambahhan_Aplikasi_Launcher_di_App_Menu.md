@@ -1,11 +1,11 @@
 ---
-title: Menambahkan Applikasi Launcher di App Menu
+title: Menambahkan Aplikasi Launcher di App Menu
 author: aerphanas
-desc: membuat app launcher untuk menjalankan applikasi yang tidak memiliki desktop launcher yang tampil di app menu
-image: menambahhan-applikasi-launcher-di-app-menu-fig1.png
+desc: membuat app launcher untuk menjalankan aplikasi yang tidak memiliki desktop launcher yang tampil di app menu
+image: menambahhan-aplikasi-launcher-di-app-menu-fig1.png
 ---
 
-![dua soyjaks menunjuk desktop icon](/images/menambahhan-applikasi-launcher-di-app-menu-fig1.png "dua soyjaks menunjuk desktop icon")
+![dua soyjaks menunjuk desktop icon](/images/menambahhan-aplikasi-launcher-di-app-menu-fig1.png "dua soyjaks menunjuk desktop icon")
 
 ## Daftar isi
 
@@ -44,7 +44,7 @@ di web freedesktop terdapat sebuah table list key, desktop entry juga mensupport
 |:-----------:|:-------------------------------------------------:|
 | Type        | tipe entry yang ingin dibuat                      |
 | Version     | versi spec                                        |
-| Name        | nama applikasi yang nanti ditampilkan di app menu |
+| Name        | nama aplikasi yang nanti ditampilkan di app menu |
 | GenericName | nama generik                                      |
 | Comment     | ditampilkan sebagai diskripsi                     |
 | Exec        | letak file binari atau nama binari                |
@@ -52,7 +52,7 @@ di web freedesktop terdapat sebuah table list key, desktop entry juga mensupport
 | Terminal    | menjalankan terminal saat mengklik app            |
 
 - **Type**, disini saya ingin membuat sebuah app launcher maka saya akan mengisi `Application`
-- **Version**, disini saya akan menggunakan versi 1.0, meskipun bisa versi 1.5 tetapi pada umumnya applikasi di linux menggunakan versi 1.0
+- **Version**, disini saya akan menggunakan versi 1.0, meskipun bisa versi 1.5 tetapi pada umumnya aplikasi di linux menggunakan versi 1.0
 - **Name**, saya memasukan nama `Pharo`
 - **GenericName**, saya memasukan `Pure Object-Oriented Programming Language`
 - **Comment**, saya mengisi `Pharo is a mininal, elegant, pure, reflective object language (and fully open-source).`
