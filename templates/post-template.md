@@ -21,4 +21,4 @@ image:
 ---
 
 - lorem  
-↪ [ipsum](ipsum)
+→ [ipsum](ipsum)
