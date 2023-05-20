@@ -1,0 +1,288 @@
+---
+title: Linux Chroot
+author: aerphanas
+desc: Chroot merupakan sebuah utilitas dalam sistem UNIX-Like yang digunakan untuk mengubah direktori menjadi direktori root.
+image: linux-chroot-fig1.png
+---
+
+#+title: Linux Chroot
+
+#+author: aerphanas
+#+caption: tool chroot terdapat pada GNU coreutils
+[[../images/linux-chroot-fig1.png]]
+
+** Daftar Isi
+:PROPERTIES:
+:CUSTOM_ID: daftar-isi
+:END:
+- [[#pendahuluan][Pendahuluan]]
+  - [[#persiapan][Persiapan]]
+  - [[#chroot][Chroot]]
+  - [[#perlakuan-khusus][Perlakuan Khusus]]
+    - [[#openzfs][OpenZFS]]
+    - [[#guixsd][GuixSD]]
+    - [[#nixos][NixOS]]
+- [[#daftar-pustaka][Daftar Pustaka]]
+
+** Pendahuluan
+:PROPERTIES:
+:CUSTOM_ID: pendahuluan
+:END:
+
+--------------
+
+Chroot merupakan sebuah utilitas atau alat command line yang digunakan
+untuk memindahkan root, chroot juga merupakan versi awal dari sebuah
+teknologi yang saat ini kita sebut container.
+
+chroot sangatlah berguna untuk siapapun mulai dari programmer sampai
+sysadmin, berikut kegunaan chroot :
+
+- Pemulihan, chroot sering digunakan oleh sysadmin untuk memperbaiki
+  system yang bermasalah pada configurasi yang menyebabkan sistem tidak
+  bisa menyala atau booting.
+- Pengembangan software, fungsi chroot ini digunakan para developer
+  untuk mengecek sebuah dependensi dari software yang mereka kembangkan,
+  karna setiap distro menyediakan versi dependensi yang berbeda.
+
+#+begin_quote
+perlu diingat bahwa chroot memiliki sebuah limitasi dan beberapa lubang
+keamanan, maka sebaikya gunakanlah teknologi container yang lebih aman
+dari chroot, bila ingin menggunakannya secara serius.
+
+#+end_quote
+
+** Persiapan
+:PROPERTIES:
+:CUSTOM_ID: persiapan
+:END:
+
+--------------
+
+Sebelum menggunakan chroot kita harus menyiapkan beberapa block device
+yang harus terpasang terlebih dahulu ke sebuah folder yang digunakan
+untuk chroot.
+
+block device yang harus disiapkan adalah :
+
+- /dev
+- /proc
+- /sys
+- /tmp
+- /run
+- efivarfs (khusus EFI Boot) atau perbaikan boot
+
+saya asumsikan target folder yang digunakan adalah =mydisk=, maka cara
+menyiapkannya adalah :
+
+#+begin_src sh
+mount --rbind /dev  ./mydisk/dev
+mount --rbind /sys  ./mydisk/sys
+mount --rbind /tmp  ./mydisk/tmp
+mount --bind  /run  ./mydisk/run 
+mount --make-rslave ./mydisk/dev
+mount --make-rslave ./mydisk/sys
+mount -t proc /proc ./mydisk/proc
+#+end_src
+
+khusus Efi dan tujuan untuk perbaikan EFI
+
+#+begin_src sh
+mount --rbind /sys/firmware/efi/efivars ./mydisk/sys/firmware/efi/efivars/
+#+end_src
+
+untuk menggunakan koneksi internet pada chroot
+
+#+begin_src sh
+cp /etc/resolv.conf mydisk/etc
+#+end_src
+
+#+begin_quote
+memasang efivarfs digunakan hanya jika kita ingin melakukan perbaikan
+pada entri efi
+
+#+end_quote
+
+** Chroot
+:PROPERTIES:
+:CUSTOM_ID: chroot
+:END:
+
+--------------
+
+untuk melakukan chroot sangatlah mudah kita hanya perlu menggunakan
+perintahnya dengan tambahan folder dan command yang dijalankan,
+contohnya seperti ini :
+
+#+begin_src sh
+chroot ./mydisk /bin/bash
+#+end_src
+
+setelah itu kita bisa memuat konfigurasi Shell yang ada pada chroot
+dengan :
+
+#+begin_src sh
+source /etc/profile
+source ~/.bashrc
+#+end_src
+
+agar tidak membingunkan kita membedakan mana terminal yang berisi chroot
+dan mana yang tidak, kita bisa mengedit variable PS1 pada Shell
+contohnya seperti ini :
+
+#+begin_src sh
+export PS1="(chroot) $PS1"
+#+end_src
+
+bila sudah selesai kita bisa keluar dari chroot dengan perintah =exit=
+dan mencopot block device dengan perintah :
+
+#+begin_src sh
+umount --recursive ./mydisk
+#+end_src
+
+** Perlakuan Khusus
+:PROPERTIES:
+:CUSTOM_ID: perlakuan-khusus
+:END:
+
+--------------
+
+beberapa filesystem khusus memiliki caranya sendiri dalam melakukan
+chroot, tidak hanya filesystem saja, ini juga termasuk pada linux distro
+yang tidak menggunakan standar HFS (Hirarki filesystem).
+
+*** OpenZFS
+:PROPERTIES:
+:CUSTOM_ID: openzfs
+:END:
+OpenZfs adalah sebuah filesystem yang memadukan logical volume managemen
+degan filesystem biasa, mungkin saya akan membahasnya pada post khusus.
+
+saya menggunakan =mnt= sebagai target folder, sepertiinilah persiapan
+sebelum chroot :
+
+#+begin_src sh
+zpool export -a
+zpool import -N -R /mnt rpool
+zpool import -N -R /mnt bpool
+zfs load-key -a
+zfs mount rpool/ROOT/ubuntu
+zfs mount bpool/BOOT/ubuntu
+zfs mount -a
+#+end_src
+
+chroot kedalam folder target :
+
+#+begin_src sh
+for i in proc sys dev run tmp; do mount -o bind /$i /mnt/$i; done
+chroot /mnt /bin/bash --login
+mount -a
+#+end_src
+
+untuk keluar dari chroot gunakan perintah berikut :
+
+#+begin_src sh
+exit
+mount | grep -v zfs | tac | awk '/\/mnt/ {print $3}' | xargs -i{} umount -lf {}
+zpool export -a
+#+end_src
+
+#+begin_quote
+ZFS sangatlah berbeda dengan filesystem yang lain namun zfs sangat
+sangat bagus untuk server karna fitur yang ditawarkanya.
+
+#+end_quote
+
+*** GuixSD
+:PROPERTIES:
+:CUSTOM_ID: guixsd
+:END:
+GuixSD merupakan sebuah sistem operasi atau distribusi GNU/Linux yang
+menggunakan Guix Package manager untuk menginstal semua software sistem
+ke folder khusus bernama guix store lalu melakukan link ke dalam HFS
+yang ditentukan oleh Guix package manager.
+
+persiapan untuk melakukan chroot sangatlah mirip pada cara yang biasa,
+yang membedakan adalah kita harus menggunakan live iso khusus, live iso
+yang digunakan haruslah GuixSD karna kita memerlukan proses guix dan
+guix profile.
+
+disini saya menggunakan folder =mnt= sebagai target :
+
+#+begin_src sh
+mount /dev/sda2 /mnt
+# mount Block Device
+mount --bind /proc /mnt/proc
+mount --bind /sys /mnt/sys
+mount --bind /dev /mnt/dev
+#+end_src
+
+setelah itu kita bisa memasuki chroot dengan :
+
+#+begin_src sh
+chroot /mnt /bin/sh
+#+end_src
+
+kita juga harus mempersiapkan beberapa profile, disini nama user saya
+adalah adivin :
+
+#+begin_src sh
+source /var/guix/profiles/system/profile/etc/profile
+source /home/adivin/.guix-profile/etc/profile
+source /home/adivin/.config/guix/current/etc/profile
+#+end_src
+
+setelah itu saya menjalankan proses guix :
+
+#+begin_src sh
+guix-daemon --build-users-group=guixbuild --disable-chroot &
+#+end_src
+
+*** NixOS
+:PROPERTIES:
+:CUSTOM_ID: nixos
+:END:
+NixOS memberikan sebuah tool untuk memudahkan chroot seperti arch linux
+(=arch-chroot=), kita hanya perlu memasang system pada folder =/mnt=
+lalu menjalankan perintah =nixos-enter=, perintah ini otomatis
+menyiapkan Block Device dan mensetting profile yang tepat, namun tentu
+saja kita harus menggunakan live iso dari NixOS.
+
+#+begin_quote
+semua proses diatas dijalankan pada root
+
+#+end_quote
+
+** Daftar Pustaka
+:PROPERTIES:
+:CUSTOM_ID: daftar-pustaka
+:END:
+
+--------------
+
+- Gentoo Wiki\\
+  → [[https://wiki.gentoo.org/wiki/Chroot][Chroot]]
+
+- Arch Wiki\\
+  → [[https://wiki.archlinux.org/title/chroot][Chroot]]
+
+- Wikipedia\\
+  → [[https://en.wikipedia.org/wiki/Chroot][Chroot]]
+
+- Tom's Development Blog\\
+  →
+  [[https://tpmullan.com/2021/10/27/chroot-into-an-ubuntu-on-zfs-system/][Chroot
+  into an Ubuntu on zfs system]]
+
+- Guix Manual\\
+  →
+  [[https://guix.gnu.org/en/manual/devel/en/guix.html#Chrooting-into-an-existing-system][Chrooting
+  into an existing system]]
+
+- NixOS Wiki\\
+  → [[https://nixos.wiki/wiki/Change_root][Change root]]
+
+- MaiZure's Projects\\
+  → [[https://www.maizure.org/projects/decoded-gnu-coreutils/][Decoded:
+  GNU coreutils]]

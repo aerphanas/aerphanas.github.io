@@ -44,7 +44,7 @@ exec ros +Q -- $0 "$@"
 	(year (num-pretty (caddr *today*)))
 	(month (num-pretty (cadr *today*)))
 	(day (num-pretty (car *today*))))
-     (format nil "~a-~a-~a-~a.md" year month day name)))
+     (format nil "~a-~a-~a-~a.org" year month day name)))
 
 (declaim (ftype (function () list) create-file))
 (defun create-file ()
@@ -55,7 +55,7 @@ exec ros +Q -- $0 "$@"
 		    'string
 		    "posts/"
 		    (gen-file-name (read-line))))
-	(file-template "templates/post-template.md"))
+	(file-template "templates/post-template.org"))
     (multiple-value-list
      (uiop:run-program (list "cp" file-template file-name)))))
 

@@ -1,0 +1,36 @@
+---
+title: loremipsum
+author: lorem
+desc: lorem
+image:
+---
+
+#+title: lorem
+
+#+author: lorem
+#+caption: image
+[[../images/]]
+
+** Daftar isi
+:PROPERTIES:
+:CUSTOM_ID: daftar-isi
+:END:
+- [[#pendahuluan][Pendahuluan]]
+- [[#daftar-pustaka][Daftar Pustaka]]
+
+** Pendahuluan
+:PROPERTIES:
+:CUSTOM_ID: pendahuluan
+:END:
+
+--------------
+
+** Daftar Pustaka
+:PROPERTIES:
+:CUSTOM_ID: daftar-pustaka
+:END:
+
+--------------
+
+- lorem\\
+  → [[https://loremipsum.io/][lorem ipsum]]

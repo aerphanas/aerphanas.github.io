@@ -1,0 +1,161 @@
+---
+title: Alternatif Docker - Podman Pod
+author: aerphanas
+desc: Podman memiliki fungsi yang hampir mirip dengan docker compose tetapi lebih baik menurut saya, kita juga bisa import konfigurasi dari kubernetes dan sebaliknya.
+image: alternatif-docker-podman-pod-fig1.png
+---
+
+#+title: Alternatif Docker - Podman Pod
+
+#+author: aerphanas
+#+caption: Container ship
+[[../images/alternatif-docker-podman-pod-fig1.png]]
+
+** Daftar isi
+:PROPERTIES:
+:CUSTOM_ID: daftar-isi
+:END:
+- [[#pendahuluan][Pendahuluan]]
+  - [[#membuat-pod][Membuat Pod]]
+  - [[#menambahkan-container-ke-pod][Menambahkan Container ke Pod]]
+  - [[#export-ke-kubernetes][Export ke Kubernetes]]
+- [[#daftar-pustaka][Daftar Pustaka]]
+
+** Pendahuluan
+:PROPERTIES:
+:CUSTOM_ID: pendahuluan
+:END:
+
+--------------
+
+Podman merupakan sebuah tehnologi yang dubuat oleh Redhat untuk
+menggantikan Docker, karna menurutnya docker memiliki masalah terhadap
+keamanan seperti docker engine yang berjalan diatas root, namun saat ini
+docker bisa berjalan tanpa akses root seperti podman.
+
+** Membuat Pod
+:PROPERTIES:
+:CUSTOM_ID: membuat-pod
+:END:
+
+--------------
+
+Podman memiliki sebuah kelebihan dari docker yaitu podman pod yang
+berguna untuk mengelompokan beberapa container menjadi satu, untuk
+membuat sebuah pod kita dapat menggunakan perintah :
+
+#+begin_src sh
+podman pod create -n db_postgresql \
+                  -h postgresql \
+                  -p 8080:80 \
+                  -p 5432:5432 \
+                  -v dbpsql:/var/lib/postgresql/data
+#+end_src
+
+dari perintah diatas, opsi =-n= digunakan untuk memberikan nama pada pod
+disini saya menamainya db_postgresql, opsi =-h= untuk menseting hostname
+untuk container kita, opsi =-p= merupakan singkatan dari opsi
+=--publish= opsi ini digunakan agar port yang ada di container maju
+menjadi port host, sehingga kita bisa mengakses localhost:8080 bila kita
+menggunakan =-p 8080:8080=, opsi =-v= digunakan untuk agar data kita
+yang berada pada container bisa tetap ada meskipun container sudah
+dihapus.
+
+bila kita mejalankan :
+
+#+begin_src sh
+podman pod list
+#+end_src
+
+kita akan mendapatkan list pod yang kita buat.
+
+** Menambahkan Container ke Pod
+:PROPERTIES:
+:CUSTOM_ID: menambahkan-container-ke-pod
+:END:
+
+--------------
+
+Untuk menambahkan Container ke dalam pod sangatlah mudah kita hanya
+perlu menambahkan opsi =--pod=, contohnya seperti ini :
+
+#+begin_src sh
+podman run -d --name postgresql \
+              --restart always \
+              --pod db_postgresql \
+              -e POSTGRES_PASSWORD=postgres \
+              -e POSTGRES_USER=postgres \
+              -e PGDATA=/var/lib/postgresql/data \
+              docker.io/library/postgres:13
+#+end_src
+
+penjabaran untuk perintah diatas adalah, opsi =-d= untuk memberitahu
+bahwa container ini akan berjalan di latar belakang, opsi =--restart=
+opsi ini digunakan bila terjadi masalah pada container maka dia akan
+otomatis restart, opsi =-pod= untuk memberitahukan bahwa container ini
+akan berjalan pada pod db_postgresql dan opsi =-e= merupakan
+environtment variable untuk container.
+
+untuk memanagemen postgresql kita biasanya memerukan pgadmin maka
+sekalian saja kita membuatnya :
+
+#+begin_src sh
+podman run -d --name pgadmin \
+              --restart always \
+              --pod db_postgresql \
+              -e PGADMIN_DEFAULT_EMAIL=user@domain.com \
+              -e PGADMIN_DEFAULT_PASSWORD=SuperSecret \
+              dpage/pgadmin4
+#+end_src
+
+inilah kenapa saat membuat pod saya melakukan port forward untuk port 80
+dan 5432, karna urusan network sudah terurus oleh pod atau lebih
+tepatnya oleh intra maka kita tidak perlu melakukan port maping pada
+saat membuat container.
+
+#+begin_quote
+bila memerlukan referensi tambahan silakan cek daftar pustaka.
+
+#+end_quote
+
+** Export ke Kubernetes
+:PROPERTIES:
+:CUSTOM_ID: export-ke-kubernetes
+:END:
+
+--------------
+
+podman pod dapat dengan mudah melakukan eksport ke kubernetes dengna
+menjalankan perintah :
+
+#+begin_src sh
+podman generate kube db_postgresql >> db_postgresql.yaml
+#+end_src
+
+disini saya mengimport podman pod dengan nama =db_postgresql= kedalam
+sebuah file configurasi yang nantinya dapat di import ke kubernetes atau
+kita bisa sebaliknya, kita dapat mengimport configurasi kubernetes ke
+podman pod dengan cara :
+
+#+begin_src sh
+podman play kube db_postgresql.yaml
+#+end_src
+
+** Daftar Pustaka
+:PROPERTIES:
+:CUSTOM_ID: daftar-pustaka
+:END:
+
+--------------
+
+- RedHat\\
+  → [[https://www.redhat.com/sysadmin/compose-podman-pods][Moving from
+  docker-compose to Podman pods]]
+
+- Podman\\
+  → [[https://docs.podman.io/en/latest/_static/api.html][Podman api
+  reference]]
+
+- photo by\\
+  → [[https://wallpapercave.com/container-wallpapers][container
+  wallpaper]]
