@@ -5,72 +5,42 @@ exec ros -Q -- $0 "$@"
 |#
 (progn ;;init forms
   (ros:ensure-asdf)
-  #+quicklisp(ql:quickload '() :silent t)
-  )
+  #+quicklisp(ql:quickload '(cl-css) :silent t))
 
 (defpackage :ros.script.gen-css1.3893577447
   (:use :cl))
 (in-package :ros.script.gen-css1.3893577447)
 
 
-(defparameter *font-style*
-  (let ((font-list '(("Fira Code Regular"     "../font/FiraCode-Regular.woff2")
-		     ("Fira Sans Regular"     "../font/FiraSans-Regular.woff2")
-		     ("Fira Sans Book"        "../font/FiraSans-Book.woff2")
-		     ("Fira Mono Medium"      "../font/FiraMono-Medium.woff2")
-		     ("Fira Sans Light"       "../font/FiraSans-Light.woff2")
-		     ("Fira Sans Book Italic" "../font/FiraSans-BookItalic.woff2"))))
+(defvar *font-style*
+  (let ((font-list '(("Fira Code Regular"     "font/FiraCode-Regular.woff2")
+		     ("Fira Sans Regular"     "font/FiraSans-Regular.woff2")
+		     ("Fira Sans Book"        "font/FiraSans-Book.woff2")
+		     ("Fira Mono Medium"      "font/FiraMono-Medium.woff2")
+		     ("Fira Sans Light"       "font/FiraSans-Light.woff2")
+		     ("Fira Sans Book Italic" "font/FiraSans-BookItalic.woff2"))))
     (loop for (font-family src) in font-list
           collect `("@font-face" :font-family ,font-family
                                  :src ,(concatenate 'string "url('" src "') format('woff2')")))))
 
-(defparameter *root-style*
-  '((html :font-size 62.5%
-	  :scroll-behavior smooth)
-    (body :font-size 2rem
-	  :font-family "Fira Sans Regular"
-	  :color \#2e3440
-	  :background-color \#e5e9f0
-	  :line-height 1.6)))
-
-(defparameter *element-class*
-  '((header :border-bottom "0.2rem solid \#3b4252"
-	    :margin "0 0 1rem")
-    (footer :margin-top 3rem
-	    :padding "1.2rem 0"
-	    :border-top "0.2rem solid #3b4252"
-	    :font-size 1.2rem
-	    :color \#555)
-    (h1 :font-size 2.4rem)
-    (h2 :font-size 2rem)
-    (blockquote :font-family "Fira Sans Book Italic"
-		:font-style italic)
-    (nav :text-align right)
-    ("nav a" :font-size 1.8rem
-	     :font-weight bold
-	     :color black
-	     :text-decoration none
-	     :text-transform none)
-    (a :text-decoration none
-       :color \#004080)
-    ("a:hover" :color \#434c5e
-	     :text-decoration underline)
-    ("table, th, td" :border "1px solid")
-    ("ul li" :list-style-type lower-greek)))
-
-(defparameter *class-style*
-  '(("span .ex" :padding-left 10px)
-    (".header"  :font-family "Fira Sans Light")
-    (".logo a"  :font-weight bold
-		:color \#000
-		:text-decoration none)
-    (".sourceCode" :background-color \#F6F8FA
-		   :border-radius "15px 15px 15px 15px"
-		   :border none)
-    ("article .header" :font-size 1.4rem
-		       :font-style: italic
-		       :color \#4c566a)))
+(defvar *output*
+  (let ((default-style (read-from-string
+                         (uiop:read-file-string "styles/style-default.lisp")))
+         (style-319 (read-from-string
+                     (uiop:read-file-string "styles/style-319.lisp")))
+         (style-320 (read-from-string
+                     (uiop:read-file-string "styles/style-320.lisp")))
+         (style-640 (read-from-string
+                     (uiop:read-file-string "styles/style-640.lisp")))
+         (style-850 (read-from-string
+                     (uiop:read-file-string "styles/style-850.lisp"))))
+    (append *font-style* default-style style-319
+	    style-320 style-640 style-850)))
 
 (defun main (&rest argv)
-  (declare (ignorable argv)))
+  (declare (ignorable argv))
+  (format t "generating css....")
+  (ensure-directories-exist "css/")
+  (cl-css:compile-css "css/default.css" *output*)
+  (format t "[OK]~&"))
 ;;; vim: set ft=lisp lisp:

@@ -35,3 +35,8 @@ check:
 
 new: $(SCRIPT-DIR)new-post.ros
 	@./$(SCRIPT-DIR)new-post.ros
+
+css: $(SCRIPT-DIR)gen-css1.ros
+	@./$(SCRIPT-DIR)gen-css1.ros
+
+gh: css build

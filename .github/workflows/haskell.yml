@@ -12,7 +12,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - uses: haskell/actions/setup@v2
+    - name: setup roswell
+      uses: 40ants/setup-lisp@v2
+      with:
+        asdf-system: cl-info
+
+    - name: setup haskell
+      uses: haskell/actions/setup@v2
       with:
         ghc-version: '9.6.1'
         cabal-version: '3.10.1.0'
@@ -28,10 +34,10 @@ jobs:
         restore-keys: ${{ runner.os }}-${{ matrix.ghc }}-
 
     - name: Update Package list
-      run: cabal update
+      run: make dep-update
 
     - name: Build & Generate
-      run: cabal run -- kompor build
+      run: make gh
 
     - name: Setup Pages
       uses: actions/configure-pages@v2
