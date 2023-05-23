@@ -8,8 +8,7 @@ image: ada-apa-dengan-fungsional-programming-fig1.png
 #+title: Ada Apa Dengan Paradigma Fungsional
 
 #+author: aerphanas
-#+caption: orang yang berasal dari gerbang ivory. oleh Lefteris
-Papaulakis
+#+caption: orang yang berasal dari gerbang ivory. oleh Lefteris Papaulakis
 [[../images/ada-apa-dengan-fungsional-programming-fig1.png]]
 
 ** Daftar Isi

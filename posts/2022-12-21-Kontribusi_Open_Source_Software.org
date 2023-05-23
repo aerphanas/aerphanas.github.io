@@ -8,8 +8,7 @@ image: kontribusi_open_source_software-fig1.png
 #+title: Kontribusi Open Source Software
 
 #+author: aerphanas
-#+caption: ilustrasi kontributor dari open source guide dengan beberapa
-perubahan
+#+caption: ilustrasi kontributor dari open source guide dengan beberapa perubahan
 [[../images/kontribusi_open_source_software-fig1.png]]
 
 ** Daftar isi

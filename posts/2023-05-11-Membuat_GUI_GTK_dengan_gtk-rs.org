@@ -8,8 +8,7 @@ image: membuat-gui-gtk-dengan-gtk-rs-fig1.png
 #+title: Membuat GUI GTK dengan gtk-rs
 
 #+author: aerphanas
-#+caption: logo gtk-rs sebagai holy grail (karna lebih mudah membuat gtk
-dengan gtk-rs)
+#+caption: logo gtk-rs sebagai holy grail (karna lebih mudah membuat gtk dengan gtk-rs)
 [[../images/membuat-gui-gtk-dengan-gtk-rs-fig1.png]]
 
 ** Daftar isi
