@@ -47,7 +47,7 @@ exposeTemplate :: Rules ()
 exposeTemplate = match "templates/*" $ compile templateBodyCompiler
 
 exposeAbout :: Rules ()
-exposeAbout = match "etc/about.md" $ do
+exposeAbout = match "etc/about.org" $ do
               route   $ setExtension   "html"
               compile $ pandocCompiler                                  >>=
                 loadAndApplyTemplate   "templates/default.html" postCtx >>=
