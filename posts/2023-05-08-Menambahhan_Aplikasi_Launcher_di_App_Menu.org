@@ -131,12 +131,8 @@ pustaka.
 --------------
 
 - freedesktop\\
-  →
-  [[https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html#recognized-keys][Desktop
-  Entry Specification]]\\
-  →
-  [[https://specifications.freedesktop.org/menu-spec/latest/apa.html][Registered
-  Categories]]
+  → [[https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html#recognized-keys][Desktop Entry Specification]]\\
+  → [[https://specifications.freedesktop.org/menu-spec/latest/apa.html][Registered Categories]]
 
 - pharo\\
   → [[https://pharo.org/][home page]]

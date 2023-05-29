@@ -155,7 +155,7 @@ mk2fs -t ext3 # untuk ext3
 mk2fs -t ext2 # untuk ext2
 #+end_src
 
-karna dilinuk semua hardware dianggap sebagai folder atau file, maka
+karna di linux semua hardware dianggap sebagai folder atau file, maka
 kita harus mencari dimanakah keberadaan hardware kita, dalam linux
 =/dev/= merupakan sebuah folder tempat penyimpanan, untuk mengetahuinya
 kita bisa menggunakan software =lsblk=, setiap distro memiliki software
@@ -183,7 +183,7 @@ membuat partisi, untuk membuatnya kita bisa :
 fdisk /dev/sda
 #+end_src
 
-setelah itu kita mindapat kan sebiah prom interaktif, silakan ketik =m=
+setelah itu kita mendapat kan sebuah promp interaktif, silakan ketik =m=
 untuk melihat semua perintah yang diperlukan, setalah kita mendadpatkan
 partisi kita hanya perlu menjalankan perintah diawal =mkfs= atau
 =mk2fs -t=
@@ -201,15 +201,11 @@ penyimpanan lain.
 --------------
 
 - Linux Source code\\
-  →
-  [[https://www.tuhs.org/cgi-bin/utree.pl?file=Linux0.96c/include/linux/ext_fs.h][Linux
-  v0.96c]]
+  → [[https://www.tuhs.org/cgi-bin/utree.pl?file=Linux0.96c/include/linux/ext_fs.h][Linux v0.96c]]
 
 - ext2fsprogs\\
-  → [[https://e2fsprogs.sourceforge.net/ext2intro.html][Design and
-  Implementation of the Second Extended Filesystem]]\\
-  → [[https://e2fsprogs.sourceforge.net/journal-design.pdf][Journaling
-  the Linux ext2fs Filesystem]]\\
+  → [[https://e2fsprogs.sourceforge.net/ext2intro.html][Design and Implementation of the Second Extended Filesystem]]\\
+  → [[https://e2fsprogs.sourceforge.net/journal-design.pdf][Journaling the Linux ext2fs Filesystem]]\\
   → [[https://e2fsprogs.sourceforge.net/ext2.html][Ext2fs Home Page]]
 
 - Ext4 (and Ext2/Ext3) Wiki\\

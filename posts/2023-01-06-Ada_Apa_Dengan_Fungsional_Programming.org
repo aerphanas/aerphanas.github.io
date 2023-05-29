@@ -17,8 +17,7 @@ image: ada-apa-dengan-fungsional-programming-fig1.png
 :END:
 - [[#pendahuluan][Pendahuluan]]
   - [[#perbedaan-dengan-oop][Perbedaan dengan oop]]
-  - [[#kelebihan-functional-programming][Kelebihan Functional
-    Programming]]
+  - [[#kelebihan-functional-programming][Kelebihan Functional Programming]]
 - [[#daftar-pustaka][Daftar Pustaka]]
 
 ** Pendahuluan
@@ -207,8 +206,7 @@ application seperti fungsi =add10= yang hanya memerlukan 1 input.
 --------------
 
 - Youtube\\
-  → [[https://youtu.be/srQt1NAHYC0][Functional Design Patterns - Scott
-  Wlaschin]]
+  → [[https://youtu.be/srQt1NAHYC0][Functional Design Patterns - Scott Wlaschin]]
 
 - Haskell\\
   → [[https://haskell.org][Homepage]]
@@ -217,6 +215,4 @@ application seperti fungsi =add10= yang hanya memerlukan 1 input.
   → [[https://racket-lang.org][Homepage]]
 
 - Practical Adult Insights\\
-  →
-  [[https://www.practicaladultinsights.com/what-is-an-ivory-tower.htm][What
-  is an Ivory Tower?]]
+  → [[https://www.practicaladultinsights.com/what-is-an-ivory-tower.htm][What is an Ivory Tower?]]

@@ -75,7 +75,7 @@ git clone https://aur.archlinux.org/rar.git
 
 --------------
 
-di tahap inilah package yang akan kita instal di siapkan, jika berupa
+di tahap inilah package yang akan kita install di siapkan, jika berupa
 software akan di compile dan bila berupa hal lain seperti font atau
 theme, akan terdownload dari source yang di tetapkan di file PKGBUILD.
 
@@ -117,11 +117,9 @@ program berjalan dengan semestinya
 --------------
 
 - Arch repository\\
-  →
-  [[https://archlinux.org/packages/core/any/base-devel/][base-devel]]\\
+  → [[https://archlinux.org/packages/core/any/base-devel/][base-devel]]\\
   → [[https://archlinux.org/packages/extra/x86_64/git/][git]]\\
-  →
-  [[https://archlinux.org/packages/community/any/archlinux-wallpaper/][archlinuux-wallpaper]]
+  → [[https://archlinux.org/packages/community/any/archlinux-wallpaper/][archlinuux-wallpaper]]
 
 - Arch AUR\\
   → [[https://aur.archlinux.org/][Home Page]]

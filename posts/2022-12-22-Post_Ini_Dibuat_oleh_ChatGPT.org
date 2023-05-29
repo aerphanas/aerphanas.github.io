@@ -16,12 +16,9 @@ image: DALL·E 2022-12-22 12.28.40 - M37.5324 16.8707C37.9808 15.5241 38.1363 14
 :CUSTOM_ID: daftar-isi
 :END:
 - [[#apa-itu-chatgpt][Apa itu ChatGPT?]]
-- [[#bagaimana-chatgpt-dapat-membuat-post-ini][Bagaimana ChatGPT dapat
-  membuat post ini?]]
-- [[#keunggulan-chatgpt-dalam-membuat-post][Keunggulan ChatGPT dalam
-  membuat post]]
-- [[#kelemahan-chatgpt-dalam-membuat-post][Kelemahan ChatGPT dalam
-  membuat post]]
+- [[#bagaimana-chatgpt-dapat-membuat-post-ini][Bagaimana ChatGPT dapat membuat post ini?]]
+- [[#keunggulan-chatgpt-dalam-membuat-post][Keunggulan ChatGPT dalam membuat post]]
+- [[#kelemahan-chatgpt-dalam-membuat-post][Kelemahan ChatGPT dalam membuat post]]
 - [[#penutup][Penutup]]
 
 ** Apa itu ChatGPT?

@@ -27,7 +27,7 @@ image: kontribusi_open_source_software-fig1.png
 --------------
 
 Open Source software merupakan sebuah tindakan dimana kita sebagai
-pembuat software untuk membagikan kode software secara terbuka bisa
+pembuat software membagikan kode software secara terbuka bisa
 melalui github/gitlab/bitbucket/sourceforge dan sebagainya, untuk saat
 ini server version control yang paling terkenal adalah github.
 
@@ -116,6 +116,5 @@ lisensinya dan peraturan-peraturan mengenai cara berkontribusi.
 --------------
 
 - Open Source Guides\\
-  → [[https://opensource.guide/how-to-contribute/][How to Contribute to
-  Open Source]]\\
+  → [[https://opensource.guide/how-to-contribute/][How to Contribute to Open Source]]\\
   → [[https://opensource.org/about][Open Source Initiative]]

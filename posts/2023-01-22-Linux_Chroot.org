@@ -271,18 +271,13 @@ semua proses diatas dijalankan pada root
   → [[https://en.wikipedia.org/wiki/Chroot][Chroot]]
 
 - Tom's Development Blog\\
-  →
-  [[https://tpmullan.com/2021/10/27/chroot-into-an-ubuntu-on-zfs-system/][Chroot
-  into an Ubuntu on zfs system]]
+  → [[https://tpmullan.com/2021/10/27/chroot-into-an-ubuntu-on-zfs-system/][Chroot into an Ubuntu on zfs system]]
 
 - Guix Manual\\
-  →
-  [[https://guix.gnu.org/en/manual/devel/en/guix.html#Chrooting-into-an-existing-system][Chrooting
-  into an existing system]]
+  → [[https://guix.gnu.org/en/manual/devel/en/guix.html#Chrooting-into-an-existing-system][Chrooting into an existing system]]
 
 - NixOS Wiki\\
   → [[https://nixos.wiki/wiki/Change_root][Change root]]
 
 - MaiZure's Projects\\
-  → [[https://www.maizure.org/projects/decoded-gnu-coreutils/][Decoded:
-  GNU coreutils]]
+  → [[https://www.maizure.org/projects/decoded-gnu-coreutils/][Decoded: GNU coreutils]]

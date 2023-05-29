@@ -115,13 +115,10 @@ yang bisa digunakan untuk melatih algoritma diantaranya :
   → [[https://github.com/aerphanas/Chimpanzee][Chimpanzee]]
 
 - Youtube Video\\
-  → [[https://youtu.be/5eW6Eagr9XA][The 4 things it takes to be an
-  expert]]
+  → [[https://youtu.be/5eW6Eagr9XA][The 4 things it takes to be an expert]]
 
 - Project Euler\\
   → [[https://projecteuler.net/][About Project Euler]]
 
 - Know Your Meme\\
-  →
-  [[https://knowyourmeme.com/photos/1218305-tfw-too-intelligent-2smart][Wojacks
-  Playing Chess With His Own Brain]]
+  → [[https://knowyourmeme.com/photos/1218305-tfw-too-intelligent-2smart][Wojacks Playing Chess With His Own Brain]]

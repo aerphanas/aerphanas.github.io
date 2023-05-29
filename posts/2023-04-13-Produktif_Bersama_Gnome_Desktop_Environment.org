@@ -281,9 +281,7 @@ Window Manager.
   → [[https://www.gnome.org/about-us/][GNOME About Us]]
 
 - Flathub\\
-  →
-  [[https://flathub.org/apps/details/com.mattjakeman.ExtensionManager][Extension
-  Manager]]
+  → [[https://flathub.org/apps/details/com.mattjakeman.ExtensionManager][Extension Manager]]
 
 - Gnome Extensions\\
   → [[file:ipsum][Bluetooth Quick Connect]]\\
@@ -295,6 +293,4 @@ Window Manager.
   → [[file:ipsum][Status Area Horizontal Spacing]]
 
 - Gnome Help\\
-  →
-  [[https://help.gnome.org/users/gnome-help/stable/keyboard-shortcuts-set.html.en][keyboard
-  shortcuts]]
+  → [[https://help.gnome.org/users/gnome-help/stable/keyboard-shortcuts-set.html.en][keyboard shortcuts]]

@@ -146,8 +146,7 @@ overflow karna kita hanya memanggil 2 fungsi saja.
 --------------
 
 - YouTube\\
-  → [[https://www.youtube.com/watch?v=_JtPhF8MshA&t=357s][Tail Recursion
-  Explained - Computerphile]]
+  → [[https://www.youtube.com/watch?v=_JtPhF8MshA&t=357s][Tail Recursion Explained - Computerphile]]
 
 - Github\\
   → [[https://github.com/NixOS/nixos-artwork][NixOS Recursion Artwork]]

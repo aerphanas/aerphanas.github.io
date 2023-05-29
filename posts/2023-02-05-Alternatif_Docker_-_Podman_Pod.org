@@ -149,13 +149,10 @@ podman play kube db_postgresql.yaml
 --------------
 
 - RedHat\\
-  → [[https://www.redhat.com/sysadmin/compose-podman-pods][Moving from
-  docker-compose to Podman pods]]
+  → [[https://www.redhat.com/sysadmin/compose-podman-pods][Moving from docker-compose to Podman pods]]
 
 - Podman\\
-  → [[https://docs.podman.io/en/latest/_static/api.html][Podman api
-  reference]]
+  → [[https://docs.podman.io/en/latest/_static/api.html][Podman api reference]]
 
 - photo by\\
-  → [[https://wallpapercave.com/container-wallpapers][container
-  wallpaper]]
+  → [[https://wallpapercave.com/container-wallpapers][container wallpaper]]

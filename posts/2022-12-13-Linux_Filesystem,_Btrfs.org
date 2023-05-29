@@ -56,11 +56,11 @@ btrfs memasuki fase stabil.
 
 btrfs memiliki beberapa fitur utamanya adalah :
 
-- COW atau dalam kata lain Snapshots tidak membuat duplikat secara
+- COW tidak membuat duplikat secara
   penuh, melainkan hanyalan menympan perubahan yang terjadi.
 - terdapat managemen volume yang menggunakan software dengan support
   untuk RAID 0, RAID 1, RAID 10 and yang lainnya.
-- otomatis menmebenahi diri sendiri dengan ckecksoum dan metadata, dan
+- otomatis menmebenahi diri sendiri dengan checksum dan metadata, dan
   otomatis mendeteksi data yang korup.
 
 ** Cara Membuat Partisi
@@ -70,15 +70,13 @@ btrfs memiliki beberapa fitur utamanya adalah :
 
 --------------
 
-saya akan memberitahukan bagai mana cara konfigurasi btrfs dengan benar
+saya akan memberitahukan bagaimana cara konfigurasi btrfs dengan benar
 sehingga kita dapat mendapatkan performa yang sempurna.
 
-hampir sama seperti
-[[https://aerphanas.github.io/posts/2022-12-08-Linux_Filesystem%2C_keluarga_extfs.html#cara-membuat-partisi][cara
-saya membuat partisi ext4]], namun kita perlu beberapa penyesuaian yaitu
-:
+caranya hampir sama seperti cara saya membuat partisi ext4 di blog saya yang terdahulu
+, namun kita perlu beberapa penyesuaian yaitu :
 
-daripada =mkfs.ext4= kita harus =mkfs.btrfs=, namun sebelum menjalankan
+daripada =mkfs.ext4= kita menggantinya dengan =mkfs.btrfs=, namun sebelum menjalankan
 perintah itu kita harus menginstall software =btrfs-progs=.
 
 setelah membuat partisi, kita harus membuat sebuah subvolume, agar
@@ -157,7 +155,7 @@ untuk menghapus subvolume kita bisa menghapusnya dengan :
 btrfs subvolume delete <volume yang mau dihapus>
 #+end_src
 
-untuk melihat list apasaja subvolume yang ada bisa dengan komand :
+untuk melihat list apa saja subvolume yang ada bisa dengan perintah :
 
 #+begin_src sh
 btrfs subvolume list /root/disk/@
@@ -208,7 +206,7 @@ btrfs subvolume delete /root/disk/.snapshots/yy-mm-dd-backup
 #+end_src
 
 setelah kita membuat snapshot, kita bisa mengembalikan keadaan folder
-dengan cara manual menggunakan komand =cp= atau =rsync= untuk
+dengan cara manual menggunakan perintah =cp= atau =rsync= untuk
 mengembalikan keseluruhanya.
 
 #+begin_src sh
@@ -216,7 +214,7 @@ mengembalikan keseluruhanya.
 #+end_src
 
 untuk mengupdate snapshot sama caranya untuk mengembalikan keadaan
-folder/file, yaitu dengan komand =cp= atau =rsync=
+folder/file, yaitu dengan perintah =cp= atau =rsync=
 
 ** Daftar Pustaka
 :PROPERTIES:
@@ -230,20 +228,14 @@ folder/file, yaitu dengan komand =cp= atau =rsync=
   → [[https://en.wikipedia.org/wiki/Copy-on-write][Copy On Write]]
 
 - Btrfs Wiki\\
-  → [[https://btrfs.wiki.kernel.org/index.php/Main_Page][Btrfs Wiki Main
-  Pages]]
+  → [[https://btrfs.wiki.kernel.org/index.php/Main_Page][Btrfs Wiki Mai Pages]]
 
 - Btrfs Read The Docs\\
-  → [[https://btrfs.readthedocs.io/en/latest/index.html][BTRFS
-  documentation]]
+  → [[https://btrfs.readthedocs.io/en/latest/index.html][BTRFS documentation]]
 
 - Linux Hint\\
-  → [[https://linuxhint.com/create-mount-btrfs-subvolumes/][How to
-  Create and Mount Btrfs Subvolumes]]\\
-  → [[https://linuxhint.com/use-btrfs-snapshots/][How to Use Btrfs
-  Snapshots]]
+  → [[https://linuxhint.com/create-mount-btrfs-subvolumes/][How to Create and Mount Btrfs Subvolumes]]\\
+  → [[https://linuxhint.com/use-btrfs-snapshots/][How to Use Btrfs Snapshots]]
 
 - Unsplash\\
-  →
-  [[https://unsplash.com/photos/094mP_CBdpM?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink][Butter
-  slices in the kitchen by Sorin Gheorghita]]
+  → [[https://unsplash.com/photos/094mP_CBdpM?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink][Butter slices in the kitchen by Sorin Gheorghita]]

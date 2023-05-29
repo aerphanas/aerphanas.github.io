@@ -36,8 +36,8 @@ dengar merupakan musik yang memiliki kualitas tinggi yang biasanya
 memiliki bit depth dari 16 sampai 24 bit dan memiliki sample rate sama
 dengan diatas 44.1 kHz, agar bisa mendengarkan kualitas suara yang baik
 di linux memerlukan beberapa configurasi, disinilah saya akan
-memebagikan bagaimana cara menconfigurasi sebuah mesin linux agar bisa
-memutar kualitas audio yang berkualitas tinggi, linux memiliki sound API
+membagikan bagaimana cara menkonfigurasi linux agar bisa memutar kualitas
+audio yang berkualitas tinggi, linux memiliki sound API
 yang bernama alsa yang berada di dalam linux kernel.
 
 ** ALSA
@@ -75,7 +75,7 @@ toolnya adalah [[https://pkgs.org/download/alsa-utils][alsa-utils]].
 --------------
 
 Sound server adalah software yang berguna mengelola akses dan penggunaan
-terhadap sound card dan biasanya berjalan pada latar, saat ini
+terhadap sound card dan biasanya berjalan pada latar belakang, saat ini
 keberadaan sound server di linux ada 3 dan dari ke-3 itu memiliki
 tujuannya masing-masing, contohnya JACK selalu mengedepankan urusan
 latensi sehingga cocok untuk rekaman suara.
@@ -94,7 +94,7 @@ Polypaudio namun pada tahun 2006 barulah diubah menjadi PulseAudio.
 :CUSTOM_ID: konfigurasi-pulseaudio
 :END:
 Mengkonfigurasi PulseAudio agar menmutar audio secara Hi-Res sangatlah
-mudah kita hanya perlu mengedit atau menambahkan beberapa line di dalam
+mudah, kita hanya perlu mengedit atau menambahkan beberapa line di dalam
 configurasinya, konfigurasi PulseAudio berada di :
 
 #+begin_src sh
@@ -110,7 +110,7 @@ alternate-sample-rate = <ganti>
 #+end_src
 
 kita bisa mengganti berapa sample rate yang kita mau, rekomendasi saya
-ubah menjadi :
+ubahlah menjadi :
 
 #+begin_src sh
 default-sample-rate = 44100
@@ -118,7 +118,7 @@ alternate-sample-rate = 48000
 #+end_src
 
 untuk PulseAudio versi 1.11 memiliki konfigurasi khusus, konfigurasi ini
-berguna untuk mengubah sample sate menjadi sama dengan sumber audio,
+berguna untuk mengubah sample sate menjadi otomatis sama dengan sumber audio,
 konfigurasinya adalah
 
 #+begin_src sh
@@ -132,7 +132,7 @@ default-sample-format = s24le
 #+end_src
 
 di PulseAudio kita juga bisa mengubah metode resample seuai keinginan
-kita namun sebelum itu kita harus mengetahui resample apa yang disupport
+kita namun sebelum itu kita harus mengetahui sample apa yang didukung
 oleh system kita dengan perintah :
 
 #+begin_src sh
@@ -186,9 +186,7 @@ ke
 
 setelah kita mengkopi contoh konfigurasi kita bisa membukanya dan
 mengedit sesuai apa yang kita inginkan, jika ingin mengetahui semua
-konfigurasi pipiwire bisa pergi ke wikinya ada disini
-[[https://gitlab.freedesktop.org/pipewire/pipewire/-/wikis/home][Pipewire
-wiki]]
+konfigurasi pipiwire bisa pergi ke wikinya.
 
 untuk mendapatkan kualitas audio yang maksimal saya menggunakan
 konfigurasi yang hampir sama dengan Pulseaudio yaitu mengubah sample
@@ -231,19 +229,17 @@ menyesuaikanya.
 --------------
 
 - Wikipedia\\
-  →
-  [[https://en.wikipedia.org/wiki/Advanced_Linux_Sound_Architecture][ALSA]]\\
+  → [[https://en.wikipedia.org/wiki/Advanced_Linux_Sound_Architecture][ALSA]]\\
   → [[https://en.wikipedia.org/wiki/PulseAudio][PulseAudio]]\\
   → [[https://en.wikipedia.org/wiki/PipeWire][Pipewire]]
 
 - Gitlab Freedesktop\\
-  →
-  [[https://gitlab.freedesktop.org/pipewire/pipewire/-/wikis/home][Pipewire]]
+  → [[https://gitlab.freedesktop.org/pipewire/pipewire/-/wikis/home][Pipewire]]
 
 - Freedesktop\\
-  →
-  [[https://www.freedesktop.org/wiki/Software/PulseAudio/][Pulseaudio]]\\
+  → [[https://www.freedesktop.org/wiki/Software/PulseAudio/][Pulseaudio]]\\
   → [[https://gitlab.freedesktop.org/rncbc/qpwgraph][Qpwgraph]]
 
 - Piperiwe\\
-  → [[https://pipewire.org/][Pipewire]]
+  → [[https://pipewire.org/][Pipewire]]\\
+  → [[https://gitlab.freedesktop.org/pipewire/pipewire/-/wikis/home][Pipewire wiki]]
