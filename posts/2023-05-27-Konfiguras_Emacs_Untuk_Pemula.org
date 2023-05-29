@@ -1,0 +1,189 @@
+---
+title: Konfigurasi Emacs Untuk Pemula
+author: aerphanas
+desc: Emacs merupakn sebuah text editor yang sudah tua namun memiliki kostumisasi yang sangat banyak dan memiliki community yang lumayan baik
+image: konfigurasi-emacs-untuk-pemula-fig1.png
+---
+
+#+title: Konfigurasi Emacs Untuk Pemula
+
+#+author: aerphanas
+#+caption: Free Your Soul wallpaper by Sayem Chaklader
+[[../images/konfigurasi-emacs-untuk-pemula-fig1.png]]
+
+** Daftar isi
+:PROPERTIES:
+:CUSTOM_ID: daftar-isi
+:END:
+- [[#pendahuluan][Pendahuluan]]
+- [[#melpa][MELPA]]
+- [[#package-yang-berguna][Package yang berguna]]
+  - [[#which-key][which-key]]
+  - [[#neotree][neotree]]
+  - [[#multiple-cursors][multiple-cursors]]
+  - [[#lsp-mode][lsp-mode]]
+  - [[#company][company]]
+  - [[#drag-stuf][drag-stuf]]
+  - [[#programming-mode][Programming mode]]
+- [[#daftar-pustaka][Daftar Pustaka]]
+
+** Pendahuluan
+:PROPERTIES:
+:CUSTOM_ID: pendahuluan
+:END:
+
+--------------
+
+Emacs dibuat oleh Richard Stallman pada 1970, Emacs dikenal dengan kosumisasi,
+dokumentasi dan real-time editor, Emacs Memiliki Bahasa programnya sendiri
+yang digunakan untuk scripting kostumisasi yang bernama Emac Lisp, Emac Lisp
+merupakan sebuah Lisp dialect yang dibuat untuk Emacs, namun
+perlu diingat bahwa Emacs Lisp dan Dialect Lisp lain seperi Scheme sangatlah berbeda.
+
+pada post kaliini saya akan memberikan cara kostumisasi untuk keperluan ediing pada
+Emacs Vanila, menurut saya Emacs Vanila sangat bagus dibanding distribusi emacs
+yang sudah di kostumisasi oleh orang lain karna kita bisa mendapatkan installasi emacs
+tanpa Bloat atau package yang tidak di perlukan.
+
+untuk post ini saya asumsikan pembaca sudah menginstall Emacs, cara paling mudah
+untuk menginstall emacs adalah melalui package manager.
+
+** MELPA
+:PROPERTIES:
+:CUSTOM_ID: melpa
+:END:
+
+--------------
+
+untuk menginstall package untuk Emacs saya akan menggunakan MELPA tetapi
+anda bebas memilik bagaimana cara anda menginstall package.
+
+untuk menginstall MELPA kita hanya perlu mennambahkan script dibawah
+kedalam =.emacs=.
+
+#+begin_src lisp
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
+;; and `package-pinned-packages`. Most users will not need or want to do this.
+;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(package-initialize)
+#+end_src
+
+bila terjadi masalah saat insallasi MELPA saya anjurkan untuk bertanya pada komunitas atau
+anda bisa pergi ke website MELPA.
+
+** Package yang berguna
+:PROPERTIES:
+:CUSTOM_ID: package-yang-berguna
+:END:
+
+--------------
+
+package yang berguna untuk pengguna baru emacs adalah :
+
+- which-key
+- neotree
+- magit
+- multiple-cursors
+- lsp-mode
+- company
+- drag-stuf
+- dan mode untuk programming language yang di inginkan
+
+*** which-key
+:PROPERTIES:
+:CUSTOM_ID: which-key
+:END:
+which-key merupakan minor mode untuk Emacs, package ini sangat berguna untuk
+pengguna baru yang sedang belajar menggunakan emacs, package ini berguna
+untuk melengkapi shortcut seperti =C-c=, =C-x= dan yang lainya.
+
+contohnya ketika kita melakukan shortcut =C-c= kita akan otomatis di beritahu
+list apa saja kemungkinan yang dapat dilakukan, penjelasan mudahnya seperti
+auto complete pada text editor.
+
+*** neotree
+:PROPERTIES:
+:CUSTOM_ID: neotree
+:END:
+neotree merupakan sebuah package yang mirip seperti nerdtree di vim,
+kita perlu membuat sebuah shortcut baru untuk membuka neotree, seperti
+ini contoh konfigurasinya
+
+#+begin_src lisp
+(add-to-list 'load-path "/some/path/neotree")
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
+#+end_src
+
+kita juga bisa membuat agar list tree kita menggunakan ikon, namun
+sebelum itu kita perlu menginstall package =all-the-icons= dan mengkonfigurasi
+variable neo theme ke icons, kita bisa mengubahnya dengan script di =.emacs=
+atau melalui shortcut =M-x= =customize=group= =neotree= lalu mincari Neo Theme
+
+*** multiple-cursors
+:PROPERTIES:
+:CUSTOM_ID: multiple-cursors
+:END:
+package ini memberikan fungsi yang mirip dengan sublime text, sesuai
+namanya mode ini memberikan kita fungsi untuk menggandakan cursors,
+untuk shortcutnya yang sering saya pakai adalah =C-<= atau =C->=
+kommand ini akan menggandakan cursor ke atas atau ke bawah.
+
+*** lsp-mode
+:PROPERTIES:
+:CUSTOM_ID: lsp-mode
+:END:
+sesuai namanya lsp-mode merupakan sebuah package yang memungkinkan kita
+untuk menggunakan lsp atau laguage server protocol di dalam Emacs,
+sehingga kita kita dapat menggunakan auto cumplete pada emacs,
+sebuah fitur yang mirip dengan VSCode.
+
+*** company
+:PROPERTIES:
+:CUSTOM_ID: company
+:END:
+company mode merupakan sebuah mode yang digunakan oleh lsp-mode
+untuk melakukan autocomplete, company mode digunakan untuk membuat buffer autocomplete,
+namun jika lsp-mode tidak sedang terpakai kita juga bisa mendapatkan autocomplete
+untuk melengkapi text yang sudah pernah di ketik.
+
+*** drag-stuf
+:PROPERTIES:
+:CUSTOM_ID: drag-stuf
+:END:
+kadangkala ketika ingin memindahkan sebuah 1 line kode kita harus mengcut atau mengkopi
+lalu menaruhnya, dengan package/mode ini kita dapat memindahkan 1 line kode dengan shortcut
+=M-Up= untuk memindahkan ke atas dan =M-Down= untuk ke bawah
+
+*** Programming mode
+:PROPERTIES:
+:CUSTOM_ID: programming-mode
+:END:
+agar kita bisa dengan nyaman melakukan proggramming di dalam emacs,
+saya menginstall mode bhs porgram yang akan saya tulis, sebagai contoh saya akan meginstall
+package =rust-mode= dan =cargo-mode= saya menginstall mode ini agar saya mendapatkan syntax
+highlight dan beberapa shortcut untuk kompilasi contohnya, dengan menginstall =cargo-mode=
+shortcut =C-c C-c= kanan otomasis melakukan kompilasi dan menjalankan program.
+
+** Daftar Pustaka
+:PROPERTIES:
+:CUSTOM_ID: daftar-pustaka
+:END:
+
+--------------
+
+- Wikipedia\\
+  → [[https://en.wikipedia.org/wiki/Emacs][Emacs]]\\
+  → [[https://en.wikipedia.org/wiki/Emacs_Lisp][Emacs Lisp]]
+
+- Emacs\\
+  → [[https://www.gnu.org/software/emacs/documentation.html][Emacs Docs]]\\
+  → [[https://www.gnu.org/savannah-checkouts/gnu/emacs/emacs.html][homepage]]
+
+- MELPA\\
+  → [[https://melpa.org/#/getting-started][MELPA Getting started]]
+
+- GNU\\
+  → [[https://www.gnu.org/graphics/free-your-soul.html][Free Your Soul wallpaper by Sayem Chaklader]]
