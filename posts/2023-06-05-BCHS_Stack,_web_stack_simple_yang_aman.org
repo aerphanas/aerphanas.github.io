@@ -1,0 +1,220 @@
+---
+title: BCHS Stack, web stack simple yang aman
+author: aerphanas
+desc: BCHS gabungan dari BSD, C, Httpd dan sqlite, sebuah web stack yang sangat minimalis dan sangat aman karna menggunakan os OpenBSD
+image: bchs_stack,_web_stack_simple_yang_aman-fig1.jpg
+---
+
+#+title: BCHS Stack, web stack simple yang aman
+
+#+author: aerphanas
+#+caption: OpenBSD 6.2 Artwork
+[[../images/bchs_stack,_web_stack_simple_yang_aman-fig2.gif]]
+
+** Daftar isi
+:PROPERTIES:
+:CUSTOM_ID: daftar-isi
+:END:
+- [[#pendahuluan][Pendahuluan]]
+- [[#alat-yang-digunakan][Alat yang digunakan]]
+  - [[#setup-openbsd][setup OpenBSD]]
+  - [[#setup-httpd][setup Httpd]]
+- [[#daftar-pustaka][Daftar Pustaka]]
+
+** Pendahuluan
+:PROPERTIES:
+:CUSTOM_ID: pendahuluan
+:END:
+
+--------------
+
+BCHS merupakan web stack yang simple dan dibuat diatas sistem BSD,
+untuk pilihan sistem BSD web bchs menyarankan menggunakan OpenBSD karena
+OpenBSD dikenal sebagai sistem operasi yang sangat aman, selain
+itu OpenBSD juga memiliki fungsi pledge dan unveil di bahasa program C
+yang berguna menambah keamanan khusus untuk sistem operasi OpenBSD.
+
+** Alat yang digunakan
+:PROPERTIES:
+:CUSTOM_ID: alat-yang-digunakan
+:END:
+
+--------------
+
+alat dan bahan untuk menggunakan bchs sangatlah simple kita hanya perlu
+menginstall OpenBSD dan SQLite jika app yang kita buat menggunakan database.
+
+*** setup OpenBSD
+:PROPERTIES:
+:CUSTOM_ID: setup-openbsd
+:END:
+
+--------------
+
+keluarga bsd memiliki dokumentasi yang sangatlah rapih jika dibanding GNU,
+untuk menginstall OpenBSD silakan pergi ke website aslinya dan membaca dokumentasi,
+sebagai demonstrasi untuk blog ini saya menggunakan
+Virtual Machine QEMU KVM untuk mencoba menggunakan bchs.
+
+setelah terinstall OpenBSD kita bisa menginstall software dengan kommand =pkg_add=,
+kita tidak perlu menginstall apapun jika hanya ingin mengetes bchs, software
+yang tidak terinstall hanyalah Sqlite
+
+hal pertama untuk mengetes bchs adalah membuat sebuah program yang nanti slowcgi
+akan menyediakanya untuk client, buatlah =cgi.c= dengan isi seperti berikut
+
+#+begin_src c
+#include <err.h> /* err(3) */
+#include <stdlib.h> /* EXIT_xxxx */
+#include <stdio.h> /* puts(3) */
+#include <unistd.h> /* pledge(2) */
+
+int
+main() {
+  if (pledge("stdio", NULL) == -1) 
+    err(EXIT_FAILURE, "pledge");
+  puts("Status: 200 OK\r");
+  puts("Content-Type: text/html\r");
+  puts("\r");
+  puts("Hello World");
+  return EXIT_SUCCESS;
+}
+#+end_src
+
+dilihat diatas kita menggunakan pledge untuk meminimalisir interaksi kode dengan sistem,
+fungsi pledge hanya khusus ada di OpenBSD.
+
+dari fungsi puts diatas kita bisa mengetahui, kita akan meresponse status 200 dengan respon
+bertipe text/html dengan isi =Hello World=.
+
+*** setup Httpd
+:PROPERTIES:
+:CUSTOM_ID: setup-httpd
+:END:
+
+--------------
+
+httpd merupakan server http yang ada di openbsd, kita tidak perlu menginstallnya,
+otomatis program ini sudah terinstall ketika kita menginstall OpenBSD.
+
+untuk mengkonfigurasi httpd kita membuat sebuah file di =/etc/httpd.conf=, lalu
+mengisinya dengan kode berikut
+
+#+begin_src txt
+server "localhost" {
+       listen on "*" port 80
+       location "/cgi-bin/*" {
+                fastcgi
+                root "/"
+       }
+}
+#+end_src
+
+di konfigurasi ini kita membuat nama server =localhost= kemudian akan
+menunggu koneksi untuk semua alamat ip sistem pada port =80= dan kita
+nengaktifkan fitur =fastcgi= dengan root =/=, meskipun disini kita
+menggunakan fitur fastcgi tetapi kita akan menggunakan slowcgi.
+
+setelah itu kita bisa langsung mencoba bchs, pertama kita akan menkompile
+file =cgi.c= yang sudah kita bikin dengan perintah
+
+#+begin_src sh
+cc -static -g -w -Wall -Wextra -o cgi cgi.c
+#+end_src
+
+kita mengkompile dengan opsi =-W -Wall -Wextra -g -O0= bermanfaat untuk
+keamanan kode kita, dengan menkompile dengan opsi ini kita akan diberikan
+warning jika ada masalah dan ketika aplikasi kita crash dengan tanpa optimisasi
+akan sangat mudah memperbaikinya.
+
+setelah itu kita akan memindahkan hasil kompilasi ke =/var/www/cgi-bin/= menggunakan
+perintah =cp=, =chmod= dan =chown=
+
+#+begin_src sh
+cp cgi /var/www/cgi-bin/
+chown www:www /var/www/cgi-bin/cgi
+chmod 0500 /var/www/cgi-bin/cgi
+#+end_src
+
+arti =chmod 0500= disini adalah program ini akan hanya bisa di eksekusi oleh
+pemilik dan grub, jadi hanya grub/user www saja yang bisa menjalankanya.
+
+setelah itu kita bisa mulai menjalankan beberapa service di OpenBSD, service
+di OpenBSD bisa dikontrol dengan koman =rcctl=
+
+#+begin_src sh
+rcctl start slowcgi
+rcctl check slowcgi
+rcctl -f restart httpd
+rcctl check httpd
+#+end_src
+
+disini kita menggunakan slowcgi untuk prosesing cgi httpd, dan kita juga
+memulai proses httpd, terkadang jika ada config yang salah =rcctl= tidak
+bisa menjalankan proses, jadi kita melakukan pengecekan apakah proses berjalan
+dengan opsi =check=.
+
+kita juga bisa membuat sebuah shell script untuk memudahkan kita, seperti
+ini shell script untuk otomatis kompilasi dan memulai proses =slowcgi= dan =httpd=
+kita akan menamai script ini =bchs.sh=.
+
+#+begin_src sh
+#! /bin/sh
+cc -static -g -w -Wall -Wextra -o cgi cgi.c
+install -o www -g www -m 0500 cgi /var/www/cgi-bin
+rcctl enable slowcgi
+rcctl start slowcgi
+rcctl check slowcgi
+rcctl -f restart httpd
+#+end_src
+
+terdapat perintah baru disini, perintah =install=, melakukan hal yang sama
+seperti kita melakukan =chmod= dan =chown=.
+
+dengan adanya script ini kita bisa dengan mudah mengganti kode lalu kita
+hanya perlu menjalankan script ini,
+
+untuk melakukan sebuah API call sederhana kita menggunakan curl,
+jalankan perintah berikut dan kita akan mendapat respon dari server
+yang kita buat,
+
+#+begin_src sh
+-bash-5.2# curl -X GET localhost/cgi-bin/cgi -i
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: text/html
+Date: Mon, 05 Jun 2023 04:16:51 GMT
+Server: OpenBSD httpd
+Transfer-Encoding: chunked
+
+Hello World
+#+end_src
+
+** Daftar Pustaka
+:PROPERTIES:
+:CUSTOM_ID: daftar-pustaka
+:END:
+
+--------------
+
+- BCHS Stack\\
+  → [[https://learnbchs.org/index.html][learnbchs]]\\
+  → [[https://learnbchs.org/tools.html][tools]]\\
+  → [[https://learnbchs.org/easy.html][example]]
+
+- OpenBSD\\
+  → [[https://www.openbsd.org/][home page]]\\
+  → [[https://man.openbsd.org/][Manual]]\\
+  → [[https://www.openbsd.org/faq/index.html][FAQ]]
+
+- GitHub\\
+  → [[https://github.com/kristapsdz/bchs][bchs]]
+
+- Carnegie Mellon University\\
+  → [[https://wiki.sei.cmu.edu/confluence/display/c/SEI+CERT+C+Coding+Standard][SEI CERT C Coding Standard]]
+
+- Youtube\\
+  → [[https://www.youtube.com/watch?v=F_7S1eqKsFk][Hackfest 2015: Theo de Raadt presented "Pledge: A new security technology in openbsd"]]
+
+- Youtube thumbnail\\
+  → [[https://www.youtube.com/watch?v=cG8ElbYnLrs][Half-Life - Hazardous Environments Remix]]
