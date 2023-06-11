@@ -1,0 +1,333 @@
+---
+title: Menerima dan Mengirim Email dengan filosofi UNIX
+author: aerphanas
+desc: Konfigurasi OpenBSD untuk Mengirim atau Menerima Email menggunakan bantuan Email Server luar dan mengikuti filosofi UNIX
+image: menerima-dan-mengirim-email-dengan-filosofi-unix-fig1.png
+---
+
+#+title: Menerima dan Mengirim Email Dengan Bantuan Relay di OpenBSD
+
+#+author: aerphanas
+#+caption: OpenBSD desktop dengan Window Manager, StumpWM
+[[../images/menerima-dan-mengirim-email-dengan-filosofi-unix-fig1.png]]
+
+** Daftar isi
+:PROPERTIES:
+:CUSTOM_ID: daftar-isi
+:END:
+- [[#pendahuluan][Pendahuluan]]
+- [[#email-protokol][Email Protokol]]
+  - [[#smtp][SMTP]]
+  - [[#pop3-dan-imap][POP3 dan IMAP]]
+- [[#email-relay-dengan-smtpd][Email relay dengan SMTPD]]
+- [[#mail-retrieval-agents][Mail retrieval agents]]
+- [[#membuat-kunci-gpg][Membuat kunci GPG]]
+- [[#daftar-pustaka][Daftar Pustaka]]
+
+** Pendahuluan
+:PROPERTIES:
+:CUSTOM_ID: pendahuluan
+:END:
+
+--------------
+
+
+Dalam Blog kali ini kita akan melakukan sebuah konfigurasi Email
+di OpenBSD, di Blog ini kita tidak akan membuat Mail server tetapi
+kita akan memanfaatkan Email server yang sudah ada dan menjadikan OpenBSD
+sebagai Email relay melalui protokol SMTP dan menerima Email melalui
+protokol POP3.
+
+filosofi UNIX adalah sebuah filosofi yang digunakan untuk menulis
+suatu program untuk sistem operasi UNIX, filosofi UNIX adalah :
+
+- Make each program do one thing well. To do a new job, build afresh rather than complicate old programs by adding new "features".
+- Expect the output of every program to become the input to another, as yet unknown, program. Don't clutter output with extraneous information. Avoid stringently columnar or binary input formats. Don't insist on interactive input.
+- Design and build software, even operating systems, to be tried early, ideally within weeks. Don't hesitate to throw away the clumsy parts and rebuild them.
+- Use tools in preference to unskilled help to lighten a programming task, even if you have to detour to build the tools and expect to throw some of them out after you've finished using them.
+
+** Email Protokol
+:PROPERTIES:
+:CUSTOM_ID: email-protokol
+:END:
+
+--------------
+
+sebuah Email memiliki 1 protokol untuk mengirim yaitu SMTP dan 2 protokol
+untuk menerima Email yaitu POP3 dan IMAP.
+
+*** SMTP
+:PROPERTIES:
+:CUSTOM_ID: smtp
+:END:
+
+--------------
+
+
+SMTP merupakan singkatan dari Simple Mail Transfer Protocol
+protokol inilah yang digunakan untuk mengirim Email, saat kita
+menginstall OpenBSD otomatis kita sudah terinstall tool yang
+akan kita gunakan untuk mengirim Email.
+
+SMTP menggunakan protokol TCP, SMTP juga menjamin Email yang
+kita kirim akan terkirim dan tentunya jika Email address benar
+dan jika kita gagal mengirim Email biasanya kita akan diberitahu
+oleh server bahwa Email yang kita kirim gagal terkirim
+
+*** POP3 dan IMAP
+:PROPERTIES:
+:CUSTOM_ID: pop3-dan-imap
+:END:
+
+--------------
+
+POP3, protokol yang digunakan untuk mengambil Email dari Email server,
+POP3 singkatan dari Post Office Protocol 3, Protokol ini merupakan
+protokol yang sangat sederhana, cara kerjanya adalah protokol ini
+hanya mendownload Email dengan folder inbox dari Mail server,
+secara bawaan setelah selesai mendownload Email
+yang berada pada Mail server akan dihapus.
+
+IMAP merupakan singkatan dari Internet Message Access Protocol, hampir sama
+dengan POP3 tetapi setelah mendownload Email, Email yang berada di server
+tidak terhapus, Email yang terdownload dinamakan cache, protokol IMAP juga
+melakukan singkronisasi, jika salah satu client menghapus Email maka otomatis
+semua client yang terhubung menggunakan protokol ini akan terhapus, tidak
+seperti POP3 kita mendapat folder selain inbox karna singkronisasi.
+
+** Email relay dengan SMTPD
+:PROPERTIES:
+:CUSTOM_ID: email-relay-dengan-smtpd
+:END:
+
+--------------
+
+OpenBSD terdapat SMTPD, nama softwarenya adalah OpenSMTPD, SMTPD digunakan untuk
+mengirim Email dari user yang memiliki mail server tetapi kita bisa menggunakanya
+untuk membuat Email relay, untuk membuat kita harus mengetahui Email server kita :
+
+| Email   | Alamat                     |
+|---------+----------------------------|
+| Google  | smtp.gmail.com             |
+| Yahoo   | smtp.mail.yahoo.com        |
+| MSN     | smtp.mail.outlook.com      |
+| Hotmail | smtp.office365.com         |
+
+disini saya menggunakan service anonim, dan tidak menggunakan server diatas, jika
+anda tidak menggunakan server Google, Yahoo, Microsoft kalian bisa cek atau
+bertanya pada si pembuat service
+
+lalu setelah mengetahui alamat smtp server Email, kita harus membuat atau mengedit
+sebuah konfigurasi yang berada di =/etc/mail/smtpd.conf= untuk OpenBSD, jika melihat
+dokumentasi smtpd, untuk menggunakan relay confignya seperti ini
+
+#+begin_src txt
+action "relay" relay host smtps://anon@smtp.system.id auth <secrets> mail-from "anon10@system.id"
+#+end_src
+
+sebelum saya jelaskan baris diatas saya akan membuat sebuah file yang nanti akan
+berisi password dan username kita, buatlah sebuah file di =/etc/mail/secrets=, lau
+kita akan memberikan sebuah permission/ijin khusus untuk file itu.
+
+isi dari =/etc/mail/secrets= adalah
+
+#+begin_src txt
+anon anon10@system.id:admin123
+#+end_src
+
+lalu kita membuat agar file ini tidak dapat di buka oleh user siapapun selain root
+
+#+begin_src sh
+chown root:_smtpd /etc/mail/secrets
+chmod 640 /etc/mail/secrets
+#+end_src
+
+lalu menambahkannya ke awal file =/etc/mail/smtpd.conf=
+
+dalam =/etc/mail/smtpd.conf= saya menambahkan sebuah line =action= untuk menamai
+bahwa tindakan ini bernama =relay= setelah itu kita memberikan sebuah host
+disini saya menggunakan smtps karna email server saya mensupport smtps, setelah itu
+bisa dilihat disini terdapat tulisan =anon@smtp.system.id auth <secrets>= yang
+artinya adalah kita menggunakan secret anon dengan server =smtp.system.id=, anon
+disini berasal dari file =/etc/mail/secrets=.
+
+setelah itu kita membuat sebuah match yang menunjukan kemana dan dari siapa kita
+akan menggunakan action, untuk konfigurasi disini adalah seperti berikut
+
+#+begin_src sh
+match from local for any action "relay"
+#+end_src
+
+arti baris diatas adalah dari local untuk semua alamat dengan action bernama =relay=
+match disini kita taruh dibawah action =relay=
+
+seperti inilah hasil konfigurasi yang kita lakukan untuk file =/etc/mail/smtpd.conf=
+
+#+begin_src txt
+#	$OpenBSD: smtpd.conf,v 1.14 2019/11/26 20:14:38 gilles Exp $
+
+# This is the smtpd server system-wide configuration file.
+# See smtpd.conf(5) for more information.
+
+table aliases file:/etc/mail/aliases
+table secrets file:/etc/mail/secrets
+
+listen on socket
+listen on lo
+
+action "local_mail" mbox alias <aliases>
+action "relay" relay host smtps://anon@smtp.system.id auth <secrets> mail-from "anon10@system.id"
+
+match from local for local action "local_mail"
+match from local for any   action "relay"
+#+end_src
+
+untuk mengecek apakah konfigurasi kita sudah benar kita bisa menjalankan
+=smtpd -n=
+
+setelah sudah benar semua kita harus menjalankan service smtpd, untuk OpenBSD kita
+menggunakan rcctl
+
+#+begin_src sh
+doas rcctl -f start smtpd
+#+end_src
+
+kita bisa langsung mengirim email dengan utilitas bawaan OpenBSD yaitu =mail=
+
+#+begin_src sh
+echo Hello from OpenBSD | mail -s "Hello" -r anon10@system.id
+#+end_src
+
+di atas saya menggunakan opsi =-s= yang artinya saya menaruh "Hello" sebagai
+subject dan opsi =-r= sebagai dari mana Email di kirimkan, jika tidak
+menggunakan opsi =-r= email yang terkirim akan menggunakan nama user dan
+hostname os kita, dari opsi =-r= ini juga kita bisa menseting email sender,
+contohnya jika kita menggunakan =test@bsd= pada opsi =-r= maka di penerima
+akan muncul =test@bsd= sebagai pengirim.
+
+untuk mengetahui jika kita berhasil mengirim email kita bisa melihat file log,
+di OpenBSD file log berada di =/var/log/maillog=, gunakan tail untuk melihat log
+
+#+begin_src sh
+tail -f -n 0 /var/log/maillog 
+#+end_src
+
+opsi =-f= disini adalah agar perintah =tail= bisa terus memberitahu jika file berubah
+dan opsi =-n= adalah nomor berapa, disini saya menggunakan nomor 0 untuk mengambil akhir
+file.
+
+** Mail retrieval agents
+:PROPERTIES:
+:CUSTOM_ID: mail-retrieval-agents
+:END:
+
+--------------
+
+mail retrieval agents adalah sebuah software yang digunakan untuk mengambmil email
+yang berada di email server, untuk menggambil email dari server
+seperti dijelasakan diatas kita bisa menggunakan 2 protokol yaitu POP3 dan IMAP.
+
+disini saya akan menggunakan software =getmail= dan menggunakan protokol POP3, di
+OpenBSD =getmail= berada di repo, kita hanya perlu menginstall menggunakan =pkg_add=,
+untuk mengkonfigurasi =getmail= kita membuat sebuah file dan folder baru yaitu
+=getmail=
+
+#+begin_src sh
+mkdir -m 0700 ~/.getmail
+touch ~/.getmail/getmailrc
+#+end_src
+
+bukalah file =~/.getmail/getmailrc= lalu kita menambahkan konfigurasi seperti ini
+
+#+begin_src txt
+[retriever]
+type = SimplePOP3SSLRetriever
+server = mail.system.id
+username = anon10@system.id
+port = 995
+password_command = ("pass", "Email/anon10@system.id")
+
+[destination]
+type = Mboxrd
+path = /var/mail/aerphanas
+
+[options]
+read_all = False
+delete = true
+#+end_src
+
+config diatas saya menggunakan sebuah software bernama =pass= yang saya gunakan
+untuk menyimpan password email, saya juga menambah opsi =delete= untuk menghapus
+email yang berada di server setelah terdownload dan opsi =read_all= untuk mendownload
+hanya email yang belum terdownload, saya juga menentukan destinasi email yang
+masuk, disini saya menggunakan mbox yang berada di =/var/mail/aerphanas=, aerphanas
+adalah user saya saat ini.
+
+untuk destinasi, getmail mensupport mbox dan mailbox, perbedaanya adalah mbox
+akan menyimpan semua email dalam satu file sedangkan mailbox akan menyimpan
+Email ke dalam folder dan file.
+
+** Membuat kunci GPG
+:PROPERTIES:
+:CUSTOM_ID: membuat-kunci-gpg
+:END:
+
+--------------
+
+untuk keamanan saya menggunakan software =pass=, cara saya mengkonfigurasinya
+yang pertama kali saya lakukan adalah membuat kunci, software =pass= menggunakan
+software =GnuPG= untuk enkripsi database, sebelum membuat kunci =GnuPG= kita harus
+menginstall software =gpg=, setelah itu kita membuat kunci dengan perintah
+
+#+begin_src sh
+gpg --full-generate-key --expert 
+#+end_src
+
+setelah selesai membuat kita harus melihat ID kunci untuk digunakan di =pass=
+
+#+begin_src sh
+gpg --list-secret-keys --keyid-format=long
+#+end_src
+
+output diatas kira-kira seperti ini
+
+#+begin_src sh
+sec   4096R/3AA5C34371567BD2 2016-03-10 [expires: 2017-03-10]
+uid                          Hubot <hubot@example.com>
+ssb   4096R/4BB6D45482678BE3 2016-03-10
+#+end_src
+
+dari hasil diatas gpg ID adalah =3AA5C34371567BD2=, setelah itu membuat
+password store
+
+#+begin_src sh
+pass init "3AA5C34371567BD2"
+#+end_src
+
+kita dapat memasukan passwod kita
+
+#+begin_src sh
+pass insert Email/anon10@system.id
+#+end_src
+
+jika semua konfigurasi sudah benar, untuk mendapatkan email kita hanya
+perlu memanggil =getmail=, maka email kita akan otomatis masuk ke mbox
+
+** Daftar Pustaka
+:PROPERTIES:
+:CUSTOM_ID: daftar-pustaka
+:END:
+
+--------------
+
+- OpenBSD\\
+  → [[https://man.openbsd.org/][OpenBSD manual page server]]
+
+- getmail\\
+  → [[https://getmail6.org/documentation.html][getmail documentation]]
+
+- pass\\
+  → [[https://www.passwordstore.org/][pass the standard unix password manager]]
+
+- GnuPG\\
+  → [[https://gnupg.org/][The GNU Privacy Guard]]
