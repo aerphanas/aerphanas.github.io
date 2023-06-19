@@ -1,0 +1,122 @@
+---
+title: Berinteraksi sesama Fediverse melalui Mastodon
+author: aerphanas
+desc: Menggunakan Mastodon untuk berinteraksi dengan server yang Menggunakan ActivityPub
+image: berinteraksi-sesama-fediverse-melalui-mastodon-fig1.png
+---
+
+#+title: Berinteraksi sesama Fediverse melalui Mastodon
+
+#+author: aerphanas
+#+caption: Sreenshot halaman utama fediverse.party
+[[../images/berinteraksi-sesama-fediverse-melalui-mastodon-fig1.png]]
+
+** Daftar isi
+:PROPERTIES:
+:CUSTOM_ID: daftar-isi
+:END:
+- [[#pendahuluan][Pendahuluan]]
+- [[#mastodon][Mastodon]]
+- [[#activity-pub][ActivityPub]]
+- [[#lemmy][Lemmy]]
+- [[#daftar-pustaka][Daftar Pustaka]]
+
+** Pendahuluan
+:PROPERTIES:
+:CUSTOM_ID: pendahuluan
+:END:
+
+--------------
+ 
+Mastodon merupakan sebuah alternative sosial media twitter,
+tidak seperti twitter kita dapat membuat service kita sendiri dan
+dapat saling berinteraksi dengan sesama pengguna Mastodon meskipun
+berbeda server.
+
+** Mastodon
+:PROPERTIES:
+:CUSTOM_ID: mastodon
+:END:
+
+--------------
+
+Untuk membuat akun mastodon kita dapat membuat server sendiri atau
+membuat akun di server yang sudah ada, setiap server memiliki
+peraturanya sendiri, jadi ketika kita ingin membuat akun di server
+orang lain kita harus menaati peraturan servernya.
+
+** Activity Pub
+:PROPERTIES:
+:CUSTOM_ID: activity-pub
+:END:
+
+--------------
+
+Activity pub merupakan sebuah protokol yang dibuat untuk berinteraksi
+sesama server Fediverse, Activity pub sudah digunakan di platform
+microbloging seperti Mastodon, Misskey dan Plemora, media hosting
+Funkwhale, PeerTube dan Pixelfeed, Blog platform Plume dan
+WriteFreely dan Social Network platform Friendica.
+
+** Lemmy
+:PROPERTIES:
+:CUSTOM_ID: lemmy
+:END:
+
+--------------
+
+saya akan membuat contoh dalam pos ini, saya akan menggunakan akun
+mastodon lalu memposting sesuatu pos yang berada di Lemmy.
+
+Lemmy merupakan sebuah Fediverse yang menggunakan ActivityPub,
+sehingga kita bisa berinteraksi dengan Lemmy menggunakan Mastodon,
+langkah pertama adalah kita harus membuat akun Mastodon, setelah
+itu kita membuka situs Lemmy, setelah menemukan apa yang kita cari
+kita perlu mengkopi URL Lemmy lalu menempelkanya ke pencarian yang
+ada di mastodon, kita bisa berkomentar dengan membuat balasan pada
+pos, kita juga bisa memberikan Up-vote pada pos dengan mengklik
+bintang yang ada di Mastodon
+
+kita juga bisa membuat sebuah post di Lemmy melalui Mastodon dengan
+cara memmanggil nama grup saat membuat post, sebagai contoh
+saya akan membuat sebuah post foto untuk grup unixporn yang ada di
+lemmy, grub unixporn berada di server lemmy.ml maka di mastodon
+kita mengubahnya menjadi @unixporn@lemmy.ml, kita hanya perlu
+memanggilnya saat ingin membuat post, barisan pertama akan menjadi
+title dan barisan kedua akan menjadi isi dari pos kita.
+
+tidak hanya lemmy kita bisa berinteraksi dengan server Fediverse
+tetapi hanya Fediverse yang menggunakan ActivityPub.
+
+berikut adalah daftar server Fediverse yang menggunakan ActivityPub :
+
+- Mastodon
+- PeerTube
+- PexelFed
+- Plemora
+- Lemmy
+- Kbin
+- Funkwhale
+
+semua service di atas sudah saya coba untuk berinteraksi dengan Mastodon
+semuanya berhasil dan daapt berinteraksi dengan akun saya yang berada
+di mastodon.
+
+** Daftar Pustaka
+:PROPERTIES:
+:CUSTOM_ID: daftar-pustaka
+:END:
+
+--------------
+
+- Mastodon\\
+  → [[https://joinmastodon.org/servers][join mastodon]]
+
+- Lemmy\\
+  → [[https://join-lemmy.org/][join lemmy]]
+
+- ActivityPub\\
+  → [[https://socialhub.activitypub.rocks/t/introduction-to-activitypub/508][Introdution to ActivityPub]]
+    
+- Fediverse Party\\
+  → [[https://fediverse.party/][Home Page]]
