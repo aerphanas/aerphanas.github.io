@@ -8,7 +8,6 @@ Static Site Powered by Hakyll
 ## Table of contents
 - [Description](#description)
 - [How to Generate site](#how-to-generate-site)
-- [Contribution](#contribution)
 
 ## Description
 
@@ -30,12 +29,5 @@ git clone https://github.com/aerphanas/aerphanas.github.io.git
 then after that go to the directory ```aerphanas.github.io``` and do :
 
 ```sh
-cabal run -- kompor watch
+make watch
 ```
-
-## Contribution
-
-1. Fork my github project to your github account
-2. Make a new branch on forked repo with an informative name
-3. Write something
-4. Make a pull request

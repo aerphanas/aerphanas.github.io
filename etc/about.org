@@ -1,17 +1,23 @@
 ---
 title: Tentang Saya
-desc: siapa itu aerphanas, tujuan kenapa blog ini dibuat, cara mengkontak pembuat web.
+desc: siapa itu aerphanas, siapa itu Muhammad Aviv Burhanudin, tujuan kenapa blog ini dibuat, cara mengkontak pembuat web.
 sitedate: 2022-08-21
 ---
 
+#+author: Muhammad Aviv Burhanudin
+#+caption: foto saya menggunakan In-Ear Monitor
+[[../images/me.jpg]]
+
+
 Hai, nama saya Muhammad Aviv Burhanudin, saya mendukung gerakan kode
-terbuka atau opens source, sebenarnya saya sudah menggunakan static site
+terbuka atau open source, sebenarnya saya sudah menggunakan static site
 sejak dulu dan dulu saya menggunakan static site generator yang bernama
 jekyll, karna saya tidak lagi meggunakan ruby dan saat ini saya sedang
 tertarik dengan bahasa program haskell maka dari itu saya migrasi dari
 jekyll ke hakyll, di dunia open source ini saya mimiliki beberapa proyek
 yaitu mulai dari alat untuk terminal sampai graphical user interface,
-dan saya juga sudah lama menggunakan sistem operasi GNU/Linux.
+dan saya juga sudah lama menggunakan sistem operasi UNIX-Like seperti
+GNU/Linux atau BSD.
 
 di dalam blog ini saya akan membagikan beberapa tips dan cara
 menyelesaikan berbagai masalah di open source dan saya juga ingin
@@ -24,19 +30,39 @@ desain web ini juga dibuat dengan desain minimalis agar tidak menggangu
 pembaca dan dapat memudahkan untuk di load di beberapa browser yang
 sudah lama.
 
-website ini bersifat publik jadi jika kamu ingin memposting atau
-memperbaiki sesuatu kamu hanya perlu pergi ke github dan berkontribusi
-pada proyek ini atau anda bisa menkontak saya ke
-[[mailto:muhamadaviv14@gmail.com][email]] dan jika memerlukan
-[[https://keys.openpgp.org/vks/v1/by-fingerprint/AA79C548ED0C96A51E632B0CFCE880D64949859D][GPG
-Key]], dan jika ingin melihat beberapa proyek saya bisa pergi ke
-repositories saya di [[https://github.com/aerphanas][Github]],
-[[https://gitlab.com/aerphanas][Gitlab]] and
-[[https://codeberg.org/aerphanas][Codeberg]]
+text editor yang sangat bagus menurut saya adalah Emacs, di Emacs kita
+bisa mengubah apa saja karna Emacs sangat mudah dikostumisasi menggunakan
+bahasa ELisp, Elisp adalah sebuah dialek dari bahasa Lisp.
 
-kontak tambahan
+saat ini bahasa javascript sangatlah populer, namun saya rasa dari semua
+bahasa program yang populer memiliki kesamaan yaitu cara menyelesaikan masalah
+masi/hampir sama dengan bahasa ALGOL, saya tertarik bahasa program yang
+cara menyelesaikan masalah berbeda dengan yang lain, berikut adalah
+bahasa program yang saat ini saya sukai :
 
-1. [[https://libretooth.gr/@aerphanas][Mastodon]]
-2. [[https://matrix.to/#/@aerphanas:mozilla.org][Matrix]]
-3. [[https://twitter.com/aerphanas][Twitter]]
-4. aerphanas@gnu.gr (xmpp)
+- C
+- Nim
+- Rust
+- Forth
+- Haskell
+- SmallTalk
+- Common Lisp
+
+saya kurang menyukai windows dan macos dikarenakan sistem tertutup
+saya tidak bisa melakukan perubahan dan ketika saya menggunakan
+kedua os tersebut saya rasa sangatlah tidak fleksibel, berbeda dengan
+sistem operasi yang lain, beberapa sistem operasi favorit saya:
+
+- FreeBSD
+- OpenBSD
+- Arch Linux
+
+Temukan saya di
+
+- [[mailto:muhamadaviv14@gmail.com][Email]]
+- [[https://matrix.to/#/@aerphanas:mozilla.org][Matrix]]
+- [[https://github.com/aerphanas][Github]]
+- [[https://twitter.com/aerphanas][Twitter]]
+- [[https://codeberg.org/aerphanas][Codeberg]]
+- [[https://libretooth.gr/@aerphanas][Mastodon]]
+- aerphanas@gnu.gr (xmpp)

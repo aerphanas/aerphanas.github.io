@@ -30,7 +30,7 @@
         <meta property="og:locale" content="id_ID" />
         <meta property="og:site_name" content="Λerphanas" />
         <meta property="og:type" content="website" />
-        <meta property="fb:app_id" content="617448126761023"/>
+        <!-- <meta property="fb:app_id" content="617448126761023"/> -->
 
         <!-- Twitter -->
         <meta name="twitter:title" content="Λerphanas Blog - $title$" />
@@ -43,7 +43,6 @@
 
         <link rel="stylesheet" href="$root$/css/default.css" />
         <link rel="stylesheet" href="$root$/css/syntax.css" />
-        <script src="https://kit.fontawesome.com/f96722f9f5.js" crossorigin="anonymous"></script>
         <title>λerphanas :: $title$</title>
         <meta name="title" content="Λerphanas Blog - $title$" />
         <meta name="description" content="$desc$" />
@@ -53,7 +52,7 @@
 
         <header>
             <div class="logo">
-                <a href="$root$">λerphanas ∷ $title$</a>
+                <a href="$root$">λerphanas :: $title$</a>
             </div>
             <nav>
 	        <a href="$root$/etc/about.html">[ Tentang</a>
@@ -69,27 +68,24 @@
 
         <footer>
             <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" class="license" target="_blank">
-                <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/80x15.png" />
+                <img alt="CC BY-SA" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/80x15.png" />
             </a>
 	    $if(land)$
 	    <a href="$root$/atom.xml">
-	      <i class="fa-solid fa-square-rss fa-xl" style="color: #3d3846;"></i>
-	    </a> |
+	      RSS
+	    </a>
+	    |
 	    $endif$
-            <a href="https://id.linkedin.com/in/aerphanas?trk=profile-badge" target="_blank">
-                <i class="fa-brands fa-linkedin-in fa-xl" style="color: #3d3846;"></i>
-            </a> |
-            <a href="https://gitlab.com/batuesh" target="_blank">
-                <i class="fa-brands fa-gitlab fa-xl" style="color: #3d3846;"></i>
-            </a> |
-            <a href="https://github.com/aerphanas" target="_blank">
-                <i class="fa-brands fa-github fa-xl" style="color: #3d3846;"></i>
-            </a> |
             <a rel="me" href="https://libretooth.gr/@aerphanas" target="_blank">
-                <i class="fa-brands fa-mastodon fa-xl" style="color: #3d3846;"></i>
-            </a> |
-            <a href="http://jaspervdj.be/hakyll" class="make" target="_blank">
-                <i class="fa-solid fa-gears fa-xl" style="color: #3d3846;"></i>
+	      Mastodon
+            </a>
+	    |
+	    <a href="https://github.com/aerphanas" target="_blank">
+	      Github
+            </a>
+	    |
+	    <a href="https://codeberg.org/aerphanas" target="_blank">
+	      Codeberg
             </a>
         </footer>
 

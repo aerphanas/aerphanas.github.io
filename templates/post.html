@@ -1,54 +1,29 @@
 <article>
     <section class="header">
         $if(author)$
-            $author$
+            oleh $author$
         $else$
-            Anonymous
+            oleh Anonymous
         $endif$
-	- $date$
+	pada $date$
 	<br>
+	Bagikan ke: 
+	<!-- twitter (url) -->
         <a href="https://twitter.com/share?url=$root$$url$&text=$title$&via=$author$" target="_blank">
-            <i class="fa-brands fa-twitter fa-xl" style="color: #3d3846;"></i>
+	  Twitter
         </a>
+	|
         <!-- Facebook (url) -->
         <a href="https://www.facebook.com/sharer/sharer.php?u=$root$$url$" target="_blank">
-            <i class="fa-brands fa-facebook fa-xl" style="color: #3d3846;"></i>
+	  Facebook
         </a>
-        <!-- Reddit (url, title) -->
-        <a href="https://reddit.com/submit?url=$root$$url$&title=$title$" target="_blank">
-            <i class="fa-brands fa-reddit fa-xl" style="color: #3d3846;"></i>
-        </a>
-        <!-- Hacker News (url, title) -->
-        <a href="https://news.ycombinator.com/submitlink?u=$root$$url$&t=$title$" target="_blank">
-            <i class="fa-brands fa-hacker-news fa-xl" style="color: #3d3846;"></i>
-        </a>
+	|
         <!-- LinkedIn (url, title, summary, source url) -->
         <a href="https://www.linkedin.com/shareArticle?url=$root$$url$&title=$title$&summary=$desc$" target="_blank">
-            <i class="fa-brands fa-linkedin fa-xl" style="color: #3d3846;"></i>
-        </a>
-        <!-- Email (subject, body) -->
-        <a href="mailto:?subject=$title$&body=$root$$url$">
-            <i class="fa-solid fa-envelope fa-xl" style="color: #3d3846;"></i>
-        </a>
-        <a href="https://wa.me/?text=$root$$url$" target="_blank">
-            <i class="fa-brands fa-square-whatsapp fa-xl" style="color: #3d3846;"></i>
+	  LinkedIn
         </a>
     </section>
     <section>
         $body$
     </section>
 </article>
-<br>
-<details>
-    <summary>Comments</summary>
-    <script src="https://utteranc.es/client.js"
-            repo="aerphanas/aerphanas.github.io"
-            issue-term="title"
-            label="issues created by Utterances. "
-            theme="github-light"
-            crossorigin="anonymous"
-            async>
-    </script>
-</details>
-<br>
-

@@ -14,9 +14,7 @@ exec ros +Q -- $0 "$@"
 ;; (list day month year)
 (declaim (type list *today*))
 (defvar *today*
-  (let ((times
-	  (multiple-value-list
-	     (decode-universal-time (get-universal-time)))))
+  (let ((times (multiple-value-list (get-decoded-time))))
     (list (fourth times)
 	  (fifth times)
 	  (sixth times))))
