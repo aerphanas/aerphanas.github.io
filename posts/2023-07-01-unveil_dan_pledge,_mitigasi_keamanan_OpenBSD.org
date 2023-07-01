@@ -1,0 +1,180 @@
+---
+title: unveil dan pledge, mitigasi keamanan OpenBSD
+author: aerphanas
+desc: OpenBSD memiliki keamanan yang sangat tinggi, OpenBSD memiliki sebuah mitigasi untuk membuat sistem menjadi lebih aman dari yang lain
+image: unveil-dan-pledge,-mitigasi-keamanan-openbsd-fig1.png
+---
+
+#+title: unveil dan pledge, mitigasi keamanan OpenBSD
+
+#+author: aerphanas
+#+caption: Clyde Beatty menjinakkan singa dengan kursi
+[[../images/unveil-dan-pledge,-mitigasi-keamanan-openbsd-fig1.png]]
+
+** Daftar isi
+:PROPERTIES:
+:CUSTOM_ID: daftar-isi
+:END:
+- [[#pendahuluan][Pendahuluan]]
+- [[#unveil][unveil]]
+- [[#pledge][pledge]]
+- [[#daftar-pustaka][Daftar Pustaka]]
+
+** Pendahuluan
+:PROPERTIES:
+:CUSTOM_ID: pendahuluan
+:END:
+
+--------------
+
+OpenBSD merupakan sebuah sistem operasi seperti UNIX yang di buat
+dan dipimpin oleh Theo de Raadt, Theo de Raadt adalah seorang
+software enggineer dan selain proyek OpenBSD dia juga membuat
+beberapa proyek seperti OpenSSH, OpenNTPD, dll.
+
+salah satu tujuan OpenBSD adalah menjadi sistem operasi paling
+aman nomor 1, dan OpenBSD juga membuat sebuah fungsi mitigasi
+yaitu pledge dan unveil yang digunakan untuk membatasi beberapa
+kernel system call pada sebuah program.
+
+dalam postingan kali ini saya akan mencoba menggunakan fungsi unveil
+dan pledge.
+
+** unveil
+:PROPERTIES:
+:CUSTOM_ID: unveil
+:END:
+
+--------------
+
+unveil adalah sebuah fungsi yang digunakan untuk membatasi
+filesystem/file/folder apa yang dapat dilihat/dimodifikasi
+oleh program, sebagai contoh firefox adalah sebuah program
+yang digunakan untuk membuka website di internet, program
+ini hanya dibolehkan melihat dan memodifikasi folder
+configurasinya dan folder Download tidak kurang dan tidak lebih.
+
+sinopsis unveil dalam manual ialah mengambil path dan izin,
+izin dan path disini berupa const char
+
+1) izin r membuat izin path menjadi bisa dibaca
+2) izin w membuat izin path menjadi bisa ditulis
+3) izin x membuat izin path menjadi bisa mengeksekusi file
+4) izin c membuat izin path menjadi bisa menghapus dan membuat file/folder
+  
+sebagai contoh, kali ini saya akan membuat program sederhana
+yang akan mengakses sebuah file dalam sebuah folder yang
+sudah ditentukan, file kita bernama =unveil.txt= berisi
+=Hello Unveil= dan ada di dalam folder =/home/aerphanas/test/=.
+
+seperti inilah kode yang saya buat :
+
+#+begin_src C
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <err.h>
+#include <fcntl.h>
+
+int
+main() {
+  if (unveil("/home/aerphanas/test/", "r") == -1)
+    err(EXIT_FAILURE, "unveil");
+
+  int fd = open("/home/aerphanas/test/unveil.txt", O_RDONLY);
+  char output[12];
+
+  if (fd < 0) err(EXIT_FAILURE, NULL);
+
+  read(fd, output, sizeof(output));
+  printf("%s\n", output);
+  exit(EXIT_SUCCESS);
+}
+#+end_src
+
+kita menggunakan unveil izin =r= pada program ini, sehingga program ini
+hanya bisa mengakses dan membaca (Read Only), ketika kita mengubah
+=path= atau =lokasi= unveil, saat fungsi =open= terpanggil program
+kita akan gagal di jalankan.
+
+perlu diingat :
+#+begin_quote
+setelah melakukan unveil ke suatu path,
+kita tidak bisa menghapus unveil yang sudah diberikan,
+jadi berhati-hatilah menentukan path yang diinginkan.
+#+end_quote
+
+** pledge
+:PROPERTIES:
+:CUSTOM_ID: pledge
+:END:
+
+--------------
+
+pledge merupakan sebuah fungsi yang digunakan untuk membatasi
+operasi sistem, operasi sistem yang dimaksud adalah =stdio=, =rpath=
+=inet= dll, semua operasi sistem yang di support pledge bisa kalian
+lihat di openbsd manual,
+
+seperti yang sudah di jelaskan diatas pledge digunakan untuk membatasi
+operasi sistem, dalam kode berikut saya akan menggunakanya untuk membaca
+file sebelumnya
+
+#+begin_src C
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <err.h>
+#include <fcntl.h>
+
+int
+main() {
+  if (unveil("/home/aerphanas/test/", "r") == -1)
+    err(EXIT_FAILURE, "unveil");
+
+  if (pledge("stdio rpath", NULL))
+    err(EXIT_FAILURE, "pledge");
+
+  int fd = open("/home/aerphanas/test/unveil.txt", O_RDONLY);
+  char output[12];
+
+  if (fd < 0) err(EXIT_FAILURE, NULL);
+
+  read(fd, output, sizeof(output));
+  printf("%s\n", output);
+  exit(EXIT_SUCCESS);
+}
+#+end_src
+
+seperti kode sebelumnya saat saya mencoba =unveil=
+saya hanya menambah baris berikut
+
+#+begin_src C
+if (pledge("stdio rpath", NULL))
+  err(EXIT_FAILURE, "pledge");
+#+end_src
+
+saya memakai =stdio= karena saya akan melakukan pencetakan isi
+dari file ke =console= atau =stdout=, lalu saya menggunakan =rpath=
+dikarenakan saya hanya akan membaca isi file.
+
+fitur ini saya rasa sangat bagus, namun saat ini yang saya tau
+hanya openbsd saja yang menggunakan fitur ini, di kedepanya
+saya harap beberapa sistem operasi lain memiliki fungsi ini.
+
+** Daftar Pustaka
+:PROPERTIES:
+:CUSTOM_ID: daftar-pustaka
+:END:
+
+--------------
+
+- OpenBSD manual page server\\
+  → [[https://man.openbsd.org/pledge][pledge(2)]]\\
+  → [[https://man.openbsd.org/unveil.2][unveil(2)]]
+
+- Youtube\\
+  → [[https://youtu.be/F_7S1eqKsFk][Hackfest 2015: Theo de Raadt presented "Pledge: A new security technology in openbsd"]]
+
+- OpenBSD\\
+  → [[https://www.openbsd.org/][OpenBSD]]
