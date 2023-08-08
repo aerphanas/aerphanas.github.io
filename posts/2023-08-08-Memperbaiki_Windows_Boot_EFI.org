@@ -57,20 +57,20 @@ ke windows installasi pilihlah bahasa yang kita mau pakai, setelah mengklik
 Next kita mengklik Repair your computer, setelah menu tampil kita akan memilih
 command prompt,setelh itu jalankan perintah
 
-#+begin_src shell
+#+begin_src sh
 diskpart
 #+end_src
 
 setelah memasuki command interaktif diskpart kita ingin mengetahui list dari
 partisi dan volume kita, caranya dengan menjalankan perintah
 
-#+begin_src shell
+#+begin_src sh
 list disk
 #+end_src
 
 dan
 
-#+begin_src shell
+#+begin_src sh
 list vol
 #+end_src
 
@@ -78,7 +78,7 @@ setelah menemukan partisi yang akan di tuju kita harus memberikan nama pada
 partisi yang dituju, sebagai contoh saya akan menamainya =x=, setelah itu
 kita hanya perlu menjalankan perintah
 
-#+begin_src shell
+#+begin_src sh
 bcdboot c:\windows /s X: /f UEFI
 #+end_src
 
