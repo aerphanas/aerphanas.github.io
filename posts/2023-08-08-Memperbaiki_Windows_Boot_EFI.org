@@ -1,0 +1,108 @@
+---
+title: Memperbaiki Windows Boot EFI
+author: aerphanas
+desc: Memperbaiki windows boot efi file ketika kita tidak sengaja menghapus efi file/folder
+image: memperbaiki-windows-boot-efi-fig1.png
+---
+
+#+title: Memperbaiki Windows Boot EFI
+
+#+author: aerphanas
+#+caption: rEFInd photo by aerphanas
+[[../images/memperbaiki-windows-boot-efi-fig1.png]]
+
+** Daftar isi
+:PROPERTIES:
+:CUSTOM_ID: daftar-isi
+:END:
+- [[#pendahuluan][Pendahuluan]]
+- [[#windows-bootable][Windows Bootable]]
+- [[#memperbaiki-efi][Memperbaiki EFI]]
+- [[#daftar-pustaka][Daftar Pustaka]]
+
+** Pendahuluan
+:PROPERTIES:
+:CUSTOM_ID: pendahuluan
+:END:
+
+--------------
+
+Terkadang ketika saya melakukan multi boot terkadang tanpa saya sadari
+sistem operasi yang saya install menghapus atau memformat partisi EFI,
+dalam postingan kali ini saya akan membuat bagai mana cara memperbaiki
+efi file/folder windows yang terhapus.
+
+** Windows Bootable
+:PROPERTIES:
+:CUSTOM_ID: windows-bootable
+:END:
+
+--------------
+
+untuk memperbaiki installasi windows, kita pertama-tama harus memiliki
+bootable, saat ini hanya ada satu tool yang bisa membuat windows bootable
+di linux yaitu woeusb-ng, untuk installasinya saya sarankan unuk mengikuti
+caranya di README githubnya.
+
+** Memperbaiki EFI
+:PROPERTIES:
+:CUSTOM_ID: memperbaiki-efi
+:END:
+
+--------------
+
+setelah membuat Windows Bootable langsung saja kita boot komputer kita
+dengan USB bootable yang telah kita buat, setelah kita berhasil boot
+ke windows installasi pilihlah bahasa yang kita mau pakai, setelah mengklik
+Next kita mengklik Repair your computer, setelah menu tampil kita akan memilih
+command prompt,setelh itu jalankan perintah
+
+#+begin_src shell
+diskpart
+#+end_src
+
+setelah memasuki command interaktif diskpart kita ingin mengetahui list dari
+partisi dan volume kita, caranya dengan menjalankan perintah
+
+#+begin_src shell
+list disk
+#+end_src
+
+dan
+
+#+begin_src shell
+list vol
+#+end_src
+
+setelah menemukan partisi yang akan di tuju kita harus memberikan nama pada
+partisi yang dituju, sebagai contoh saya akan menamainya =x=, setelah itu
+kita hanya perlu menjalankan perintah
+
+#+begin_src shell
+bcdboot c:\windows /s X: /f UEFI
+#+end_src
+
+setelah menjalankan perintah diatas kita akan mendapatkan sebuah folder
+didalam partisi yang kita tunjuk, dan akan ada file sepertiini
+
+- =\EFI\Microsoft\Boot\bootmgfw.efi=
+- =\EFI\Microsoft\Boot\bootmgr.efi=
+- =\EFI\Microsoft\Boot\memtest.efi=
+- =\EFI\Microsoft\Boot\BCD=
+- =\EFI\Microsoft\Boot\Fonts\wgl4_boot.ttf=
+
+ketika file diatas berada di efi partisi maka kita sudah berhasil memperbaiki
+windows boot efi dan siap untuk boot.
+
+** Daftar Pustaka
+:PROPERTIES:
+:CUSTOM_ID: daftar-pustaka
+:END:
+
+--------------
+
+- Github\\
+  → [[https://github.com/WoeUSB/WoeUSB-ng][Woeusb-ng]]
+
+- Windows OS Hub\\
+  → [[https://woshub.com/how-to-repair-deleted-efi-partition-in-windows-7/][How to Restore Deleted EFI System Partition in Windows]]
