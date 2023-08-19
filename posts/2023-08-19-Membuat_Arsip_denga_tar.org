@@ -1,0 +1,217 @@
+---
+title: Membuat arsip dengan tar
+author: aerphanas
+desc: saat kita ingin memindahkan file yang banyak, kecepatan memindahkan akan lamabat, namun jika kita menggabungannya menjadi satu lalu memindahkanya maka akan lebih cepat
+image: membuat_arsip_denga_tar-fig1.png
+---
+
+#+title: Membuat arsip dengan tar
+
+#+author: aerphanas
+#+caption: Emacs, membuka manual gnu tar dan eshell
+[[../images/membuat_arsip_denga_tar-fig1.png]]
+
+** Daftar isi
+:PROPERTIES:
+:CUSTOM_ID: daftar-isi
+:END:
+- [[#pendahuluan][Pendahuluan]]
+- [[#membuat-tar-archive][Membuat tar archive]]
+  - [[#menggunakan-kompresi][Menggunakan kompresi]]
+- [[#membuka-tar-archive][Membuka tar archive]]
+- [[#daftar-pustaka][Daftar Pustaka]]
+
+** Pendahuluan
+:PROPERTIES:
+:CUSTOM_ID: pendahuluan
+:END:
+
+--------------
+
+tape archive (tar) merupakan sebuah software yang digunakan untuk merangkum banyak
+file menjadi satu file yang biasanya dinamai tarball, tarball seringkali dijumpai
+ketika kita mendownload sebuah source file atau ingin membuat backup system,
+kita juga bisa memilih tipe kompresi yang kita bisa pilih, namun kita perlu
+menginstall kompresi yang kita inginkan, software tar dalam open source setpengetahuan
+saya hanya dua yaitu bsd tar dan gnu tar.
+
+** Membuat tar archive
+:PROPERTIES:
+:CUSTOM_ID: membuat-tar-archive
+:END:
+
+--------------
+
+untuk membuat tar tanpa kompresi kita bisa menggunakan opsi pendek =-c= atau opsi =--create=
+setelah itu menggunakan opsi pendek =-f= atau =--file= untuk menamai output file yang akan
+kita buat, sebagai contoh saya memiliki beberapa file =.org= ketika saya ingin membuat tar
+maka saya akan menggunakan perintah
+
+#+begin_src sh
+  tar -cf backup.tar file1.org file2.org file3.org
+#+end_src
+
+terkadang kita ingin mengetahui proses dari tar, maka kita menggunakan opsi pendek =-v=
+atau =--verbose= untuk mengetahui proses apa yang sedang di lakukan program tar
+
+#+begin_src sh
+  tar -cvf backup.tar file1.org file2.org file3.org
+#+end_src
+
+karena program tar menggunakan filosofi UNIX maka untuk menggunakan kompresi di tar
+kita harus mengggunakan tool lain, tetapi kita bisa langsung mengggunakanya didalam tar
+
+pada gnu tar kita bisa menggunakan kompresi :
+
+- bzip2
+- xz
+- gzip
+- zstd
+- lzma
+- lzop
+- compress
+- lzip
+
+sedangkan (free)bsd tar kita bisa mengunakan kompresi :
+
+- bzip2
+- xz
+- gzip
+- zstd
+- lzma
+- lzop
+- compress
+- lrzip
+- lz4
+  
+
+bisa dilihat bsd tar dan gnu tar memiliki support terhadap kompresi yang berbeda.
+
+*** Menggunakan kompresi
+:PROPERTIES:
+:CUSTOM_ID: menggunakan-kompresi
+:END:
+
+untuk menggunakan kompresi kita memerlukan program yang diperlukan, sebagai contoh
+saya akan menginstall program di linux distro Arch Linux,
+
+untuk menginstall bzip2, xz, lzip, lzma, lzop, gzip, compress, zstd
+
+#+begin_src sh
+  sudo pacman -S bzip2 xz lzip lzop gzip ncompress zstd
+#+end_src
+
+untuk lzma otomatis dapat digunakan saat menginstall package xz, untuk bsd tar
+ketika kita menggunakan sistem operasi BSD seperti FreeBSD program untuk kompresi sudah
+otomatis terinstal
+
+cara membuat kompresi tar mirip dengan membuat tar tanpa compresi namun kita akan
+menambahkan beberapa opsi
+
+| kompresi | gnu tar                        | bsd tar                        | output    |
+|----------+--------------------------------+--------------------------------+-----------|
+| bzip2    | -j, --bzip2                    | -j, --bzip, --bzip2, --bunzip2 | .tar.bz2  |
+| xz       | -J, --xz                       | -J, --xz                       | .tar.xz   |
+| gzip     | -z, --gzip, --gunzip, --ungzip | -z, --gunzip, --gzip           | .tar.gz   |
+| zstd     | --zstd                         | --zstd                         | .tar.zst  |
+| lzma     | --lzma                         | --lzma                         | .tar.lzma |
+| lzop     | --lzop                         | --lzop                         | .tar.lzo  |
+| compress | -Z, --compress, --uncompress   | -Z, --compress, --uncompress   | .tar.Z    |
+| lzip     | --lzip                         | tidak di support               | .tar.lz   |
+| lrzip    | tidak di support               | --lrzip                        | .tar.lrz  |
+| lz4      | tidak di support               | --lz4                          | .tar.lz4  |
+
+diluar dari kompresi yang di dukung kita juga bisa mengggunakan program lain mengunakan
+opsi =-I= hanya untuk gnu tar dan  =--use-compress-program=cmd= untuk bsd dan gnu tar.
+
+sebagai contoh saya akan membuat kompresi menggunakan gzip, menggunakan perintah berikut
+untuk gnu tar
+
+#+begin_src sh
+  tar -cvzf backup.tar.gz file1.org file2.org file3.org
+#+end_src
+
+khusus gnu bsd untuk menggunakan level compression di gnu tar
+kita menggunakan environment variable.
+
+| kompresi | environment variable |
+|----------+----------------------|
+| xz       | =XZ_OPT=               |
+| gzip     | =GZIP=                 |
+| lzma     | =XZ_OPT=               |
+| lzop     | =LZOP=                 |
+| zstd     | =ZSTD_CLEVEL=          |
+
+beberapa kompresi tidak mencantumkan environment variale, namun kita bisa tetap menggunakan
+level kompresi dengan menggunakan opsi =--use-compress-program=cmd=, contohnya seperti ini
+
+#+begin_src sh
+  tar --use-compress-program='gzip -9' -cvf backup.tar.gz file1.org file2.org file3.org
+#+end_src
+
+untuk menggunakan kompresi kita perlu membuka manual dari program kompresi lalu melihat
+opsi apa untuk meningkatkan level kompresi, sebagai contoh saya akan menggunakan gzip dengan
+level kompresi 9
+
+#+begin_src sh
+  GZIP=-9 tar -cvzf backup.tar.gz file1.org file2.org file3.org
+#+end_src
+
+untuk bsd tar memiliki opsi khusus untuk melakukan kompresi dengan level, did bsd tar kita
+menggunakan opsi =options= sebagai contoh saya akan menggunakan kompresi gzip dengan kompresi
+level 9
+
+#+begin_src sh
+  tar -cvzf --options gzip:compression-level=9 xbackup.tar.gz file1.org file2.org file3.org
+#+end_src
+
+** Membuka tar archive
+:PROPERTIES:
+:CUSTOM_ID: membuka-tar-archive
+:END:
+
+--------------
+
+untuk membuka atau mengekstrak tarball caranya sangatlah mudah, kita hanya perlu menambahkan
+opsi =-x= dan =--extract= untuk bsd dan gnu tar lalu =--get= untuk gnu tar, sebagai contoh disini
+saya akan mengekstrak sebuah tar file yang terkompresi dengan gzip maka saya bisa menggunakan
+perintah
+
+#+begin_src sh
+  tar -xvzf backup.tar.gz
+#+end_src
+
+terkadang sebelum membuka atau mengekstrak file terkompresi kita ingin mengetahui isi dari
+tarball, caranya kita perlu menggunakan opsi =-t= atau =--list=
+
+#+begin_src sh
+  tar -tf backup.tar.gz
+#+end_src
+
+selain menggunakan opsi =-t= kita juga bisa menggunakan program lain seperti =vim= dan =less=.
+
+** Daftar Pustaka
+:PROPERTIES:
+:CUSTOM_ID: daftar-pustaka
+:END:
+
+--------------
+
+- FreeBSD man page\\
+  → [[https://man.freebsd.org/cgi/man.cgi?query=tar&apropos=0&sektion=1&manpath=FreeBSD+13.2-RELEASE+and+Ports&arch=default&format=html][tar(1)]]\\
+  → [[https://man.freebsd.org/cgi/man.cgi?query=lrzip&apropos=0&sektion=1&manpath=FreeBSD+13.2-RELEASE+and+Ports&arch=default&format=html][lrzip(1)]]\\
+  → [[https://man.freebsd.org/cgi/man.cgi?query=lzop&apropos=0&sektion=1&manpath=FreeBSD+13.2-RELEASE+and+Ports&arch=default&format=html][lzop(1)]]\\
+  → [[https://man.freebsd.org/cgi/man.cgi?query=bzip2&apropos=0&sektion=1&manpath=FreeBSD+13.2-RELEASE+and+Ports&arch=default&format=html][bzip2(1)]]\\
+  → [[https://man.freebsd.org/cgi/man.cgi?query=compress&apropos=0&sektion=1&manpath=FreeBSD+13.2-RELEASE+and+Ports&arch=default&format=html][compress(1)]]\\
+  → [[https://man.freebsd.org/cgi/man.cgi?query=gzip&apropos=0&sektion=1&manpath=FreeBSD+13.2-RELEASE+and+Ports&arch=default&format=html][gzip(1)]]\\
+  → [[https://man.freebsd.org/cgi/man.cgi?query=zstd&apropos=0&sektion=1&manpath=FreeBSD+13.2-RELEASE+and+Ports&arch=default&format=html][zstd(1)]]\\
+
+- Arch Linux man page\\
+  → [[https://man.archlinux.org/man/tar.1][tar(1)]]\\
+  → [[https://man.archlinux.org/man/bzip2.1.en][bzip(1)]]\\
+  → [[https://man.archlinux.org/man/xz.1.en][xz(1)]]\\
+  → [[https://man.archlinux.org/man/lzip.1.en][lzip(1)]]\\
+  → [[https://man.archlinux.org/man/lzop.1.en][lzop(1)]]\\
+  → [[https://man.archlinux.org/man/gzip.1.en][gzip(1)]]\\
+  → [[https://man.archlinux.org/man/compress.1.en][compress(1)\\]]
+  → [[https://man.archlinux.org/man/zstd.1.en][zstd(1)]]\\
