@@ -108,18 +108,18 @@ otomatis terinstal
 cara membuat kompresi tar mirip dengan membuat tar tanpa compresi namun kita akan
 menambahkan beberapa opsi
 
-| kompresi | gnu tar                        | bsd tar                        | output    |
-|----------+--------------------------------+--------------------------------+-----------|
-| bzip2    | -j, --bzip2                    | -j, --bzip, --bzip2, --bunzip2 | .tar.bz2  |
-| xz       | -J, --xz                       | -J, --xz                       | .tar.xz   |
-| gzip     | -z, --gzip, --gunzip, --ungzip | -z, --gunzip, --gzip           | .tar.gz   |
-| zstd     | --zstd                         | --zstd                         | .tar.zst  |
-| lzma     | --lzma                         | --lzma                         | .tar.lzma |
-| lzop     | --lzop                         | --lzop                         | .tar.lzo  |
-| compress | -Z, --compress, --uncompress   | -Z, --compress, --uncompress   | .tar.Z    |
-| lzip     | --lzip                         | tidak di support               | .tar.lz   |
-| lrzip    | tidak di support               | --lrzip                        | .tar.lrz  |
-| lz4      | tidak di support               | --lz4                          | .tar.lz4  |
+| kompresi | gnu tar          | bsd tar                        | output    |
+|----------+------------------+--------------------------------+-----------|
+| bzip2    | -j, --bzip2      | -j, --bzip                     | .tar.bz2  |
+| xz       | -J, --xz         | -J, --xz                       | .tar.xz   |
+| gzip     | -z, --gzip       | -z, --gzip                     | .tar.gz   |
+| zstd     | --zstd           | --zstd                         | .tar.zst  |
+| lzma     | --lzma           | --lzma                         | .tar.lzma |
+| lzop     | --lzop           | --lzop                         | .tar.lzo  |
+| compress | -Z               | -Z                             | .tar.Z    |
+| lzip     | --lzip           | tidak di support               | .tar.lz   |
+| lrzip    | tidak di support | --lrzip                        | .tar.lrz  |
+| lz4      | tidak di support | --lz4                          | .tar.lz4  |
 
 diluar dari kompresi yang di dukung kita juga bisa mengggunakan program lain mengunakan
 opsi =-I= hanya untuk gnu tar dan  =--use-compress-program=cmd= untuk bsd dan gnu tar.
@@ -213,5 +213,5 @@ selain menggunakan opsi =-t= kita juga bisa menggunakan program lain seperti =vi
   → [[https://man.archlinux.org/man/lzip.1.en][lzip(1)]]\\
   → [[https://man.archlinux.org/man/lzop.1.en][lzop(1)]]\\
   → [[https://man.archlinux.org/man/gzip.1.en][gzip(1)]]\\
-  → [[https://man.archlinux.org/man/compress.1.en][compress(1)\\]]
+  → [[https://man.archlinux.org/man/compress.1.en][compress(1)]]\\
   → [[https://man.archlinux.org/man/zstd.1.en][zstd(1)]]\\
