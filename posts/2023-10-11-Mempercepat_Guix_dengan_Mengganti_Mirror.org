@@ -1,0 +1,229 @@
+---
+title: Mempercepat Guix dengan Mengganti Mirror
+author: aerphanas
+desc: Guix terasa lambat saat melakukan pull dari server pusat, saya mengalami masalah ini tapi karna kita bisa mengganti mirror maka masalah ini dapat terselesaikan.
+image: mempercepat-guix-dengan-mengganti-mirror-fig1.png
+---
+
+#+title: Mempercepat Guix dengan Mengganti Mirror
+
+#+author: aerphanas
+#+caption: Animal Wildebeest by miroha
+[[../images/mempercepat-guix-dengan-mengganti-mirror-fig1.png]]
+
+** Daftar isi
+:PROPERTIES:
+:CUSTOM_ID: daftar-isi
+:END:
+- [[#pendahuluan][Pendahuluan]]
+- [[#mengganti-mirror-guix][Mengganti Mirror Guix]]
+- [[#mengganti-server-substitude][Mengganti Server Substitude]]
+- [[#daftar-pustaka][Daftar Pustaka]]
+
+** Pendahuluan
+:PROPERTIES:
+:CUSTOM_ID: pendahuluan
+:END:
+
+--------------
+
+Guix merupakan sebuah package manager untuk Linux, Guix bisa diinstall sebagai
+package manager kedua berdampingan dengan package manager bawaan.
+
+konsep Guix sangatlah mirip dengan package manager Nix, namun karna saya lebih
+menyukai Lisp jadi saya memilih Guix.
+
+Guix menggunakan bahasa program yang berasal dari keluarga Lisp lebih tepatnya
+Scheme, Guix menggunakan bahasa Scheme yang bernama Guile, dibanding dengan
+bahasa Nix, saya menganggap Guile scheme lebih powerfull atau hebat dibanding
+dengan bahasa Nix.
+
+Namun saat saya menggunakan Guix kecepatan update Guix lambat, jadi saya
+mencari cara agar mempercepat proses ini, cara yang pernah saya pakai adalah
+menggunakan VPN, namun cara ini tidaklah efisien jadi saya menggunakan cara lain
+yaitu mengganti mirror.
+
+** Mengganti Mirror Guix
+:PROPERTIES:
+:CUSTOM_ID: mengganti-mirror-guix
+:END:
+
+--------------
+
+Konsep Guix mirip dengan Nix yaitu terdapat konsep yang dinamakan channel,
+saat kita ingin mengupdate Guix melalui perintah =guix pull= kita akan mendownload
+bahan-bahan atau package yang berada di repository.
+
+secara default atau bawaan, Guix akan mendownload ke
+https://git.savannah.gnu.org/git/guix.git karna kecepatan mengakses atau
+mengunduh dari ISP saya yang lambat, maka saya akan menggantinya dengan mirror yang ada di
+Github lebih tepatnya ada di sini https://github.com/guix-mirror/guix.git.
+
+saat ini saya menggunakan Guix di dalam Linux Distro Arch, jadi untuk
+mengganti mirror channel saya membuat sebuah file dibawah =~/.config/guix/channels.scm=.
+
+saya perlu membuat folder dan file terlebih dahulu
+
+#+begin_src sh
+  mkdir -p ~/.config/guix
+  touch ~/.config/guix/channels.scm
+#+end_src
+
+setelah itu saya membuka file =channels.scm= menggunakan text editor,
+lalu menambahkan text seperti ini
+
+#+begin_src scheme
+    (cons* (channel
+            (name 'guix)
+            (url "https://github.com/guix-mirror/guix.git"))
+           %default-channels)
+#+end_src
+
+setelah itu kita bisa menggunakan perintah =guix pull=, namun terdapat masalah
+keamanan, Guix memerlukan introduction jadi kita perlu menambahkan line baru
+kode keamanan kita bisa dapatkan dari repository Guix di folder guix/channels.scm,
+setelah kita mendapatkan kode keamann file =channels.scm= kita menjadi seperti ini
+
+#+begin_src scheme
+  (cons* (channel
+          (name 'guix)
+          (url "https://github.com/guix-mirror/guix.git")
+          (introduction
+           (make-channel-introduction
+            "9edb3f66fd807b096b48283debdcddccfea34bad"     ;2020-05-26
+            (openpgp-fingerprint                           ;mbakke
+             "BBB0 2DDF 2CEA F6A8 0D1D  E643 A2A0 6DF2 A33A 54FA"))))
+         %default-channels)
+#+end_src
+
+setelah itu update menggunakan =guix pull= menjadi lebih cepat, namun terdapat
+masalah baru yaitu download binary juga lambat jadi kita perlu mengganti
+server tempat kita menownload prebuild binary, di guix prebuild binary dinamakan
+substitude server.
+
+** Mengganti Server Substitude
+:PROPERTIES:
+:CUSTOM_ID: mengganti-server-substitude
+:END:
+
+--------------
+
+jika package manager Nix terdapat https://cache.nixos.org yang digunakan untuk
+binary prebuild untuk Nix, Guix memiliki 2 server substitude yaitu :
+
+1) https://ci.guix.gnu.org berada di german
+2) https://bordeaux.guix.gnu.org berada di Perancis
+
+kedua server diatas lumayan lambat untuk ISP saya, jadi saya menggunakan mirror,
+mirror yang saya pakai adalah https://mirrors.sjtug.sjtu.edu.cn/guix mirror untuk
+https://ci.guix.gnu.org yang berada di china dan https://bordeaux-us-east-mirror.cbaines.net
+mirror untuk https://bordeaux.guix.gnu.org/ yang berada di Amerika.
+
+kita tidak perlu takut untuk menggunakan mirror diatas karna package mirror
+ditandatangani oleh pembuat aslinya, bukan oleh mirror.
+Ini berarti bahwa operator mirror tidak dapat menambah atau mengubah package,
+selama kita hanya mempercayai kunci penandatanganan yang diterbitkan oleh Guix.
+
+untuk menambahkan server substitude di Linux distro yang bukan Guix, seperti saat
+ini saya menggunakan Arch Linux, kita perlu mengedit systemd service file yang
+normalnya berada di =/etc/systemd/system/guix-daemon.service=, kita buka dan edit
+menggunakan sudo, tampilan file guix-daemon.service sebelum diubah seperti ini :
+
+#+begin_src txt
+  # This is a "service unit file" for the systemd init system to launch
+  # 'guix-daemon'.  Drop it in /etc/systemd/system or similar to have
+  # 'guix-daemon' automatically started.
+
+  [Unit]
+  Description=Build daemon for GNU Guix
+
+  [Service]
+  ExecStart=/var/guix/profiles/per-user/root/current-guix/bin/guix-daemon \
+      --build-users-group=guixbuild --discover=yes
+  Environment='GUIX_LOCPATH=/var/guix/profiles/per-user/root/guix-profile/lib/locale' LC_ALL=en_US.utf8
+  StandardOutput=syslog
+  StandardError=syslog
+
+  # Work around a nasty systemd ‘feature’ that kills the entire process tree
+  # (including the daemon!) if any child, such as cc1plus, runs out of memory.
+  OOMPolicy=continue
+
+  # Despite the name, this is rate-limited: a broken daemon will eventually fail.
+  Restart=always
+
+  # See <https://lists.gnu.org/archive/html/guix-devel/2016-04/msg00608.html>.
+  # Some package builds (for example, go@1.8.1) may require even more than
+  # 1024 tasks.
+  TasksMax=8192
+
+  [Install]
+  WantedBy=multi-user.target
+#+end_src
+
+untuk menambah substitude kita perlu menambahkan opsi untuk guix-daemon, seperti
+inilah file yang sudah teredit
+
+#+begin_src txt
+  # This is a "service unit file" for the systemd init system to launch
+  # 'guix-daemon'.  Drop it in /etc/systemd/system or similar to have
+  # 'guix-daemon' automatically started.
+
+  [Unit]
+  Description=Build daemon for GNU Guix
+
+  [Service]
+  ExecStart=/var/guix/profiles/per-user/root/current-guix/bin/guix-daemon \
+      --build-users-group=guixbuild --discover=yes \
+      --substitute-urls='https://mirrors.sjtug.sjtu.edu.cn/guix https://bordeaux-us-east-mirror.cbaines.net'
+  Environment='GUIX_LOCPATH=/var/guix/profiles/per-user/root/guix-profile/lib/locale' LC_ALL=en_US.utf8
+  StandardOutput=syslog
+  StandardError=syslog
+
+  # Work around a nasty systemd ‘feature’ that kills the entire process tree
+  # (including the daemon!) if any child, such as cc1plus, runs out of memory.
+  OOMPolicy=continue
+
+  # Despite the name, this is rate-limited: a broken daemon will eventually fail.
+  Restart=always
+
+  # See <https://lists.gnu.org/archive/html/guix-devel/2016-04/msg00608.html>.
+  # Some package builds (for example, go@1.8.1) may require even more than
+  # 1024 tasks.
+  TasksMax=8192
+
+  [Install]
+  WantedBy=multi-user.target
+#+end_src
+
+untuk lebih pastinya saya menambah opsi ini untuk guix-daemon
+
+#+begin_src txt
+  --substitute-urls='https://mirrors.sjtug.sjtu.edu.cn/guix https://bordeaux-us-east-mirror.cbaines.net'
+#+end_src
+
+setelah kita menyimpan hasil yang sudah di edit kita perlu merestar ulang guix-daemon
+dan systemd service, caranya seperti ini
+
+#+begin_src sh
+  systemctl daemon-reload
+  systemctl restart guix-daemon.service
+#+end_src
+
+untuk mengedit systemd service file atau mencajankan =systemctl= kita memerlukan akses
+root, jadi kita harus menjalankan perintah diatas menggunakan =sudo=
+
+** Daftar Pustaka
+:PROPERTIES:
+:CUSTOM_ID: daftar-pustaka
+:END:
+
+--------------
+
+- Github\\
+  → [[https://github.com/guix-mirror/guix][guix-mirror]]
+
+- Guix Manual\\
+  → [[https://guix.gnu.org/en/manual/en/html_node/index.html][GNU Guix Reference Manual]]
+
+- Wallpaper Abyss\\
+  → [[https://wall.alphacoders.com/big.php?i=1087329][Animal Wildebeest HD Wallpaper]]
