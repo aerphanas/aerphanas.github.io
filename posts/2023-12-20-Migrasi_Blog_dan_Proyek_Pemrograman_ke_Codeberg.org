@@ -18,7 +18,7 @@ image: migrasi-blog-dan-proyek-pemrograman-ke-codeberg-fig1.png
 - [[#pendahuluan][Pendahuluan]]
 - [[#microsoft-dan-github][Microsoft dan github]]
 - [[#haskell-dan-waktu-kompilasi][Haskell dan Waktu Kompilasi]]
-- [[Solusi][#solusi]]
+- [[#solusi][Solusi]]
 - [[#daftar-pustaka][Daftar Pustaka]]
 
 ** Pendahuluan
