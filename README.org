@@ -1,3 +1,7 @@
+#+begin_quote
+This repo is dead and now "haunt" me on codeberg
+#+end_quote
+
 * aerphanas.github.io
 
 The purpose of this blog is to promote OpenSource and teach some tricks
