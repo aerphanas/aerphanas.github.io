@@ -1,0 +1,87 @@
+---
+title: Migrasi Blog dan Proyek Pemrograman ke Codeberg
+author: aerphanas
+desc: migrasi blog dari github ke codeberg, karna dibawah microsoft github tidak seperti dulu lagi.
+image: migrasi-blog-dan-proyek-pemrograman-ke-codeberg-fig1.png
+---
+
+#+title: Migrasi Blog dan Proyek Pemrograman ke Codeberg
+
+#+author: aerphanas
+#+caption: birds during golden hour by Barth Bailey
+[[../images/migrasi-blog-dan-proyek-pemrograman-ke-codeberg-fig1.png]]
+
+** Daftar isi
+:PROPERTIES:
+:CUSTOM_ID: daftar-isi
+:END:
+- [[#pendahuluan][Pendahuluan]]
+- [[#microsoft-dan-github][Microsoft dan github]]
+- [[#haskell-dan-waktu-kompilasi][Haskell dan Waktu Kompilasi]]
+- [[Solusi][#solusi]]
+- [[#daftar-pustaka][Daftar Pustaka]]
+
+** Pendahuluan
+:PROPERTIES:
+:CUSTOM_ID: pendahuluan
+:END:
+
+--------------
+
+sudah beberapa bulan saya tidak membuat postingan blog lagi disamping kesibukan yang mulai bertambah banyak, saya juga memikirkan masalah mengenai Large Language Model (LLM) atau orang awam menyebutnya AI atau kecerdasan buatan, dinama masih terjadi perdebatan apakah
+melakukan training pada konten yang memiliki lisensi melanggar hukum atau tidak.
+
+** Microsoft dan github
+:PROPERTIES:
+:CUSTOM_ID: microsoft-dan-github
+:END:
+
+--------------
+
+kecemasan saya mulai terjadi pada saat Microsoft mengakuisisi GitHub,
+Microsoft adalah sebuah perusahaan besar yang memiliki salah satu strategi yaitu embrace, extend, and extinguish untuk mengalahkan kompetitor, saat ini microsoft sudah melakukan embrace dan extend dimana github sekarang memiliki online editor berbasis vscode dan vscode sendiri merukan produk microsoft, github juga memberikan layanan CI/CD, dan saat ini github memiliki layanan copilot, copilot adalah sebuah layanan LLM yang membantu Programmer menulis kode, saya kurang menyukai keberadaan copilot karna copilot melakukan training pada repositori github.
+
+** Haskell dan Waktu Kompilasi
+:PROPERTIES:
+:CUSTOM_ID: haskell-dan-waktu-kompilasi
+:END:
+
+--------------
+
+Blog ini dibangun menggunakan software Hakyll, Hakyll merupakan sebuah static site generator yang menggunakan bahasa haskell, yang menjadi masalah adalah kita memerlukan waktu lama untuk menginstall hakyll, waktu yang dibutukan CI/CD untuk membuat blog ini bisa sekitar 1 jam, jadi jika ada kesalahan pada tulisan saya tidak dapat langsung memperbaikinya.
+
+** Solusi
+:PROPERTIES:
+:CUSTOM_ID: solusi
+:END:
+
+--------------
+
+Untuk mengatasi masalah ini saya memutuskan untuk berpindah dari github ke codeberg karna saya rasa codeberg cukup aman karna codeberg dijalankan oleh organisasi non-profit, sebelumnya saya sudah mencoba gitlab namun karna gitlab tidak dapat diakses jika saya tidak menyalakan javascript dan saya rasa UI yang diberikan berantakan, yang saya perlukan adalah git hosting minimalis jadi saya tidak memakai gitlab.
+
+Mulai beberapa bulan lalu saya tertarik dengan bahasa program Lisp, saya sudah mencoba bahasa Common Lisp dan Scheme, setelah menggunakan keduanya saya rasa scheme lebih baik karna simpel dan elegan dibanding common lisp, kebetulan juga saya menemukan Common lisp memiliki alat untuk membangun blog, pada pihak common lisp mereka memiliki Coleslaw dan pada Scheme mereka memiliki Haunt, setelah pertimbangan yang memeakan waktu akhirnya saya memilih haunt karna memiliki level kustomisasi tinggi tidak seperti Coleslaw.
+
+update selanjutnya untuk blog saya akan berada di halaman codeberg yaitu
+di aerphanas.codeberg.page sampai saya berhasil migrasi, sampai jumpa disana
+
+** Daftar Pustaka
+:PROPERTIES:
+:CUSTOM_ID: daftar-pustaka
+:END:
+
+--------------
+
+- News Microsoft\\
+  → [[https://news.microsoft.com/announcement/microsoft-acquires-github/][Microsoft acquires GitHub]]
+
+- Hakyl\\
+  → [[https://jaspervdj.be/hakyll/][hakyll]]
+
+- Codeberg\\
+  → [[https://codeberg.org/][codeberg]]
+
+- Haunt\\
+  → [[https://dthompson.us/projects/haunt.html][haunt]]
+
+- Unsplash\\
+  → [[https://unsplash.com/photos/birds-during-golden-hour-p72K-AvJrbQ][birds during golden hour]]
